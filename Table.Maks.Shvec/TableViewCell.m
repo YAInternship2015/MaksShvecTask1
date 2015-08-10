@@ -10,6 +10,7 @@
 
 @implementation TableViewCell
 
+#warning пустые методы надо удалять
 - (void)awakeFromNib {
     // Initialization code
 }
