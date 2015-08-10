@@ -10,6 +10,7 @@
 
 @interface TableViewController ()
 {
+#warning нет никакой необходимости хранить ячейки для таблицы. У таблицы есть свой пулл ячеек, которые она успешно реюзает (то есть ячеек создается ровно столько, сколько их умещается в видимой части таблицы). Зранить необходимо только модели внутри датасорса
     NSMutableArray *arrayOfCells;
 }
 
@@ -26,6 +27,7 @@
         NSString *tempString = [NSString stringWithFormat:@"%i",i];
         [arrayOfCells addObject:tempString];
     }
+#warning закомментированый код нужно удалять
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -33,6 +35,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+#warning пустые методы также нужно удалять
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -56,6 +59,7 @@
 //    static NSString *CellIdentifier = @"customCell";
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
     
+#warning заполнение ячеек моделью нужно реализовывать в самой ячейке. Начать нужно с создания класса-модели, где будет храниться текст и картинка. Затем у ячейки нужно реализовать метод вроде setupWithModel:, в котором ячейка будет заполнять свой UI моделью
     cell.someLabel.text = [arrayOfCells objectAtIndex:indexPath.row];
     switch (indexPath.row)
     {
@@ -96,7 +100,7 @@
     return cell;
 }
 
-
+#warning закомментированный код нужно удалять
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
