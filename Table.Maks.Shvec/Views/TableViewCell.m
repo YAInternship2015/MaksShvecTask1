@@ -12,7 +12,7 @@
     IBOutlet UIImageView *pic;
     IBOutlet UILabel *someLabel;
 }
-
+ 
 @end
 
 @implementation TableViewCell

@@ -12,5 +12,5 @@
 @interface TableViewCell : UITableViewCell
 
 - (void)setupWithModel:(TMSTextAndImage *)object;
-
+ 
 @end

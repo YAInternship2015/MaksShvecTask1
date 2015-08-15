@@ -12,7 +12,7 @@
 @interface TMSTableViewController ()
 {
     NSMutableArray *arrayObjects;
-}
+} 
 
 @end
 
