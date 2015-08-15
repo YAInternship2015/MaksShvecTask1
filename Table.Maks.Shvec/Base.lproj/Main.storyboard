@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EB6-sa-vLe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EB6-sa-vLe">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Table View Controller-->
         <scene sceneID="RPc-IC-ZfV">
             <objects>
-                <tableViewController id="EB6-sa-vLe" customClass="TableViewController" sceneMemberID="viewController">
+                <tableViewController id="EB6-sa-vLe" customClass="TMSTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="O6r-t3-BlV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" id="TV4-OW-JCj" customClass="TableViewCell">
@@ -22,6 +23,7 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYZ-C9-7pj">
                                             <rect key="frame" x="97" y="8" width="220" height="63"/>
+                                            <animations/>
                                             <color key="backgroundColor" red="1" green="0.98766826109999994" blue="0.89462956319999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -29,11 +31,13 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p5O-rD-jaA">
                                             <rect key="frame" x="6" y="8" width="83" height="63"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="83" id="amq-LW-oQa"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="pYZ-C9-7pj" firstAttribute="leading" secondItem="p5O-rD-jaA" secondAttribute="trailing" constant="8" symbolic="YES" id="4id-ID-IXN"/>
                                         <constraint firstItem="p5O-rD-jaA" firstAttribute="bottom" secondItem="pYZ-C9-7pj" secondAttribute="bottom" id="6jq-Fl-c5P"/>
@@ -44,6 +48,7 @@
                                         <constraint firstItem="pYZ-C9-7pj" firstAttribute="top" secondItem="Uuc-XY-Qjs" secondAttribute="topMargin" id="bFT-27-H7j"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="pic" destination="p5O-rD-jaA" id="xBH-jv-ZAp"/>
                                     <outlet property="someLabel" destination="pYZ-C9-7pj" id="Q4D-tD-8m4"/>

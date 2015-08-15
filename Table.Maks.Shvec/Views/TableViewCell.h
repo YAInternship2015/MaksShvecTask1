@@ -1,5 +1,5 @@
 //
-//  TableViewController.h
+//  TableViewCell.h
 //  Table.Maks.Shvec
 //
 //  Created by Maks on 8/1/15.
@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TableViewCell.h"
+#import "TMSTextAndImage.h"
 
-@interface TableViewController : UITableViewController
+@interface TableViewCell : UITableViewCell
+
+- (void)setupWithModel:(TMSTextAndImage *)object;
 
 @end
