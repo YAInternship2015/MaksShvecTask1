@@ -41,7 +41,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
+    TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
     
     [cell setupWithModel:arrayObjects[indexPath.row]];
     

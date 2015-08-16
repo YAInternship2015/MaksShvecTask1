@@ -19,13 +19,13 @@
 		2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70E9D1B6CE2CF00566D0A /* main.m */; };
 		2DD70EA11B6CE2CF00566D0A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70EA01B6CE2CF00566D0A /* AppDelegate.m */; };
 		2DD70EA71B6CE2CF00566D0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EA51B6CE2CF00566D0A /* Main.storyboard */; };
-		2DD70EA91B6CE2CF00566D0A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EA81B6CE2CF00566D0A /* Images.xcassets */; };
 		2DD70EAC1B6CE2CF00566D0A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EAA1B6CE2CF00566D0A /* LaunchScreen.xib */; };
 		2DD70EB81B6CE2CF00566D0A /* Table_Maks_ShvecTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70EB71B6CE2CF00566D0A /* Table_Maks_ShvecTests.m */; };
 		2DEEB1851B6D6F140061B092 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DEEB1841B6D6F140061B092 /* 9.png */; };
 		FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF21B7F42660039984E /* TMSTextAndImage.m */; };
 		FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF61B7F426D0039984E /* TMSTableViewController.m */; };
-		FCF01EFB1B7F42740039984E /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EFA1B7F42740039984E /* TableViewCell.m */; };
+		FCF01EFB1B7F42740039984E /* TMSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EFA1B7F42740039984E /* TMSTableViewCell.m */; };
+		FCF01EFD1B7F43C20039984E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCF01EFC1B7F43C20039984E /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,6 @@
 		2DD70E9F1B6CE2CF00566D0A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DD70EA01B6CE2CF00566D0A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2DD70EA61B6CE2CF00566D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2DD70EA81B6CE2CF00566D0A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2DD70EAB1B6CE2CF00566D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2DD70EB11B6CE2CF00566D0A /* Table.Maks.ShvecTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Table.Maks.ShvecTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD70EB61B6CE2CF00566D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,8 +63,9 @@
 		FCF01EF21B7F42660039984E /* TMSTextAndImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSTextAndImage.m; sourceTree = "<group>"; };
 		FCF01EF51B7F426D0039984E /* TMSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTableViewController.h; sourceTree = "<group>"; };
 		FCF01EF61B7F426D0039984E /* TMSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSTableViewController.m; sourceTree = "<group>"; };
-		FCF01EF91B7F42740039984E /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		FCF01EFA1B7F42740039984E /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		FCF01EF91B7F42740039984E /* TMSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTableViewCell.h; sourceTree = "<group>"; };
+		FCF01EFA1B7F42740039984E /* TMSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSTableViewCell.m; sourceTree = "<group>"; };
+		FCF01EFC1B7F43C20039984E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +86,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DBAAEB21B7F84CA0040DFB1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FCF01EF91B7F42740039984E /* TMSTableViewCell.h */,
+				FCF01EFA1B7F42740039984E /* TMSTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		2DBAAEB31B7F84EF0040DFB1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2DAD92141B6D4F0F009B5500 /* 1.png */,
+				2DAD92151B6D4F0F009B5500 /* 2.png */,
+				2DAD92161B6D4F0F009B5500 /* 3.png */,
+				2DAD92171B6D4F0F009B5500 /* 4.png */,
+				2DAD92181B6D4F0F009B5500 /* 5.png */,
+				2DAD92191B6D4F0F009B5500 /* 6.png */,
+				2DAD921A1B6D4F0F009B5500 /* 7.png */,
+				2DAD921B1B6D4F0F009B5500 /* 8.png */,
+				2DEEB1841B6D6F140061B092 /* 9.png */,
+				2DAD921D1B6D4F0F009B5500 /* 10.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2DD70E8F1B6CE2CF00566D0A = {
 			isa = PBXGroup;
 			children = (
@@ -107,24 +133,15 @@
 		2DD70E9A1B6CE2CF00566D0A /* Table.Maks.Shvec */ = {
 			isa = PBXGroup;
 			children = (
+				2DBAAEB31B7F84EF0040DFB1 /* Resources */,
 				FCF01EF81B7F42740039984E /* Views */,
-				FCF01EF41B7F426D0039984E /* ViewControllers */,
-				FCF01EF01B7F42660039984E /* Model */,
-				2DAD92141B6D4F0F009B5500 /* 1.png */,
-				2DAD92151B6D4F0F009B5500 /* 2.png */,
-				2DAD92161B6D4F0F009B5500 /* 3.png */,
-				2DAD92171B6D4F0F009B5500 /* 4.png */,
-				2DAD92181B6D4F0F009B5500 /* 5.png */,
-				2DAD92191B6D4F0F009B5500 /* 6.png */,
-				2DAD921A1B6D4F0F009B5500 /* 7.png */,
-				2DAD921B1B6D4F0F009B5500 /* 8.png */,
-				2DEEB1841B6D6F140061B092 /* 9.png */,
-				2DAD921D1B6D4F0F009B5500 /* 10.png */,
+				FCF01EF41B7F426D0039984E /* Controllers */,
+				FCF01EF01B7F42660039984E /* Models */,
 				2DD70E9F1B6CE2CF00566D0A /* AppDelegate.h */,
 				2DD70EA01B6CE2CF00566D0A /* AppDelegate.m */,
 				2DD70EA51B6CE2CF00566D0A /* Main.storyboard */,
-				2DD70EA81B6CE2CF00566D0A /* Images.xcassets */,
 				2DD70EAA1B6CE2CF00566D0A /* LaunchScreen.xib */,
+				FCF01EFC1B7F43C20039984E /* Images.xcassets */,
 				2DD70E9B1B6CE2CF00566D0A /* Supporting Files */,
 			);
 			path = Table.Maks.Shvec;
@@ -156,29 +173,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FCF01EF01B7F42660039984E /* Model */ = {
+		FCF01EF01B7F42660039984E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				FCF01EF11B7F42660039984E /* TMSTextAndImage.h */,
 				FCF01EF21B7F42660039984E /* TMSTextAndImage.m */,
 			);
+			name = Models;
 			path = Model;
 			sourceTree = "<group>";
 		};
-		FCF01EF41B7F426D0039984E /* ViewControllers */ = {
+		FCF01EF41B7F426D0039984E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				FCF01EF51B7F426D0039984E /* TMSTableViewController.h */,
 				FCF01EF61B7F426D0039984E /* TMSTableViewController.m */,
 			);
+			name = Controllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		FCF01EF81B7F42740039984E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FCF01EF91B7F42740039984E /* TableViewCell.h */,
-				FCF01EFA1B7F42740039984E /* TableViewCell.m */,
+				2DBAAEB21B7F84CA0040DFB1 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,6 +284,7 @@
 				2DAD92271B6D4F0F009B5500 /* 10.png in Resources */,
 				2DAD92251B6D4F0F009B5500 /* 8.png in Resources */,
 				2DD70EA71B6CE2CF00566D0A /* Main.storyboard in Resources */,
+				FCF01EFD1B7F43C20039984E /* Images.xcassets in Resources */,
 				2DAD92211B6D4F0F009B5500 /* 4.png in Resources */,
 				2DEEB1851B6D6F140061B092 /* 9.png in Resources */,
 				2DAD921E1B6D4F0F009B5500 /* 1.png in Resources */,
@@ -275,7 +294,6 @@
 				2DAD92221B6D4F0F009B5500 /* 5.png in Resources */,
 				2DAD92241B6D4F0F009B5500 /* 7.png in Resources */,
 				2DD70EAC1B6CE2CF00566D0A /* LaunchScreen.xib in Resources */,
-				2DD70EA91B6CE2CF00566D0A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +314,7 @@
 				2DD70EA11B6CE2CF00566D0A /* AppDelegate.m in Sources */,
 				FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */,
 				2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */,
-				FCF01EFB1B7F42740039984E /* TableViewCell.m in Sources */,
+				FCF01EFB1B7F42740039984E /* TMSTableViewCell.m in Sources */,
 				FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

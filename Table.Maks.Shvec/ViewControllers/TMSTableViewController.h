@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TableViewCell.h"
+#import "TMSTableViewCell.h"
 
 @interface TMSTableViewController : UITableViewController
  

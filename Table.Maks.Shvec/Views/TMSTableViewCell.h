@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TMSTextAndImage.h"
 
-@interface TableViewCell : UITableViewCell
+@interface TMSTableViewCell : UITableViewCell
 
 - (void)setupWithModel:(TMSTextAndImage *)object;
  

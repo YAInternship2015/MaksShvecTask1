@@ -6,16 +6,16 @@
 //  Copyright (c) 2015 Maks. All rights reserved.
 //
 
-#import "TableViewCell.h"
+#import "TMSTableViewCell.h"
 
-@interface TableViewCell () {
+@interface TMSTableViewCell () {
     IBOutlet UIImageView *pic;
     IBOutlet UILabel *someLabel;
 }
  
 @end
 
-@implementation TableViewCell
+@implementation TMSTableViewCell
 
 - (void)setupWithModel:(TMSTextAndImage *)object {
     [pic setImage:[UIImage imageNamed:object.stringText]];
