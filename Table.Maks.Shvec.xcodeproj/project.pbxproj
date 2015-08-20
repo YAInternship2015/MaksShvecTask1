@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D130F911B80AF1D004F0EB5 /* TMSDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */; };
 		2DAD921E1B6D4F0F009B5500 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD92141B6D4F0F009B5500 /* 1.png */; };
 		2DAD921F1B6D4F0F009B5500 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD92151B6D4F0F009B5500 /* 2.png */; };
 		2DAD92201B6D4F0F009B5500 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD92161B6D4F0F009B5500 /* 3.png */; };
@@ -16,6 +17,8 @@
 		2DAD92241B6D4F0F009B5500 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD921A1B6D4F0F009B5500 /* 7.png */; };
 		2DAD92251B6D4F0F009B5500 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD921B1B6D4F0F009B5500 /* 8.png */; };
 		2DAD92271B6D4F0F009B5500 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD921D1B6D4F0F009B5500 /* 10.png */; };
+		2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD116901B863B8000DE921B /* TMSViewControllerWithSubview.m */; };
+		2DD116941B86551C00DE921B /* TMSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD116931B86551C00DE921B /* TMSCollectionViewController.m */; };
 		2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70E9D1B6CE2CF00566D0A /* main.m */; };
 		2DD70EA11B6CE2CF00566D0A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70EA01B6CE2CF00566D0A /* AppDelegate.m */; };
 		2DD70EA71B6CE2CF00566D0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EA51B6CE2CF00566D0A /* Main.storyboard */; };
@@ -39,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSDataSource.h; path = Table.Maks.Shvec/DataSource/TMSDataSource.h; sourceTree = "<group>"; };
+		2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSDataSource.m; path = Table.Maks.Shvec/DataSource/TMSDataSource.m; sourceTree = "<group>"; };
 		2DAD92141B6D4F0F009B5500 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		2DAD92151B6D4F0F009B5500 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		2DAD92161B6D4F0F009B5500 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -48,6 +53,10 @@
 		2DAD921A1B6D4F0F009B5500 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		2DAD921B1B6D4F0F009B5500 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		2DAD921D1B6D4F0F009B5500 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		2DD1168F1B863B8000DE921B /* TMSViewControllerWithSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSViewControllerWithSubview.h; sourceTree = "<group>"; };
+		2DD116901B863B8000DE921B /* TMSViewControllerWithSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSViewControllerWithSubview.m; sourceTree = "<group>"; };
+		2DD116921B86551C00DE921B /* TMSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSCollectionViewController.h; sourceTree = "<group>"; };
+		2DD116931B86551C00DE921B /* TMSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSCollectionViewController.m; sourceTree = "<group>"; };
 		2DD70E981B6CE2CF00566D0A /* Table.Maks.Shvec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Table.Maks.Shvec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD70E9C1B6CE2CF00566D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DD70E9D1B6CE2CF00566D0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +95,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D130F921B80AF24004F0EB5 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */,
+				2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */,
+			);
+			name = DataSource;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		2DBAAEB21B7F84CA0040DFB1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +152,7 @@
 		2DD70E9A1B6CE2CF00566D0A /* Table.Maks.Shvec */ = {
 			isa = PBXGroup;
 			children = (
+				2D130F921B80AF24004F0EB5 /* DataSource */,
 				2DBAAEB31B7F84EF0040DFB1 /* Resources */,
 				FCF01EF81B7F42740039984E /* Views */,
 				FCF01EF41B7F426D0039984E /* Controllers */,
@@ -186,8 +206,12 @@
 		FCF01EF41B7F426D0039984E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2DD1168F1B863B8000DE921B /* TMSViewControllerWithSubview.h */,
+				2DD116901B863B8000DE921B /* TMSViewControllerWithSubview.m */,
 				FCF01EF51B7F426D0039984E /* TMSTableViewController.h */,
 				FCF01EF61B7F426D0039984E /* TMSTableViewController.m */,
+				2DD116921B86551C00DE921B /* TMSCollectionViewController.h */,
+				2DD116931B86551C00DE921B /* TMSCollectionViewController.m */,
 			);
 			name = Controllers;
 			path = ViewControllers;
@@ -314,8 +338,11 @@
 				2DD70EA11B6CE2CF00566D0A /* AppDelegate.m in Sources */,
 				FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */,
 				2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */,
+				2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */,
+				2D130F911B80AF1D004F0EB5 /* TMSDataSource.m in Sources */,
 				FCF01EFB1B7F42740039984E /* TMSTableViewCell.m in Sources */,
 				FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */,
+				2DD116941B86551C00DE921B /* TMSCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
