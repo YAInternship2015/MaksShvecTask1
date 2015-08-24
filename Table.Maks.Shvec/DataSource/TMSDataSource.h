@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TMSTextAndImage.h"
 
 @interface TMSDataSource : NSObject
+
+@property (nonatomic, strong) NSMutableArray *arrayOfData;
+
+- (instancetype)initFromFile:(NSString *)fileName ofType: (NSString *)fileType;
+
+- (BOOL)loadDataFromFile:(NSString *)pathToData;
 
 @end

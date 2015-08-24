@@ -24,6 +24,7 @@
 		2DD70EA71B6CE2CF00566D0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EA51B6CE2CF00566D0A /* Main.storyboard */; };
 		2DD70EAC1B6CE2CF00566D0A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EAA1B6CE2CF00566D0A /* LaunchScreen.xib */; };
 		2DD70EB81B6CE2CF00566D0A /* Table_Maks_ShvecTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70EB71B6CE2CF00566D0A /* Table_Maks_ShvecTests.m */; };
+		2DEDE41A1B8B2A580060A3C4 /* TMSData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DEDE4191B8B2A580060A3C4 /* TMSData.plist */; };
 		2DEEB1851B6D6F140061B092 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DEEB1841B6D6F140061B092 /* 9.png */; };
 		FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF21B7F42660039984E /* TMSTextAndImage.m */; };
 		FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF61B7F426D0039984E /* TMSTableViewController.m */; };
@@ -42,8 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSDataSource.h; path = Table.Maks.Shvec/DataSource/TMSDataSource.h; sourceTree = "<group>"; };
-		2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSDataSource.m; path = Table.Maks.Shvec/DataSource/TMSDataSource.m; sourceTree = "<group>"; };
+		2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSDataSource.h; path = ../DataSource/TMSDataSource.h; sourceTree = "<group>"; };
+		2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSDataSource.m; path = ../DataSource/TMSDataSource.m; sourceTree = "<group>"; };
 		2DAD92141B6D4F0F009B5500 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		2DAD92151B6D4F0F009B5500 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		2DAD92161B6D4F0F009B5500 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		2DD70EB11B6CE2CF00566D0A /* Table.Maks.ShvecTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Table.Maks.ShvecTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD70EB61B6CE2CF00566D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DD70EB71B6CE2CF00566D0A /* Table_Maks_ShvecTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Table_Maks_ShvecTests.m; sourceTree = "<group>"; };
+		2DEDE4191B8B2A580060A3C4 /* TMSData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMSData.plist; sourceTree = "<group>"; };
 		2DEEB1841B6D6F140061B092 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		FCF01EF11B7F42660039984E /* TMSTextAndImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTextAndImage.h; sourceTree = "<group>"; };
 		FCF01EF21B7F42660039984E /* TMSTextAndImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSTextAndImage.m; sourceTree = "<group>"; };
@@ -95,16 +97,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D130F921B80AF24004F0EB5 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */,
-				2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */,
-			);
-			name = DataSource;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		2DBAAEB21B7F84CA0040DFB1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,16 +109,8 @@
 		2DBAAEB31B7F84EF0040DFB1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2DAD92141B6D4F0F009B5500 /* 1.png */,
-				2DAD92151B6D4F0F009B5500 /* 2.png */,
-				2DAD92161B6D4F0F009B5500 /* 3.png */,
-				2DAD92171B6D4F0F009B5500 /* 4.png */,
-				2DAD92181B6D4F0F009B5500 /* 5.png */,
-				2DAD92191B6D4F0F009B5500 /* 6.png */,
-				2DAD921A1B6D4F0F009B5500 /* 7.png */,
-				2DAD921B1B6D4F0F009B5500 /* 8.png */,
-				2DEEB1841B6D6F140061B092 /* 9.png */,
-				2DAD921D1B6D4F0F009B5500 /* 10.png */,
+				2DEDE41C1B8B2C2E0060A3C4 /* Images */,
+				2DEDE41B1B8B2C1D0060A3C4 /* Property list */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -152,7 +136,6 @@
 		2DD70E9A1B6CE2CF00566D0A /* Table.Maks.Shvec */ = {
 			isa = PBXGroup;
 			children = (
-				2D130F921B80AF24004F0EB5 /* DataSource */,
 				2DBAAEB31B7F84EF0040DFB1 /* Resources */,
 				FCF01EF81B7F42740039984E /* Views */,
 				FCF01EF41B7F426D0039984E /* Controllers */,
@@ -193,9 +176,36 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2DEDE41B1B8B2C1D0060A3C4 /* Property list */ = {
+			isa = PBXGroup;
+			children = (
+				2DEDE4191B8B2A580060A3C4 /* TMSData.plist */,
+			);
+			name = "Property list";
+			sourceTree = "<group>";
+		};
+		2DEDE41C1B8B2C2E0060A3C4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2DAD92141B6D4F0F009B5500 /* 1.png */,
+				2DAD92151B6D4F0F009B5500 /* 2.png */,
+				2DAD92161B6D4F0F009B5500 /* 3.png */,
+				2DAD92171B6D4F0F009B5500 /* 4.png */,
+				2DAD92181B6D4F0F009B5500 /* 5.png */,
+				2DAD92191B6D4F0F009B5500 /* 6.png */,
+				2DAD921A1B6D4F0F009B5500 /* 7.png */,
+				2DAD921B1B6D4F0F009B5500 /* 8.png */,
+				2DEEB1841B6D6F140061B092 /* 9.png */,
+				2DAD921D1B6D4F0F009B5500 /* 10.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		FCF01EF01B7F42660039984E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */,
+				2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */,
 				FCF01EF11B7F42660039984E /* TMSTextAndImage.h */,
 				FCF01EF21B7F42660039984E /* TMSTextAndImage.m */,
 			);
@@ -305,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DEDE41A1B8B2A580060A3C4 /* TMSData.plist in Resources */,
 				2DAD92271B6D4F0F009B5500 /* 10.png in Resources */,
 				2DAD92251B6D4F0F009B5500 /* 8.png in Resources */,
 				2DD70EA71B6CE2CF00566D0A /* Main.storyboard in Resources */,

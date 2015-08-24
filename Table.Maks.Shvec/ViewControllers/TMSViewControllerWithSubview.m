@@ -35,7 +35,7 @@
     
 }
 
-- (IBAction)buttonLogOutPress:(id)sender
+- (IBAction)changeViewButton:(id)sender
 {
     UIViewAnimationOptions opt = 0;
     if (!isTableViewController) {
