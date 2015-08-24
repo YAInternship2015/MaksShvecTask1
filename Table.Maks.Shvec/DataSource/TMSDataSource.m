@@ -13,9 +13,10 @@
 - (instancetype)initFromFile:(NSString *)fileName ofType: (NSString *)fileType
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         NSBundle *thisApp = [NSBundle mainBundle];
-        NSString *pathToCatsData = [thisApp pathForResource:fileName ofType:fileType];
+        NSString *pathToData = [thisApp pathForResource:fileName ofType:fileType];
         if ([self loadDataFromFile:pathToData] == NO) {
             NSLog(@"couldn't find data in '%@' file",pathToData);
             return nil;
@@ -24,14 +25,14 @@
     return self;
 }
 
-- (BOOL)loadDataFromFile:(NSString *)pathToData {
+- (BOOL)loadDataFromFile:(NSString *)pathToData
+{
     NSArray *rawData = [NSArray arrayWithContentsOfFile:pathToData];
-    if (rawData) {
+    if (rawData)
+    {
         self.arrayOfData = [NSMutableArray array];
-        for (NSDictionary *cat in rawData) {
-            TMSTextAndImage *oneCatData = [[TMSTextAndImage alloc] initWithDictionary:cat];
-            [self.arrayOfData addObject:oneCatData];
-        }
+        TMSTextAndImage *objectWithData = [TMSTextAndImage new];
+        [self.arrayOfData addObject:objectWithData];
         return YES;
     }
     return NO;

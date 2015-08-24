@@ -8,7 +8,8 @@
 
 #import "TMSTableViewCell.h"
 
-@interface TMSTableViewCell () {
+@interface TMSTableViewCell ()
+{
     IBOutlet UIImageView *pic;
     IBOutlet UILabel *someLabel;
 }

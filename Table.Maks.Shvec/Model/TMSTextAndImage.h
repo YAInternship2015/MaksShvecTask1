@@ -11,5 +11,6 @@
 @interface TMSTextAndImage : NSObject
 
 @property (nonatomic, readwrite) NSString *stringText;
+@property (nonatomic, readwrite) NSString *stringPic;
  
 @end
