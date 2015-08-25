@@ -8,11 +8,13 @@
 
 #import "TMSTableViewController.h"
 #import "TMSTextAndImage.h"
+#import "TMSDataSource.h"
 
 @interface TMSTableViewController ()
 {
     NSMutableArray *arrayObjects;
-} 
+}
+@property (nonatomic, strong) TMSDataSource *textAndImageDataSource;
 
 @end
 
@@ -21,13 +23,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.rowHeight = 80;
-    arrayObjects = [NSMutableArray new];
-    for (int i = 1; i<=10; i++)
-    {
-        TMSTextAndImage *object = [TMSTextAndImage new];
-        object.stringText = [NSString stringWithFormat:@"%i", i];
-        [arrayObjects addObject:object];
-    }
+//    arrayObjects = [NSMutableArray new];
+//    for (int i = 1; i<=10; i++)
+//    {
+//        TMSTextAndImage *object = [TMSTextAndImage new];
+//        object.stringText = [NSString stringWithFormat:@"%i", i];
+//        [arrayObjects addObject:object];
+//    }
+    
+    self.textAndImageDataSource = [[TMSDataSource alloc]initFromFile:@"TMSData.plist" ofType:@"plist"];
+    
+
 }
 
 
@@ -35,7 +41,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return arrayObjects.count;
+    return [self.textAndImageDataSource numberOfObjects];
+//    return [arrayObjects count];
 }
 
 
@@ -43,7 +50,7 @@
     
     TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
     
-    [cell setupWithModel:arrayObjects[indexPath.row]];
+    [cell setupWithModel:[self.textAndImageDataSource objectAtIndex:indexPath.row]];
     
     return cell;
 }

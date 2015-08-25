@@ -15,8 +15,8 @@
     self = [super init];
     if (self)
     {
-        NSBundle *thisApp = [NSBundle mainBundle];
-        NSString *pathToData = [thisApp pathForResource:fileName ofType:fileType];
+        NSBundle *appBundle = [NSBundle mainBundle];
+        NSString *pathToData = [appBundle pathForResource:fileName ofType:fileType];
         if ([self loadDataFromFile:pathToData] == NO) {
             NSLog(@"couldn't find data in '%@' file",pathToData);
             return nil;
@@ -37,4 +37,19 @@
     }
     return NO;
 }
+
+- (NSUInteger)numberOfObjects
+{
+    return [self.arrayOfData count];
+}
+
+- (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject
+{
+    if (self.arrayOfData && ([self.arrayOfData count] > indexOfObject)) {
+        return [self.arrayOfData objectAtIndex:indexOfObject];
+    }
+    NSLog(@"objectAtIndex: %ui - wrong index for arrayOfData", indexOfObject);
+    return nil;
+}
+
 @end

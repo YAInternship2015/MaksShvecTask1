@@ -17,4 +17,8 @@
 
 - (BOOL)loadDataFromFile:(NSString *)pathToData;
 
+- (NSUInteger)numberOfObjects;
+
+- (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject;
+
 @end
