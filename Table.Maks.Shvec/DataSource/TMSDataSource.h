@@ -21,4 +21,6 @@
 
 - (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject;
 
+- (NSDictionary *)loadPlist: (NSString *)plistName;
+
 @end

@@ -52,4 +52,28 @@
     return nil;
 }
 
+- (NSDictionary *)loadPlist: (NSString *)plistName
+{
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [path objectAtIndex:0];
+    NSString *plistPath = [documentsPath stringByAppendingPathComponent:plistName];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
+    {
+        plistPath = [[NSBundle mainBundle]pathForResource:plistName ofType:@"plist"];
+    }
+    
+    NSData *plistXML = [[NSFileManager defaultManager]contentsAtPath:plistPath];
+    NSString *errorDesc = nil;
+    NSPropertyListFormat format;
+    
+    NSDictionary *dictionaryOfPlist = (NSDictionary *) [NSPropertyListSerialization propertyListWithData:plistXML options:NSPropertyListMutableContainersAndLeaves format:&format error:nil];
+    
+    if (!dictionaryOfPlist)
+    {
+        NSLog(@"Error reading plist: %@, format: %lu", errorDesc, (unsigned long)format);
+    }
+    return dictionaryOfPlist;
+}
+
 @end
