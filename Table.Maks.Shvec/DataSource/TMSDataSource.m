@@ -52,22 +52,22 @@
     return nil;
 }
 
-- (NSDictionary *)loadPlist: (NSString *)plistName
+- (NSDictionary *)loadPlist
 {
     NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [path objectAtIndex:0];
-    NSString *plistPath = [documentsPath stringByAppendingPathComponent:plistName];
+    NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"TMSData.plist"];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
     {
-        plistPath = [[NSBundle mainBundle]pathForResource:plistName ofType:@"plist"];
+        plistPath = [[NSBundle mainBundle]pathForResource:@"TMSData" ofType:@"plist"];
     }
     
     NSData *plistXML = [[NSFileManager defaultManager]contentsAtPath:plistPath];
     NSString *errorDesc = nil;
     NSPropertyListFormat format;
     
-    NSDictionary *dictionaryOfPlist = (NSDictionary *) [NSPropertyListSerialization propertyListWithData:plistXML options:NSPropertyListMutableContainersAndLeaves format:&format error:nil];
+    NSDictionary *dictionaryOfPlist = (NSDictionary *)[NSPropertyListSerialization propertyListWithData:plistXML options:NSPropertyListMutableContainersAndLeaves format:&format error:nil];
     
     if (!dictionaryOfPlist)
     {

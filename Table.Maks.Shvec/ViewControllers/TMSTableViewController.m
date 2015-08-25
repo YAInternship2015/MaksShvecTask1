@@ -31,7 +31,9 @@
 //        [arrayObjects addObject:object];
 //    }
     
-    self.textAndImageDataSource = [[TMSDataSource alloc]initFromFile:@"TMSData.plist" ofType:@"plist"];
+//    self.textAndImageDataSource = [[TMSDataSource alloc]initFromFile:@"TMSData.plist" ofType:@"plist"];
+    self.textAndImageDataSource = [TMSDataSource new];
+    NSDictionary *temp = [self.textAndImageDataSource loadPlist];
     
 
 }
