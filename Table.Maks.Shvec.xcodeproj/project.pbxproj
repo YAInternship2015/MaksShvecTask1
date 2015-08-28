@@ -29,6 +29,7 @@
 		2DDBBB111B9047680005B285 /* TMSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDBBB101B9047680005B285 /* TMSCollectionViewCell.m */; };
 		2DEDE41A1B8B2A580060A3C4 /* TMSData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DEDE4191B8B2A580060A3C4 /* TMSData.plist */; };
 		2DEEB1851B6D6F140061B092 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DEEB1841B6D6F140061B092 /* 9.png */; };
+		FCB2A4A41B90A8C800259263 /* TMSViewControllerWithAddFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB2A4A31B90A8C800259263 /* TMSViewControllerWithAddFunc.m */; };
 		FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF21B7F42660039984E /* TMSTextAndImage.m */; };
 		FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF61B7F426D0039984E /* TMSTableViewController.m */; };
 		FCF01EFB1B7F42740039984E /* TMSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EFA1B7F42740039984E /* TMSTableViewCell.m */; };
@@ -77,6 +78,8 @@
 		2DDBBB101B9047680005B285 /* TMSCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSCollectionViewCell.m; path = Cells/TMSCollectionViewCell/TMSCollectionViewCell.m; sourceTree = "<group>"; };
 		2DEDE4191B8B2A580060A3C4 /* TMSData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMSData.plist; sourceTree = "<group>"; };
 		2DEEB1841B6D6F140061B092 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		FCB2A4A21B90A8C800259263 /* TMSViewControllerWithAddFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSViewControllerWithAddFunc.h; path = TMSViewControllerWithAddFunc/TMSViewControllerWithAddFunc.h; sourceTree = "<group>"; };
+		FCB2A4A31B90A8C800259263 /* TMSViewControllerWithAddFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSViewControllerWithAddFunc.m; path = TMSViewControllerWithAddFunc/TMSViewControllerWithAddFunc.m; sourceTree = "<group>"; };
 		FCF01EF11B7F42660039984E /* TMSTextAndImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTextAndImage.h; sourceTree = "<group>"; };
 		FCF01EF21B7F42660039984E /* TMSTextAndImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSTextAndImage.m; sourceTree = "<group>"; };
 		FCF01EF51B7F426D0039984E /* TMSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTableViewController.h; sourceTree = "<group>"; };
@@ -280,6 +283,15 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		FCB2A4A11B90A86500259263 /* TMSViewControllerWithAddFunc */ = {
+			isa = PBXGroup;
+			children = (
+				FCB2A4A21B90A8C800259263 /* TMSViewControllerWithAddFunc.h */,
+				FCB2A4A31B90A8C800259263 /* TMSViewControllerWithAddFunc.m */,
+			);
+			name = TMSViewControllerWithAddFunc;
+			sourceTree = "<group>";
+		};
 		FCF01EF01B7F42660039984E /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +305,7 @@
 		FCF01EF41B7F426D0039984E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FCB2A4A11B90A86500259263 /* TMSViewControllerWithAddFunc */,
 				2DB7D7D21B8F584B00A0DF07 /* TMSViewControllerWithSubview */,
 				2DB7D7D31B8F587000A0DF07 /* TMSTableViewController */,
 				2DB7D7D41B8F588B00A0DF07 /* TMSCollectionViewController */,
@@ -426,6 +439,7 @@
 				2DDBBB111B9047680005B285 /* TMSCollectionViewCell.m in Sources */,
 				2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */,
 				2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */,
+				FCB2A4A41B90A8C800259263 /* TMSViewControllerWithAddFunc.m in Sources */,
 				2D130F911B80AF1D004F0EB5 /* TMSDataSource.m in Sources */,
 				FCF01EFB1B7F42740039984E /* TMSTableViewCell.m in Sources */,
 				FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */,
