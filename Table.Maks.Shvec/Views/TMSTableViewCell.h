@@ -11,6 +11,6 @@
 
 @interface TMSTableViewCell : UITableViewCell
 
-- (void)setupWithModel:(TMSTextAndImage *)object;
+- (void)setupWithModel:(NSDictionary *)item;
  
 @end

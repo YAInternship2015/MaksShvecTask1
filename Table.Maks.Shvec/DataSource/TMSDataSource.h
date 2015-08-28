@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NSMutableArray *arrayOfData;
 
-- (instancetype)initFromFile:(NSString *)fileName ofType: (NSString *)fileType;
+- (TMSDataSource *)initFromPlist;
 
 - (BOOL)loadDataFromFile:(NSString *)pathToData;
 
@@ -21,6 +21,10 @@
 
 - (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject;
 
-- (NSDictionary *)loadPlist;
+- (NSMutableArray *)loadPlist;
+
+- (NSString *)itemFromDictionary: (NSDictionary *)dictionary initWithKey: (NSString *)key;
+
++ (void)copyDataPlistToDocumentFolder;
 
 @end

@@ -6,17 +6,19 @@
 //  Copyright (c) 2015 Maks. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "TMSAppDelegate.h"
+#import "TMSDataSource.h"
 
-@interface AppDelegate ()
+@interface TMSAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation TMSAppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [TMSDataSource copyDataPlistToDocumentFolder];
     return YES;
 }
 

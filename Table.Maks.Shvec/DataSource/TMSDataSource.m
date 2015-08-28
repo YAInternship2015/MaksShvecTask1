@@ -10,32 +10,15 @@
 
 @implementation TMSDataSource
 
-- (instancetype)initFromFile:(NSString *)fileName ofType: (NSString *)fileType
+- (TMSDataSource *)initFromPlist
 {
     self = [super init];
-    if (self)
+    if (!self.arrayOfData)
     {
-        NSBundle *appBundle = [NSBundle mainBundle];
-        NSString *pathToData = [appBundle pathForResource:fileName ofType:fileType];
-        if ([self loadDataFromFile:pathToData] == NO) {
-            NSLog(@"couldn't find data in '%@' file",pathToData);
-            return nil;
-        }
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"TMSData" ofType:@"plist"];
+        self.arrayOfData = [[NSMutableArray alloc] initWithContentsOfFile:path];
     }
     return self;
-}
-
-- (BOOL)loadDataFromFile:(NSString *)pathToData
-{
-    NSArray *rawData = [NSArray arrayWithContentsOfFile:pathToData];
-    if (rawData)
-    {
-        self.arrayOfData = [NSMutableArray array];
-        TMSTextAndImage *objectWithData = [TMSTextAndImage new];
-        [self.arrayOfData addObject:objectWithData];
-        return YES;
-    }
-    return NO;
 }
 
 - (NSUInteger)numberOfObjects
@@ -52,7 +35,7 @@
     return nil;
 }
 
-- (NSDictionary *)loadPlist
+- (NSMutableArray *)loadPlist
 {
     NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [path objectAtIndex:0];
@@ -67,13 +50,38 @@
     NSString *errorDesc = nil;
     NSPropertyListFormat format;
     
-    NSDictionary *dictionaryOfPlist = (NSDictionary *)[NSPropertyListSerialization propertyListWithData:plistXML options:NSPropertyListMutableContainersAndLeaves format:&format error:nil];
+    NSMutableArray *arrayOfPlist = (NSMutableArray *)[NSPropertyListSerialization propertyListWithData:plistXML options:NSPropertyListMutableContainersAndLeaves format:&format error:nil];
     
-    if (!dictionaryOfPlist)
+    if (!arrayOfPlist)
     {
         NSLog(@"Error reading plist: %@, format: %lu", errorDesc, (unsigned long)format);
     }
-    return dictionaryOfPlist;
+    return arrayOfPlist;
+}
+
++ (void)copyDataPlistToDocumentFolder {
+    
+    NSFileManager *fileManger = [NSFileManager defaultManager];
+    NSError *error;
+    NSArray *pathsArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    
+    NSString *doumentDirectoryPath = [pathsArray objectAtIndex:0];
+    
+    NSString *destinationPath= [doumentDirectoryPath stringByAppendingPathComponent:@"TMSData.plist"];
+    
+    NSLog(@"plist path %@",destinationPath);
+    if ([fileManger fileExistsAtPath:destinationPath]){
+        //NSLog(@"database localtion %@",destinationPath);
+        return;
+    }
+    NSString *sourcePath=[[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:@"TMSData.plist"];
+                          
+                          [fileManger copyItemAtPath:sourcePath toPath:destinationPath error:&error];
+}
+
+- (void)loadArrayWithPlist
+{
+    
 }
 
 @end

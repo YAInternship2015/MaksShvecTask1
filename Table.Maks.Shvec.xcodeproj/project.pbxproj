@@ -17,10 +17,12 @@
 		2DAD92241B6D4F0F009B5500 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD921A1B6D4F0F009B5500 /* 7.png */; };
 		2DAD92251B6D4F0F009B5500 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD921B1B6D4F0F009B5500 /* 8.png */; };
 		2DAD92271B6D4F0F009B5500 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD921D1B6D4F0F009B5500 /* 10.png */; };
+		2DB7D7DA1B8F66C900A0DF07 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB7D7D91B8F66C900A0DF07 /* Images.xcassets */; };
+		2DB7D7DC1B8F672200A0DF07 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 2DB7D7DB1B8F672200A0DF07 /* Images */; };
 		2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD116901B863B8000DE921B /* TMSViewControllerWithSubview.m */; };
 		2DD116941B86551C00DE921B /* TMSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD116931B86551C00DE921B /* TMSCollectionViewController.m */; };
 		2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70E9D1B6CE2CF00566D0A /* main.m */; };
-		2DD70EA11B6CE2CF00566D0A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70EA01B6CE2CF00566D0A /* AppDelegate.m */; };
+		2DD70EA11B6CE2CF00566D0A /* TMSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70EA01B6CE2CF00566D0A /* TMSAppDelegate.m */; };
 		2DD70EA71B6CE2CF00566D0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EA51B6CE2CF00566D0A /* Main.storyboard */; };
 		2DD70EAC1B6CE2CF00566D0A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EAA1B6CE2CF00566D0A /* LaunchScreen.xib */; };
 		2DD70EB81B6CE2CF00566D0A /* Table_Maks_ShvecTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70EB71B6CE2CF00566D0A /* Table_Maks_ShvecTests.m */; };
@@ -29,7 +31,6 @@
 		FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF21B7F42660039984E /* TMSTextAndImage.m */; };
 		FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF61B7F426D0039984E /* TMSTableViewController.m */; };
 		FCF01EFB1B7F42740039984E /* TMSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EFA1B7F42740039984E /* TMSTableViewCell.m */; };
-		FCF01EFD1B7F43C20039984E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCF01EFC1B7F43C20039984E /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,9 @@
 		2DAD921A1B6D4F0F009B5500 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		2DAD921B1B6D4F0F009B5500 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		2DAD921D1B6D4F0F009B5500 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		2DB7D7D71B8F5BB500A0DF07 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		2DB7D7D91B8F66C900A0DF07 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2DB7D7DB1B8F672200A0DF07 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Images; path = Images.xcassets/Images; sourceTree = "<group>"; };
 		2DD1168F1B863B8000DE921B /* TMSViewControllerWithSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSViewControllerWithSubview.h; sourceTree = "<group>"; };
 		2DD116901B863B8000DE921B /* TMSViewControllerWithSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSViewControllerWithSubview.m; sourceTree = "<group>"; };
 		2DD116921B86551C00DE921B /* TMSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSCollectionViewController.h; sourceTree = "<group>"; };
@@ -61,8 +65,8 @@
 		2DD70E981B6CE2CF00566D0A /* Table.Maks.Shvec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Table.Maks.Shvec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD70E9C1B6CE2CF00566D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DD70E9D1B6CE2CF00566D0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2DD70E9F1B6CE2CF00566D0A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		2DD70EA01B6CE2CF00566D0A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2DD70E9F1B6CE2CF00566D0A /* TMSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMSAppDelegate.h; sourceTree = "<group>"; };
+		2DD70EA01B6CE2CF00566D0A /* TMSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMSAppDelegate.m; sourceTree = "<group>"; };
 		2DD70EA61B6CE2CF00566D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2DD70EAB1B6CE2CF00566D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2DD70EB11B6CE2CF00566D0A /* Table.Maks.ShvecTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Table.Maks.ShvecTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +80,6 @@
 		FCF01EF61B7F426D0039984E /* TMSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSTableViewController.m; sourceTree = "<group>"; };
 		FCF01EF91B7F42740039984E /* TMSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTableViewCell.h; sourceTree = "<group>"; };
 		FCF01EFA1B7F42740039984E /* TMSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSTableViewCell.m; sourceTree = "<group>"; };
-		FCF01EFC1B7F43C20039984E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +100,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2DBAAEB21B7F84CA0040DFB1 /* Cells */ = {
+		2DB7D7D01B8F530B00A0DF07 /* TMSAppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2DD70E9F1B6CE2CF00566D0A /* TMSAppDelegate.h */,
+				2DD70EA01B6CE2CF00566D0A /* TMSAppDelegate.m */,
+			);
+			name = TMSAppDelegate;
+			sourceTree = "<group>";
+		};
+		2DB7D7D11B8F53DA00A0DF07 /* TMSTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				FCF01EF91B7F42740039984E /* TMSTableViewCell.h */,
 				FCF01EFA1B7F42740039984E /* TMSTableViewCell.m */,
+			);
+			name = TMSTableViewCell;
+			sourceTree = "<group>";
+		};
+		2DB7D7D21B8F584B00A0DF07 /* TMSViewControllerWithSubview */ = {
+			isa = PBXGroup;
+			children = (
+				2DD1168F1B863B8000DE921B /* TMSViewControllerWithSubview.h */,
+				2DD116901B863B8000DE921B /* TMSViewControllerWithSubview.m */,
+			);
+			name = TMSViewControllerWithSubview;
+			sourceTree = "<group>";
+		};
+		2DB7D7D31B8F587000A0DF07 /* TMSTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FCF01EF51B7F426D0039984E /* TMSTableViewController.h */,
+				FCF01EF61B7F426D0039984E /* TMSTableViewController.m */,
+			);
+			name = TMSTableViewController;
+			sourceTree = "<group>";
+		};
+		2DB7D7D41B8F588B00A0DF07 /* TMSCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2DD116921B86551C00DE921B /* TMSCollectionViewController.h */,
+				2DD116931B86551C00DE921B /* TMSCollectionViewController.m */,
+			);
+			name = TMSCollectionViewController;
+			sourceTree = "<group>";
+		};
+		2DB7D7D51B8F58CC00A0DF07 /* TMSDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */,
+				2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */,
+			);
+			name = TMSDataSource;
+			sourceTree = "<group>";
+		};
+		2DB7D7D61B8F58DC00A0DF07 /* TMSTextAndImage */ = {
+			isa = PBXGroup;
+			children = (
+				FCF01EF11B7F42660039984E /* TMSTextAndImage.h */,
+				FCF01EF21B7F42660039984E /* TMSTextAndImage.m */,
+			);
+			name = TMSTextAndImage;
+			sourceTree = "<group>";
+		};
+		2DBAAEB21B7F84CA0040DFB1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2DB7D7D11B8F53DA00A0DF07 /* TMSTableViewCell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -109,6 +174,8 @@
 		2DBAAEB31B7F84EF0040DFB1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2DB7D7D91B8F66C900A0DF07 /* Images.xcassets */,
+				2DB7D7DB1B8F672200A0DF07 /* Images */,
 				2DEDE41C1B8B2C2E0060A3C4 /* Images */,
 				2DEDE41B1B8B2C1D0060A3C4 /* Property list */,
 			);
@@ -136,15 +203,13 @@
 		2DD70E9A1B6CE2CF00566D0A /* Table.Maks.Shvec */ = {
 			isa = PBXGroup;
 			children = (
+				2DB7D7D01B8F530B00A0DF07 /* TMSAppDelegate */,
 				2DBAAEB31B7F84EF0040DFB1 /* Resources */,
 				FCF01EF81B7F42740039984E /* Views */,
 				FCF01EF41B7F426D0039984E /* Controllers */,
 				FCF01EF01B7F42660039984E /* Models */,
-				2DD70E9F1B6CE2CF00566D0A /* AppDelegate.h */,
-				2DD70EA01B6CE2CF00566D0A /* AppDelegate.m */,
 				2DD70EA51B6CE2CF00566D0A /* Main.storyboard */,
 				2DD70EAA1B6CE2CF00566D0A /* LaunchScreen.xib */,
-				FCF01EFC1B7F43C20039984E /* Images.xcassets */,
 				2DD70E9B1B6CE2CF00566D0A /* Supporting Files */,
 			);
 			path = Table.Maks.Shvec;
@@ -155,6 +220,7 @@
 			children = (
 				2DD70E9C1B6CE2CF00566D0A /* Info.plist */,
 				2DD70E9D1B6CE2CF00566D0A /* main.m */,
+				2DB7D7D71B8F5BB500A0DF07 /* Constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -204,10 +270,8 @@
 		FCF01EF01B7F42660039984E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */,
-				2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */,
-				FCF01EF11B7F42660039984E /* TMSTextAndImage.h */,
-				FCF01EF21B7F42660039984E /* TMSTextAndImage.m */,
+				2DB7D7D61B8F58DC00A0DF07 /* TMSTextAndImage */,
+				2DB7D7D51B8F58CC00A0DF07 /* TMSDataSource */,
 			);
 			name = Models;
 			path = Model;
@@ -216,12 +280,9 @@
 		FCF01EF41B7F426D0039984E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2DD1168F1B863B8000DE921B /* TMSViewControllerWithSubview.h */,
-				2DD116901B863B8000DE921B /* TMSViewControllerWithSubview.m */,
-				FCF01EF51B7F426D0039984E /* TMSTableViewController.h */,
-				FCF01EF61B7F426D0039984E /* TMSTableViewController.m */,
-				2DD116921B86551C00DE921B /* TMSCollectionViewController.h */,
-				2DD116931B86551C00DE921B /* TMSCollectionViewController.m */,
+				2DB7D7D21B8F584B00A0DF07 /* TMSViewControllerWithSubview */,
+				2DB7D7D31B8F587000A0DF07 /* TMSTableViewController */,
+				2DB7D7D41B8F588B00A0DF07 /* TMSCollectionViewController */,
 			);
 			name = Controllers;
 			path = ViewControllers;
@@ -319,13 +380,14 @@
 				2DAD92271B6D4F0F009B5500 /* 10.png in Resources */,
 				2DAD92251B6D4F0F009B5500 /* 8.png in Resources */,
 				2DD70EA71B6CE2CF00566D0A /* Main.storyboard in Resources */,
-				FCF01EFD1B7F43C20039984E /* Images.xcassets in Resources */,
 				2DAD92211B6D4F0F009B5500 /* 4.png in Resources */,
+				2DB7D7DA1B8F66C900A0DF07 /* Images.xcassets in Resources */,
 				2DEEB1851B6D6F140061B092 /* 9.png in Resources */,
 				2DAD921E1B6D4F0F009B5500 /* 1.png in Resources */,
 				2DAD92231B6D4F0F009B5500 /* 6.png in Resources */,
 				2DAD921F1B6D4F0F009B5500 /* 2.png in Resources */,
 				2DAD92201B6D4F0F009B5500 /* 3.png in Resources */,
+				2DB7D7DC1B8F672200A0DF07 /* Images in Resources */,
 				2DAD92221B6D4F0F009B5500 /* 5.png in Resources */,
 				2DAD92241B6D4F0F009B5500 /* 7.png in Resources */,
 				2DD70EAC1B6CE2CF00566D0A /* LaunchScreen.xib in Resources */,
@@ -346,7 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DD70EA11B6CE2CF00566D0A /* AppDelegate.m in Sources */,
+				2DD70EA11B6CE2CF00566D0A /* TMSAppDelegate.m in Sources */,
 				FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */,
 				2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */,
 				2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */,
@@ -479,6 +541,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Table.Maks.Shvec/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -489,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Table.Maks.Shvec/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

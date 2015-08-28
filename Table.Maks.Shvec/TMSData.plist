@@ -1,69 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>arrayOfPlist</key>
-	<array>
-		<dict>
-			<key>stringText</key>
-			<string>1</string>
-			<key>stringPic</key>
-			<string>1.png</string>
-		</dict>
-		<dict>
-			<key>New item</key>
-			<string></string>
-			<key>New item - 2</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>New item</key>
-			<string></string>
-			<key>New item - 2</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>New item</key>
-			<string></string>
-			<key>New item - 2</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>New item</key>
-			<string></string>
-			<key>New item - 2</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>New item</key>
-			<string></string>
-			<key>New item - 2</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>New item</key>
-			<string></string>
-			<key>New item - 2</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>New item</key>
-			<string></string>
-			<key>New item - 2</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>New item</key>
-			<string></string>
-			<key>New item - 2</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>New item</key>
-			<string></string>
-			<key>New item - 2</key>
-			<string></string>
-		</dict>
-	</array>
-</dict>
+<array>
+	<dict>
+		<key>stringName</key>
+		<string>1</string>
+		<key>stringPic</key>
+		<string>1</string>
+	</dict>
+	<dict>
+		<key>stringName</key>
+		<string>2</string>
+		<key>stringPic</key>
+		<string>2</string>
+	</dict>
+	<dict>
+		<key>stringName</key>
+		<string>3</string>
+		<key>stringPic</key>
+		<string>3</string>
+	</dict>
+	<dict>
+		<key>stringName</key>
+		<string>4</string>
+		<key>stringPic</key>
+		<string>4</string>
+	</dict>
+	<dict>
+		<key>stringName</key>
+		<string>5</string>
+		<key>stringPic</key>
+		<string>5</string>
+	</dict>
+	<dict>
+		<key>stringName</key>
+		<string>6</string>
+		<key>stringPic</key>
+		<string>6</string>
+	</dict>
+	<dict>
+		<key>stringName</key>
+		<string>7</string>
+		<key>stringPic</key>
+		<string>7</string>
+	</dict>
+	<dict>
+		<key>stringName</key>
+		<string>8</string>
+		<key>stringPic</key>
+		<string>8</string>
+	</dict>
+	<dict>
+		<key>stringName</key>
+		<string>9</string>
+		<key>stringPic</key>
+		<string>9</string>
+	</dict>
+	<dict>
+		<key>stringName</key>
+		<string>10</string>
+		<key>stringPic</key>
+		<string>10</string>
+	</dict>
+</array>
 </plist>

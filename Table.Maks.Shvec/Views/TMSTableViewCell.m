@@ -9,20 +9,19 @@
 #import "TMSTableViewCell.h"
 
 @interface TMSTableViewCell ()
-{
-    IBOutlet UIImageView *pic;
-    IBOutlet UILabel *someLabel;
-}
+
+@property (nonatomic, weak) IBOutlet UIImageView *cellPic;
+@property (nonatomic, weak) IBOutlet UILabel *cellText;
  
 @end
 
 @implementation TMSTableViewCell
 
-- (void)setupWithModel:(TMSTextAndImage *)object {
-    [pic setImage:[UIImage imageNamed:object.stringText]];
-    pic.contentMode = UIViewContentModeScaleAspectFit;
-    
-    someLabel.text = object.stringText;
+- (void)setupWithModel:(NSDictionary *)item
+{
+    self.cellText.text = item[@"stringName"];
+    self.cellPic.image = [UIImage imageNamed:item[@"stringPic"]];
+    self.cellPic.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 @end
