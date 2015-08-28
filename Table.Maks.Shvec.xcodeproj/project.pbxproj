@@ -26,6 +26,7 @@
 		2DD70EA71B6CE2CF00566D0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EA51B6CE2CF00566D0A /* Main.storyboard */; };
 		2DD70EAC1B6CE2CF00566D0A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EAA1B6CE2CF00566D0A /* LaunchScreen.xib */; };
 		2DD70EB81B6CE2CF00566D0A /* Table_Maks_ShvecTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70EB71B6CE2CF00566D0A /* Table_Maks_ShvecTests.m */; };
+		2DDBBB111B9047680005B285 /* TMSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDBBB101B9047680005B285 /* TMSCollectionViewCell.m */; };
 		2DEDE41A1B8B2A580060A3C4 /* TMSData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DEDE4191B8B2A580060A3C4 /* TMSData.plist */; };
 		2DEEB1851B6D6F140061B092 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DEEB1841B6D6F140061B092 /* 9.png */; };
 		FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF21B7F42660039984E /* TMSTextAndImage.m */; };
@@ -72,6 +73,8 @@
 		2DD70EB11B6CE2CF00566D0A /* Table.Maks.ShvecTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Table.Maks.ShvecTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD70EB61B6CE2CF00566D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DD70EB71B6CE2CF00566D0A /* Table_Maks_ShvecTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Table_Maks_ShvecTests.m; sourceTree = "<group>"; };
+		2DDBBB0F1B9047680005B285 /* TMSCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSCollectionViewCell.h; path = Cells/TMSCollectionViewCell/TMSCollectionViewCell.h; sourceTree = "<group>"; };
+		2DDBBB101B9047680005B285 /* TMSCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSCollectionViewCell.m; path = Cells/TMSCollectionViewCell/TMSCollectionViewCell.m; sourceTree = "<group>"; };
 		2DEDE4191B8B2A580060A3C4 /* TMSData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMSData.plist; sourceTree = "<group>"; };
 		2DEEB1841B6D6F140061B092 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		FCF01EF11B7F42660039984E /* TMSTextAndImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTextAndImage.h; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				2DB7D7D11B8F53DA00A0DF07 /* TMSTableViewCell */,
+				2DDBBB0E1B9046FD0005B285 /* TMSCollectionViewCell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -240,6 +244,15 @@
 				2DD70EB61B6CE2CF00566D0A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2DDBBB0E1B9046FD0005B285 /* TMSCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2DDBBB0F1B9047680005B285 /* TMSCollectionViewCell.h */,
+				2DDBBB101B9047680005B285 /* TMSCollectionViewCell.m */,
+			);
+			name = TMSCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		2DEDE41B1B8B2C1D0060A3C4 /* Property list */ = {
@@ -410,6 +423,7 @@
 			files = (
 				2DD70EA11B6CE2CF00566D0A /* TMSAppDelegate.m in Sources */,
 				FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */,
+				2DDBBB111B9047680005B285 /* TMSCollectionViewCell.m in Sources */,
 				2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */,
 				2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */,
 				2D130F911B80AF1D004F0EB5 /* TMSDataSource.m in Sources */,

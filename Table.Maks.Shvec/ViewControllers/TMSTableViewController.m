@@ -38,7 +38,7 @@
     
     TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
     
-    [cell setupWithModel:[[self.textAndImageDataSource loadPlist] objectAtIndex:indexPath.row]];
+    [cell setupWithModel:[self.textAndImageDataSource.arrayOfData objectAtIndex:indexPath.row]];
     
     return cell;
 }
