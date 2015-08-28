@@ -7,6 +7,7 @@
 //
 
 #import "TMSTableViewCell.h"
+#import "TMSDataSource.h"
 
 @interface TMSTableViewCell ()
 
@@ -23,5 +24,6 @@
     self.cellPic.image = [UIImage imageNamed:item[@"stringPic"]];
     self.cellPic.contentMode = UIViewContentModeScaleAspectFit;
 }
+
 
 @end

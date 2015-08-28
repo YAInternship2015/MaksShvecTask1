@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "TMSTextAndImage.h"
 
+@protocol TMSDataSourceDelegate;
+
+
 @interface TMSDataSource : NSObject
 
 @property (nonatomic, strong) NSMutableArray *arrayOfData;
+
+@property (nonatomic, weak) id<TMSDataSourceDelegate>delegate;
+
+- (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate;
 
 - (TMSDataSource *)initFromPlist;
 
@@ -26,5 +33,13 @@
 - (NSString *)itemFromDictionary: (NSDictionary *)dictionary initWithKey: (NSString *)key;
 
 + (void)copyDataPlistToDocumentFolder;
+
+@end
+
+@protocol TMSDataSourceDelegate <NSObject>
+
+@required
+
+- (void)dataWasChanged:(TMSDataSource *)dataSource;
 
 @end

@@ -10,7 +10,7 @@
 #import "TMSTextAndImage.h"
 #import "TMSDataSource.h"
 
-@interface TMSTableViewController ()
+@interface TMSTableViewController ()<TMSDataSourceDelegate>
 {
 //    NSMutableArray *arrayObjects;
 }
@@ -41,6 +41,11 @@
     [cell setupWithModel:[self.textAndImageDataSource.arrayOfData objectAtIndex:indexPath.row]];
     
     return cell;
+}
+
+- (void)dataWasChanged:(TMSDataSource *)dataSource
+{
+    [self.tableView reloadData];
 }
 
 @end
