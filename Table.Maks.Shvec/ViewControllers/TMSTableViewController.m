@@ -25,7 +25,6 @@
     [super viewDidLoad];
     self.tableView.rowHeight = 80;
     self.textAndImageDataSource = [[TMSDataSource alloc]initFromPlist];
-//    NSMutableArray *temp = self.textAndImageDataSource.arrayOfData;
 }
 #pragma mark - Table view data source
 
