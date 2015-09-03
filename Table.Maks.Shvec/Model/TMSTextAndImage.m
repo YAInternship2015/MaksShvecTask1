@@ -10,6 +10,14 @@
 
 @implementation TMSTextAndImage
 
++ (TMSTextAndImage *)modelWithName: (NSString *)name
+{
+    TMSTextAndImage *model = [[TMSTextAndImage alloc]init];
+    model.stringText = name;
+    model.stringPic = @"standartImage";
+    return model;
+}
+
 
 @end
  

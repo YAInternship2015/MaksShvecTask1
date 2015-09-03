@@ -305,10 +305,10 @@
 		FCF01EF41B7F426D0039984E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FCB2A4A11B90A86500259263 /* TMSViewControllerWithAddFunc */,
 				2DB7D7D21B8F584B00A0DF07 /* TMSViewControllerWithSubview */,
 				2DB7D7D31B8F587000A0DF07 /* TMSTableViewController */,
 				2DB7D7D41B8F588B00A0DF07 /* TMSCollectionViewController */,
+				FCB2A4A11B90A86500259263 /* TMSViewControllerWithAddFunc */,
 			);
 			name = Controllers;
 			path = ViewControllers;

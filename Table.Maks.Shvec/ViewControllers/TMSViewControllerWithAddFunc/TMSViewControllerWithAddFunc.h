@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TMSDataSource.h"
+#import "TMSTextAndImage.h"
 
 @interface TMSViewControllerWithAddFunc : UIViewController
 

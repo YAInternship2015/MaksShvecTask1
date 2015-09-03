@@ -26,13 +26,13 @@
 
 - (NSUInteger)numberOfObjects;
 
-- (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject;
+//- (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject;
 
-- (NSMutableArray *)loadPlist;
-
-- (NSString *)itemFromDictionary: (NSDictionary *)dictionary initWithKey: (NSString *)key;
+//- (NSMutableArray *)loadPlist;
 
 + (void)copyDataPlistToDocumentFolder;
+
++ (void)addObject:(TMSTextAndImage *)object;
 
 @end
 

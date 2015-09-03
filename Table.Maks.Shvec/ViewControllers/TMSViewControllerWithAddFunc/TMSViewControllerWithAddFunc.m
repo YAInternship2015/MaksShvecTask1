@@ -8,30 +8,38 @@
 
 #import "TMSViewControllerWithAddFunc.h"
 
-@interface TMSViewControllerWithAddFunc ()
+@interface TMSViewControllerWithAddFunc () <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
 
 @implementation TMSViewControllerWithAddFunc
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)dismissKeyboard
+{
+    [self.textField resignFirstResponder];
 }
-*/
+
+- (IBAction)saveNewObject:(id)sender
+{
+    [TMSDataSource addObject: [TMSTextAndImage modelWithName:self.textField.text]];
+}
+
+
+
 
 @end

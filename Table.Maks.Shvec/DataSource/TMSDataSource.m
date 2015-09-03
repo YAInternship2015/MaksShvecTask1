@@ -17,8 +17,14 @@
     {
         NSString *path = [[NSBundle mainBundle] pathForResource:@"TMSData" ofType:@"plist"];
         self.arrayOfData = [[NSMutableArray alloc] initWithContentsOfFile:path];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadArrayWithPlist) name:@"ContenDidChange" object:nil];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 - (NSUInteger)numberOfObjects
@@ -26,38 +32,38 @@
     return [self.arrayOfData count];
 }
 
-- (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject
-{
-    if (self.arrayOfData && ([self.arrayOfData count] > indexOfObject)) {
-        return [self.arrayOfData objectAtIndex:indexOfObject];
-    }
-    NSLog(@"objectAtIndex: %ui - wrong index for arrayOfData", indexOfObject);
-    return nil;
-}
+//- (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject
+//{
+//    if (self.arrayOfData && ([self.arrayOfData count] > indexOfObject)) {
+//        return [self.arrayOfData objectAtIndex:indexOfObject];
+//    }
+//    NSLog(@"objectAtIndex: %ui - wrong index for arrayOfData", indexOfObject);
+//    return nil;
+//}
 
-- (NSMutableArray *)loadPlist
-{
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-    NSString *documentsPath = [path objectAtIndex:0];
-    NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"TMSData.plist"];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
-    {
-        plistPath = [[NSBundle mainBundle]pathForResource:@"TMSData" ofType:@"plist"];
-    }
-    
-    NSData *plistXML = [[NSFileManager defaultManager]contentsAtPath:plistPath];
-    NSString *errorDesc = nil;
-    NSPropertyListFormat format;
-    
-    NSMutableArray *arrayOfPlist = (NSMutableArray *)[NSPropertyListSerialization propertyListWithData:plistXML options:NSPropertyListMutableContainersAndLeaves format:&format error:nil];
-    
-    if (!arrayOfPlist)
-    {
-        NSLog(@"Error reading plist: %@, format: %lu", errorDesc, (unsigned long)format);
-    }
-    return arrayOfPlist;
-}
+//- (NSMutableArray *)loadPlist
+//{
+//    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+//    NSString *documentsPath = [path objectAtIndex:0];
+//    NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"TMSData.plist"];
+//    
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
+//    {
+//        plistPath = [[NSBundle mainBundle]pathForResource:@"TMSData" ofType:@"plist"];
+//    }
+//    
+//    NSData *plistXML = [[NSFileManager defaultManager]contentsAtPath:plistPath];
+//    NSString *errorDesc = nil;
+//    NSPropertyListFormat format;
+//    
+//    NSMutableArray *arrayOfPlist = (NSMutableArray *)[NSPropertyListSerialization propertyListWithData:plistXML options:NSPropertyListMutableContainersAndLeaves format:&format error:nil];
+//    
+//    if (!arrayOfPlist)
+//    {
+//        NSLog(@"Error reading plist: %@, format: %lu", errorDesc, (unsigned long)format);
+//    }
+//    return arrayOfPlist;
+//}
 
 + (void)copyDataPlistToDocumentFolder {
     
@@ -77,6 +83,22 @@
     NSString *sourcePath=[[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:@"TMSData.plist"];
                           
                           [fileManger copyItemAtPath:sourcePath toPath:destinationPath error:&error];
+}
+
++ (void)addObject:(TMSTextAndImage *)object
+{
+    NSDictionary *newModel = @{@"stringName" : object.stringText,
+                               @"stringPic" : object.stringPic};
+    
+    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:@"TMSData.plist"];
+    [tempModelsArray addObject:newModel];
+    
+    if ([tempModelsArray writeToFile:@"TMSData.plist" atomically:YES]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ContentDidChange" object:nil];
+//        [DDSerialConstructor showAlertWithTitle:@"Alert" message:@"Character added." delegate:self];
+    } else {
+        NSLog(@"Character not added");
+    }
 }
 
 - (void)loadArrayWithPlist

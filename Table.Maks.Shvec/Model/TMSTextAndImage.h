@@ -12,5 +12,7 @@
 
 @property (nonatomic, readwrite) NSString *stringText;
 @property (nonatomic, readwrite) NSString *stringPic;
+
++ (TMSTextAndImage *)modelWithName: (NSString *)name;
  
 @end

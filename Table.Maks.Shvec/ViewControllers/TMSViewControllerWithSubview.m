@@ -9,6 +9,7 @@
 #import "TMSViewControllerWithSubview.h"
 #import "TMSTableViewController.h"
 #import "TMSCollectionViewController.h"
+#import "TMSViewControllerWithAddFunc.h"
 
 @interface TMSViewControllerWithSubview ()
 {
@@ -32,7 +33,6 @@
     [self addChildViewController:collectionViewController];
     
     [self.view addSubview:tableViewController.view];
-    
 }
 
 - (IBAction)changeViewButton:(id)sender
@@ -46,6 +46,12 @@
     [self transitionFromViewController:isTableViewController ? collectionViewController : tableViewController toViewController:isTableViewController ? tableViewController : collectionViewController duration:0.5 options:opt animations:nil completion:nil];
     
     isTableViewController = !isTableViewController;
+}
+
+- (IBAction)addButtonAction:(id)sender
+{
+    TMSViewControllerWithAddFunc *vcWithAddFunc = [self.storyboard instantiateViewControllerWithIdentifier:@"TMSViewControllerWithAddFunc"];
+    [self presentViewController:vcWithAddFunc animated:YES completion:nil];
 }
 
 @end
