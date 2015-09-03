@@ -90,12 +90,14 @@
     NSDictionary *newModel = @{@"stringName" : object.stringText,
                                @"stringPic" : object.stringPic};
     
-    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:@"TMSData.plist"];
+    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:@"TMSData.plist"].mutableCopy;
     [tempModelsArray addObject:newModel];
     
     if ([tempModelsArray writeToFile:@"TMSData.plist" atomically:YES]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ContentDidChange" object:nil];
 //        [DDSerialConstructor showAlertWithTitle:@"Alert" message:@"Character added." delegate:self];
+        NSArray *temp = [NSArray arrayWithContentsOfFile:@"TMSData.plist"];
+        NSLog(@"%@", temp);
     } else {
         NSLog(@"Character not added");
     }

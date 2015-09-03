@@ -29,6 +29,7 @@
 		2DDBBB111B9047680005B285 /* TMSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDBBB101B9047680005B285 /* TMSCollectionViewCell.m */; };
 		2DEDE41A1B8B2A580060A3C4 /* TMSData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DEDE4191B8B2A580060A3C4 /* TMSData.plist */; };
 		2DEEB1851B6D6F140061B092 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DEEB1841B6D6F140061B092 /* 9.png */; };
+		FC9E2F571B98BCB2004239F2 /* NSString+Path.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9E2F561B98BCB2004239F2 /* NSString+Path.m */; };
 		FCB2A4A41B90A8C800259263 /* TMSViewControllerWithAddFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB2A4A31B90A8C800259263 /* TMSViewControllerWithAddFunc.m */; };
 		FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF21B7F42660039984E /* TMSTextAndImage.m */; };
 		FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF61B7F426D0039984E /* TMSTableViewController.m */; };
@@ -78,6 +79,9 @@
 		2DDBBB101B9047680005B285 /* TMSCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSCollectionViewCell.m; path = Cells/TMSCollectionViewCell/TMSCollectionViewCell.m; sourceTree = "<group>"; };
 		2DEDE4191B8B2A580060A3C4 /* TMSData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMSData.plist; sourceTree = "<group>"; };
 		2DEEB1841B6D6F140061B092 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		FC9E2F551B98BCB2004239F2 /* NSString+Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Path.h"; path = "Category/NSString+Path/NSString+Path.h"; sourceTree = "<group>"; };
+		FC9E2F561B98BCB2004239F2 /* NSString+Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Path.m"; path = "Category/NSString+Path/NSString+Path.m"; sourceTree = "<group>"; };
+		FC9E2F581B98BD59004239F2 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		FCB2A4A21B90A8C800259263 /* TMSViewControllerWithAddFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSViewControllerWithAddFunc.h; path = TMSViewControllerWithAddFunc/TMSViewControllerWithAddFunc.h; sourceTree = "<group>"; };
 		FCB2A4A31B90A8C800259263 /* TMSViewControllerWithAddFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSViewControllerWithAddFunc.m; path = TMSViewControllerWithAddFunc/TMSViewControllerWithAddFunc.m; sourceTree = "<group>"; };
 		FCF01EF11B7F42660039984E /* TMSTextAndImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTextAndImage.h; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 		2DD70E9A1B6CE2CF00566D0A /* Table.Maks.Shvec */ = {
 			isa = PBXGroup;
 			children = (
+				FC9E2F531B98BBEF004239F2 /* Category */,
 				2DB7D7D01B8F530B00A0DF07 /* TMSAppDelegate */,
 				2DBAAEB31B7F84EF0040DFB1 /* Resources */,
 				FCF01EF81B7F42740039984E /* Views */,
@@ -228,6 +233,7 @@
 				2DD70E9C1B6CE2CF00566D0A /* Info.plist */,
 				2DD70E9D1B6CE2CF00566D0A /* main.m */,
 				2DB7D7D71B8F5BB500A0DF07 /* Constants.h */,
+				FC9E2F581B98BD59004239F2 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -281,6 +287,23 @@
 				2DAD921D1B6D4F0F009B5500 /* 10.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		FC9E2F531B98BBEF004239F2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FC9E2F541B98BC10004239F2 /* NSString+Path */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		FC9E2F541B98BC10004239F2 /* NSString+Path */ = {
+			isa = PBXGroup;
+			children = (
+				FC9E2F551B98BCB2004239F2 /* NSString+Path.h */,
+				FC9E2F561B98BCB2004239F2 /* NSString+Path.m */,
+			);
+			name = "NSString+Path";
 			sourceTree = "<group>";
 		};
 		FCB2A4A11B90A86500259263 /* TMSViewControllerWithAddFunc */ = {
@@ -437,6 +460,7 @@
 				2DD70EA11B6CE2CF00566D0A /* TMSAppDelegate.m in Sources */,
 				FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */,
 				2DDBBB111B9047680005B285 /* TMSCollectionViewCell.m in Sources */,
+				FC9E2F571B98BCB2004239F2 /* NSString+Path.m in Sources */,
 				2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */,
 				2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */,
 				FCB2A4A41B90A8C800259263 /* TMSViewControllerWithAddFunc.m in Sources */,
@@ -569,7 +593,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = Table.Maks.Shvec/PrefixHeader.pch;
 				INFOPLIST_FILE = Table.Maks.Shvec/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -580,7 +604,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = Table.Maks.Shvec/PrefixHeader.pch;
 				INFOPLIST_FILE = Table.Maks.Shvec/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
