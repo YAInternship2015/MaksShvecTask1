@@ -16,8 +16,8 @@
     self = [super init];
     if (!self.arrayOfData)
     {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"TMSData" ofType:@"plist"];
-        self.arrayOfData = [[NSMutableArray alloc] initWithContentsOfFile:path];
+        NSString *pathToDoc = [NSString stringWithFormat:@"%@/%@", [NSString applicationDocumentsDirectory], @"TMSData.plist"];
+        self.arrayOfData = [[NSMutableArray alloc] initWithContentsOfFile:pathToDoc];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadArrayWithPlist) name:@"ContenDidChange" object:nil];
     }
     return self;

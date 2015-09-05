@@ -22,6 +22,8 @@
     [super viewDidLoad];
 }
 
+#pragma - UITextFieldDelegate methods
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -33,9 +35,12 @@
     [self.textField resignFirstResponder];
 }
 
+#pragma - Action methods
+
 - (IBAction)saveNewObject:(id)sender
 {
     [TMSDataSource addObject: [TMSTextAndImage modelWithName:self.textField.text]];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -14,7 +14,7 @@
 {
     TMSTextAndImage *model = [[TMSTextAndImage alloc]init];
     model.stringText = name;
-    model.stringPic = @"standartImage";
+    model.stringPic = @"noPic";
     return model;
 }
 
