@@ -7,6 +7,7 @@
 //
 
 #import "TMSDataSource.h"
+#import "NSString+Path.h"
 
 @implementation TMSDataSource
 
@@ -76,8 +77,8 @@
     NSString *destinationPath= [doumentDirectoryPath stringByAppendingPathComponent:@"TMSData.plist"];
     
     NSLog(@"plist path %@",destinationPath);
-    if ([fileManger fileExistsAtPath:destinationPath]){
-        //NSLog(@"database localtion %@",destinationPath);
+    if ([fileManger fileExistsAtPath:destinationPath])
+    {
         return;
     }
     NSString *sourcePath=[[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:@"TMSData.plist"];
@@ -90,15 +91,16 @@
     NSDictionary *newModel = @{@"stringName" : object.stringText,
                                @"stringPic" : object.stringPic};
     
-    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:@"TMSData.plist"].mutableCopy;
+    NSString *pathToDoc = [NSString stringWithFormat:@"%@/%@", [NSString applicationDocumentsDirectory], @"TMSData.plist"];
+    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:pathToDoc];
     [tempModelsArray addObject:newModel];
     
-    if ([tempModelsArray writeToFile:@"TMSData.plist" atomically:YES]) {
+    if ([tempModelsArray writeToFile:pathToDoc atomically:YES])
+    {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ContentDidChange" object:nil];
-//        [DDSerialConstructor showAlertWithTitle:@"Alert" message:@"Character added." delegate:self];
-        NSArray *temp = [NSArray arrayWithContentsOfFile:@"TMSData.plist"];
-        NSLog(@"%@", temp);
-    } else {
+    }
+    else
+    {
         NSLog(@"Character not added");
     }
 }

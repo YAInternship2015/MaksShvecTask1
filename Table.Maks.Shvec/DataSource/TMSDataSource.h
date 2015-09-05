@@ -34,6 +34,8 @@
 
 + (void)addObject:(TMSTextAndImage *)object;
 
++ (NSString *) applicationDocumentsDirectory;
+
 @end
 
 @protocol TMSDataSourceDelegate <NSObject>

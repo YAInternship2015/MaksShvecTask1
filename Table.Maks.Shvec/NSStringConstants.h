@@ -16,4 +16,9 @@
 static NSString *const kName = @"name";
 static NSString *const kImageName = @"imageName";
 
+#pragma mark - DataSource plist
+
+static NSString *const nameOfPlist = @"TMSData";
+static NSString *const typeOfPlist = @".plist";
+
 #endif

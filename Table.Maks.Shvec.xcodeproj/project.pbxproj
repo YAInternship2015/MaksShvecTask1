@@ -58,7 +58,7 @@
 		2DAD921A1B6D4F0F009B5500 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		2DAD921B1B6D4F0F009B5500 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		2DAD921D1B6D4F0F009B5500 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
-		2DB7D7D71B8F5BB500A0DF07 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		2DB7D7D71B8F5BB500A0DF07 /* NSStringConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSStringConstants.h; sourceTree = "<group>"; };
 		2DB7D7D91B8F66C900A0DF07 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2DB7D7DB1B8F672200A0DF07 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Images; path = Images.xcassets/Images; sourceTree = "<group>"; };
 		2DD1168F1B863B8000DE921B /* TMSViewControllerWithSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSViewControllerWithSubview.h; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 			children = (
 				2DD70E9C1B6CE2CF00566D0A /* Info.plist */,
 				2DD70E9D1B6CE2CF00566D0A /* main.m */,
-				2DB7D7D71B8F5BB500A0DF07 /* Constants.h */,
+				2DB7D7D71B8F5BB500A0DF07 /* NSStringConstants.h */,
 				FC9E2F581B98BD59004239F2 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";

@@ -10,4 +10,6 @@
 
 @interface NSString (Path)
 
++ (NSString *)applicationDocumentsDirectory;
+
 @end
