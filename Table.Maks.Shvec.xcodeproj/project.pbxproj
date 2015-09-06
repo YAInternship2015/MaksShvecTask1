@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D0406F71B9C266200A3BF09 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0406F61B9C266200A3BF09 /* NSString+Validation.m */; };
+		2D0406FB1B9C53BE00A3BF09 /* TMSAlerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0406FA1B9C53BE00A3BF09 /* TMSAlerts.m */; };
 		2D130F911B80AF1D004F0EB5 /* TMSDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */; };
 		2DAD921E1B6D4F0F009B5500 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD92141B6D4F0F009B5500 /* 1.png */; };
 		2DAD921F1B6D4F0F009B5500 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD92151B6D4F0F009B5500 /* 2.png */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		2D0406F51B9C266200A3BF09 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Validation.h"; path = "Category/NSString+Validation/NSString+Validation.h"; sourceTree = "<group>"; };
 		2D0406F61B9C266200A3BF09 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Validation.m"; path = "Category/NSString+Validation/NSString+Validation.m"; sourceTree = "<group>"; };
+		2D0406F91B9C53BE00A3BF09 /* TMSAlerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSAlerts.h; path = Alerts/TMSAlerts.h; sourceTree = "<group>"; };
+		2D0406FA1B9C53BE00A3BF09 /* TMSAlerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSAlerts.m; path = Alerts/TMSAlerts.m; sourceTree = "<group>"; };
 		2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSDataSource.h; path = ../DataSource/TMSDataSource.h; sourceTree = "<group>"; };
 		2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSDataSource.m; path = ../DataSource/TMSDataSource.m; sourceTree = "<group>"; };
 		2DAD92141B6D4F0F009B5500 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
@@ -120,6 +123,15 @@
 				2D0406F61B9C266200A3BF09 /* NSString+Validation.m */,
 			);
 			name = "NSString+Validation";
+			sourceTree = "<group>";
+		};
+		2D0406F81B9C539A00A3BF09 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				2D0406F91B9C53BE00A3BF09 /* TMSAlerts.h */,
+				2D0406FA1B9C53BE00A3BF09 /* TMSAlerts.m */,
+			);
+			name = Alerts;
 			sourceTree = "<group>";
 		};
 		2DB7D7D01B8F530B00A0DF07 /* TMSAppDelegate */ = {
@@ -353,6 +365,7 @@
 		FCF01EF81B7F42740039984E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2D0406F81B9C539A00A3BF09 /* Alerts */,
 				2DBAAEB21B7F84CA0040DFB1 /* Cells */,
 			);
 			path = Views;
@@ -481,6 +494,7 @@
 				2D130F911B80AF1D004F0EB5 /* TMSDataSource.m in Sources */,
 				FCF01EFB1B7F42740039984E /* TMSTableViewCell.m in Sources */,
 				FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */,
+				2D0406FB1B9C53BE00A3BF09 /* TMSAlerts.m in Sources */,
 				2DD116941B86551C00DE921B /* TMSCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

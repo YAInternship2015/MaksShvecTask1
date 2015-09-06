@@ -48,6 +48,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="b89-9x-o0v">
                             <connections>
                                 <action selector="addButtonAction:" destination="j0Y-ZQ-Pqz" id="RXu-be-7bh"/>
+                                <segue destination="d4x-1Q-UAC" kind="show" id="d8F-Sx-9Kb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -179,19 +180,14 @@
                         <viewControllerLayoutGuide type="bottom" id="9mp-fk-LUU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FLT-pQ-Xxq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7As-4F-uyP">
-                                <rect key="frame" x="50" y="59" width="239" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="d4x-1Q-UAC" id="uAX-wb-seH"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwx-zt-BKG">
-                                <rect key="frame" x="137" y="115" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwx-zt-BKG">
+                                <rect key="frame" x="137" y="129" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="q6o-Ja-Xsr"/>
+                                </constraints>
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -199,10 +195,26 @@
                                     <action selector="saveNewObject:" destination="d4x-1Q-UAC" eventType="touchUpInside" id="BKe-Qg-yhP"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7As-4F-uyP">
+                                <rect key="frame" x="47" y="63" width="239" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="d4x-1Q-UAC" id="uAX-wb-seH"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="0.97620047460000003" blue="0.36314591480000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="7As-4F-uyP" secondAttribute="trailing" constant="18" id="DwI-4b-vqj"/>
+                            <constraint firstItem="7As-4F-uyP" firstAttribute="leading" secondItem="FLT-pQ-Xxq" secondAttribute="leadingMargin" constant="31" id="LYn-8B-eGA"/>
+                            <constraint firstItem="7As-4F-uyP" firstAttribute="top" secondItem="ulG-zj-g8Q" secondAttribute="bottom" constant="63" id="LpS-hB-WFD"/>
+                            <constraint firstItem="Iwx-zt-BKG" firstAttribute="top" secondItem="7As-4F-uyP" secondAttribute="bottom" constant="36" id="sFT-M0-yzZ"/>
+                            <constraint firstItem="Iwx-zt-BKG" firstAttribute="centerX" secondItem="FLT-pQ-Xxq" secondAttribute="centerX" id="x2r-Ta-7wI"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="saveButton" destination="Iwx-zt-BKG" id="YfF-Cr-EDN"/>
@@ -211,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLl-Z2-njx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1419" y="229"/>
+            <point key="canvasLocation" x="285" y="977"/>
         </scene>
     </scenes>
 </document>

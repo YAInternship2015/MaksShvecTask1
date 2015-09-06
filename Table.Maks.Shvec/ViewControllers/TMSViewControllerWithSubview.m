@@ -33,7 +33,10 @@
     [self addChildViewController:collectionViewController];
     
     [self.view addSubview:tableViewController.view];
+    
 }
+
+#pragma mark - Actions
 
 - (IBAction)changeViewButton:(id)sender
 {
@@ -48,10 +51,6 @@
     isTableViewController = !isTableViewController;
 }
 
-- (IBAction)addButtonAction:(id)sender
-{
-    TMSViewControllerWithAddFunc *vcWithAddFunc = [self.storyboard instantiateViewControllerWithIdentifier:@"TMSViewControllerWithAddFunc"];
-    [self presentViewController:vcWithAddFunc animated:YES completion:nil];
-}
+
 
 @end

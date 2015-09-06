@@ -28,43 +28,15 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
+- (void)loadDataArray
+{
+//    self.arrayOfData = [NSArray arrayWithContentsOfFile:[NSS]]
+}
+
 - (NSUInteger)numberOfObjects
 {
     return [self.arrayOfData count];
 }
-
-//- (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject
-//{
-//    if (self.arrayOfData && ([self.arrayOfData count] > indexOfObject)) {
-//        return [self.arrayOfData objectAtIndex:indexOfObject];
-//    }
-//    NSLog(@"objectAtIndex: %ui - wrong index for arrayOfData", indexOfObject);
-//    return nil;
-//}
-
-//- (NSMutableArray *)loadPlist
-//{
-//    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-//    NSString *documentsPath = [path objectAtIndex:0];
-//    NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"TMSData.plist"];
-//    
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
-//    {
-//        plistPath = [[NSBundle mainBundle]pathForResource:@"TMSData" ofType:@"plist"];
-//    }
-//    
-//    NSData *plistXML = [[NSFileManager defaultManager]contentsAtPath:plistPath];
-//    NSString *errorDesc = nil;
-//    NSPropertyListFormat format;
-//    
-//    NSMutableArray *arrayOfPlist = (NSMutableArray *)[NSPropertyListSerialization propertyListWithData:plistXML options:NSPropertyListMutableContainersAndLeaves format:&format error:nil];
-//    
-//    if (!arrayOfPlist)
-//    {
-//        NSLog(@"Error reading plist: %@, format: %lu", errorDesc, (unsigned long)format);
-//    }
-//    return arrayOfPlist;
-//}
 
 + (void)copyDataPlistToDocumentFolder {
     

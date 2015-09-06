@@ -21,6 +21,7 @@
 {
     [super viewDidLoad];
     self.textAndImageDataSource = [[TMSDataSource alloc]initFromPlist];
+    self.collectionView.alwaysBounceVertical = YES;
 }
 
 #pragma mark <UICollectionViewDataSource>

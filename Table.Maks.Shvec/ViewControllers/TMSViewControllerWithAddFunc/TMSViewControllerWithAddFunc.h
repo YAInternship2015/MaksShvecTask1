@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TMSDataSource.h"
 #import "TMSTextAndImage.h"
+#import "NSString+Validation.h"
 
 @interface TMSViewControllerWithAddFunc : UIViewController
 

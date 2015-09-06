@@ -24,10 +24,13 @@
         if (error != NULL)
         {
             *error = [NSError errorWithDomain:@"TestTask2" code:errorCode userInfo:userInfo];
+            
         }
+        [TMSAlerts showAlertWithMethodIsValidModelTitle];
         return NO;
     }
     return YES;
 }
+
 
 @end

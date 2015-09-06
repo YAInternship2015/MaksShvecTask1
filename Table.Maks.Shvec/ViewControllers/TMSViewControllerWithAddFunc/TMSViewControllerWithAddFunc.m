@@ -35,12 +35,17 @@
     [self.textField resignFirstResponder];
 }
 
-#pragma - Action methods
+#pragma - Actions
 
 - (IBAction)saveNewObject:(id)sender
 {
-    [TMSDataSource addObject: [TMSTextAndImage modelWithName:self.textField.text]];
-    [self.navigationController popViewControllerAnimated:YES];
+    NSError *error = NULL;
+    if ([NSString isValidModelTitle:self.textField.text error:&error])
+    {
+        [TMSDataSource addObject: [TMSTextAndImage modelWithName:self.textField.text]];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 
