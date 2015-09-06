@@ -24,7 +24,6 @@
 {
     [super viewDidLoad];
     self.tableView.rowHeight = 80;
-//    self.dataSource = [[TMSDataSource alloc]initFromPlist];
     self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
 }
 #pragma mark - Table view data source
@@ -42,6 +41,8 @@
     
     return cell;
 }
+
+#pragma mark - TMSDataSourceDelegate methods
 
 - (void)dataWasChanged:(TMSDataSource *)dataSource
 {

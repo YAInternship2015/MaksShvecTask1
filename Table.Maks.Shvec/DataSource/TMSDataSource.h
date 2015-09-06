@@ -18,8 +18,6 @@
 
 - (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate;
 
-//- (TMSDataSource *)initFromPlist;
-
 - (void)loadDataArrayWithPlist;
 
 - (void)reloadDataArrayWithPlist;

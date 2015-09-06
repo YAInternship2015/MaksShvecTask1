@@ -10,6 +10,8 @@
 
 @implementation NSString (Validation)
 
+#pragma mark - NSString validation methods
+
 + (BOOL)isValidModelTitle:(NSString *)title error:(NSError **)error
 {
     if ([title length] < 3)

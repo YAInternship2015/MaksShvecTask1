@@ -20,7 +20,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.dataSource = [[TMSDataSource alloc]initFromPlist];
     self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
     self.collectionView.alwaysBounceVertical = YES;
 }
@@ -40,6 +39,8 @@
     
     return cell;
 }
+
+# pragma mark - TMSDataSourceDelegate methods
 
 - (void)dataWasChanged:(TMSDataSource *)dataSource
 {

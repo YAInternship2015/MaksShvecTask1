@@ -10,11 +10,25 @@
 
 @implementation TMSAlerts
 
+#pragma mark -  NSString validation alert
+
 + (void)showAlertWithMethodIsValidModelTitle
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please type more than 3 symblos..." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
     [alert show];
-    
+}
+
+#pragma mark - Plist alerts
++ (void)showAlertErrorAddingObjectToPlist
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something goes wrong..." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+    [alert show];
+}
+
++ (void)showAlertObjectAdded
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:@"Object added" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+    [alert show];    
 }
 
 @end

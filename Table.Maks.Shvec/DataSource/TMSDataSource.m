@@ -17,16 +17,7 @@
 
 @implementation TMSDataSource
 
-//- (TMSDataSource *)initFromPlist
-//{
-//    self = [super init];
-//    if (self)
-//    {
-//        [self loadDataArrayWithPlist];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadDataArrayWithPlist) name:@"ContenDidChange" object:nil];
-//    }
-//    return self;
-//}
+#pragma mark - DataSource init methods
 
 - (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate
 {
@@ -44,6 +35,8 @@
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
+
+#pragma mark - DataSource methods
 
 - (void)loadDataArrayWithPlist
 {
@@ -66,6 +59,27 @@
     return self.arrayOfData[index];
 }
 
+#pragma mark - Work with plist methods
+
++ (void)addObject:(TMSTextAndImage *)object
+{
+    NSDictionary *newModel = @{@"stringName" : object.stringText,
+                               @"stringPic" : object.stringPic};
+    
+    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:[NSString pathToPlist]];
+    [tempModelsArray addObject:newModel];
+    
+    if ([tempModelsArray writeToFile:[NSString pathToPlist] atomically:YES])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:contentDidChange object:nil];
+        [TMSAlerts showAlertObjectAdded];
+    }
+    else
+    {
+        [TMSAlerts showAlertErrorAddingObjectToPlist];
+    }
+}
+
 + (void)copyDataPlistToDocumentFolder {
     
     NSFileManager *fileManger = [NSFileManager defaultManager];
@@ -82,26 +96,8 @@
         return;
     }
     NSString *sourcePath=[[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:@"TMSData.plist"];
-                          
-                          [fileManger copyItemAtPath:sourcePath toPath:destinationPath error:&error];
-}
-
-+ (void)addObject:(TMSTextAndImage *)object
-{
-    NSDictionary *newModel = @{@"stringName" : object.stringText,
-                               @"stringPic" : object.stringPic};
     
-    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:[NSString pathToPlist]];
-    [tempModelsArray addObject:newModel];
-    
-    if ([tempModelsArray writeToFile:[NSString pathToPlist] atomically:YES])
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:contentDidChange object:nil];
-    }
-    else
-    {
-        NSLog(@"Character not added");
-    }
+    [fileManger copyItemAtPath:sourcePath toPath:destinationPath error:&error];
 }
 
 

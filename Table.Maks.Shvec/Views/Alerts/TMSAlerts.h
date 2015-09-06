@@ -13,4 +13,8 @@
 
 + (void)showAlertWithMethodIsValidModelTitle;
 
++ (void)showAlertErrorAddingObjectToPlist;
+
++ (void)showAlertObjectAdded;
+
 @end
