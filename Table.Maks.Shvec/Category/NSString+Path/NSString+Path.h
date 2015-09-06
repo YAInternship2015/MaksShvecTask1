@@ -10,6 +10,6 @@
 
 @interface NSString (Path)
 
-+ (NSString *)applicationDocumentsDirectory;
++ (NSString *)pathToPlist;
 
 @end

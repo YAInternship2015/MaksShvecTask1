@@ -18,11 +18,12 @@
     return [documentsDirectory stringByAppendingPathComponent:plistName];
 }
 
-+ (NSString *)applicationDocumentsDirectory
++ (NSString *)pathToPlist
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = paths.firstObject;
-    return basePath;
+    NSString *pathToPlist = [NSString stringWithFormat:@"%@/%@", basePath, @"TMSData.plist"];
+    return pathToPlist;
 }
 
 @end

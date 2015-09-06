@@ -16,6 +16,9 @@
 static NSString *const kName = @"name";
 static NSString *const kImageName = @"imageName";
 
+#pragma mark - Notifications name
+static NSString *const contentDidChange = @"ContenDidChange";
+
 #pragma mark - DataSource plist
 
 static NSString *const nameOfPlist = @"TMSData";

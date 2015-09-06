@@ -12,9 +12,9 @@
 
 @interface TMSTableViewController ()<TMSDataSourceDelegate>
 {
-//    NSMutableArray *arrayObjects;
+
 }
-@property (nonatomic, strong) TMSDataSource *textAndImageDataSource;
+@property (nonatomic, strong) TMSDataSource *dataSource;
 
 @end
 
@@ -24,21 +24,21 @@
 {
     [super viewDidLoad];
     self.tableView.rowHeight = 80;
-    self.textAndImageDataSource = [[TMSDataSource alloc]initFromPlist];
+//    self.dataSource = [[TMSDataSource alloc]initFromPlist];
+    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
 }
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.textAndImageDataSource.arrayOfData count];
+    return [self.dataSource numberOfObjects];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
     
-    [cell setupWithModel:[self.textAndImageDataSource.arrayOfData objectAtIndex:indexPath.row]];
+    [cell setupWithModel:[self.dataSource indexOfObject:indexPath.row]];
     
     return cell;
 }

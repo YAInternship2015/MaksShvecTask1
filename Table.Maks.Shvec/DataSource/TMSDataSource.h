@@ -14,29 +14,27 @@
 
 @interface TMSDataSource : NSObject
 
-@property (nonatomic, strong) NSMutableArray *arrayOfData;
-
 @property (nonatomic, weak) id<TMSDataSourceDelegate>delegate;
 
 - (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate;
 
-- (TMSDataSource *)initFromPlist;
+//- (TMSDataSource *)initFromPlist;
 
-- (BOOL)loadDataFromFile:(NSString *)pathToData;
+- (void)loadDataArrayWithPlist;
+
+- (void)reloadDataArrayWithPlist;
 
 - (NSUInteger)numberOfObjects;
 
-//- (TMSTextAndImage *)objectAtIndex: (NSUInteger)indexOfObject;
+- (NSDictionary *)indexOfObject:(NSInteger)index;
 
-//- (NSMutableArray *)loadPlist;
 
 + (void)copyDataPlistToDocumentFolder;
 
 + (void)addObject:(TMSTextAndImage *)object;
 
-+ (NSString *) applicationDocumentsDirectory;
-
 @end
+
 
 @protocol TMSDataSourceDelegate <NSObject>
 

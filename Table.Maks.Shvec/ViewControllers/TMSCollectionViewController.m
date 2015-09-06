@@ -11,7 +11,7 @@
 
 @interface TMSCollectionViewController ()<TMSDataSourceDelegate>
 
-@property (nonatomic, strong) TMSDataSource *textAndImageDataSource;
+@property (nonatomic, strong) TMSDataSource *dataSource;
 
 @end
 
@@ -20,7 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.textAndImageDataSource = [[TMSDataSource alloc]initFromPlist];
+//    self.dataSource = [[TMSDataSource alloc]initFromPlist];
+    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
     self.collectionView.alwaysBounceVertical = YES;
 }
 
@@ -28,14 +29,14 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.textAndImageDataSource.arrayOfData count];
+    return [self.dataSource numberOfObjects];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TMSCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"customCollectionCell" forIndexPath:indexPath];
     
-    [cell setupWithModel:[self.textAndImageDataSource.arrayOfData objectAtIndex:indexPath.row]];
+    [cell setupWithModel:[self.dataSource indexOfObject:indexPath.row]];
     
     return cell;
 }

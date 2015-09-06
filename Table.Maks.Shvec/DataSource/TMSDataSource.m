@@ -9,16 +9,33 @@
 #import "TMSDataSource.h"
 #import "NSString+Path.h"
 
+@interface TMSDataSource ()
+
+@property (nonatomic, strong) NSArray *arrayOfData;
+
+@end
+
 @implementation TMSDataSource
 
-- (TMSDataSource *)initFromPlist
+//- (TMSDataSource *)initFromPlist
+//{
+//    self = [super init];
+//    if (self)
+//    {
+//        [self loadDataArrayWithPlist];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadDataArrayWithPlist) name:@"ContenDidChange" object:nil];
+//    }
+//    return self;
+//}
+
+- (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate
 {
-    self = [super init];
-    if (!self.arrayOfData)
+    self = [self init];
+    if (self)
     {
-        NSString *pathToDoc = [NSString stringWithFormat:@"%@/%@", [NSString applicationDocumentsDirectory], @"TMSData.plist"];
-        self.arrayOfData = [[NSMutableArray alloc] initWithContentsOfFile:pathToDoc];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadArrayWithPlist) name:@"ContenDidChange" object:nil];
+        self.delegate = delegate;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataArrayWithPlist) name:contentDidChange object:nil];
+        [self loadDataArrayWithPlist];
     }
     return self;
 }
@@ -28,14 +45,25 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
-- (void)loadDataArray
+- (void)loadDataArrayWithPlist
 {
-//    self.arrayOfData = [NSArray arrayWithContentsOfFile:[NSS]]
+    self.arrayOfData = [NSArray arrayWithContentsOfFile:[NSString pathToPlist]];
+    [self.delegate dataWasChanged:self];
+}
+
+- (void)reloadDataArrayWithPlist
+{
+    [self loadDataArrayWithPlist];
 }
 
 - (NSUInteger)numberOfObjects
 {
     return [self.arrayOfData count];
+}
+
+- (NSDictionary *)indexOfObject:(NSInteger)index
+{
+    return self.arrayOfData[index];
 }
 
 + (void)copyDataPlistToDocumentFolder {
@@ -63,13 +91,12 @@
     NSDictionary *newModel = @{@"stringName" : object.stringText,
                                @"stringPic" : object.stringPic};
     
-    NSString *pathToDoc = [NSString stringWithFormat:@"%@/%@", [NSString applicationDocumentsDirectory], @"TMSData.plist"];
-    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:pathToDoc];
+    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:[NSString pathToPlist]];
     [tempModelsArray addObject:newModel];
     
-    if ([tempModelsArray writeToFile:pathToDoc atomically:YES])
+    if ([tempModelsArray writeToFile:[NSString pathToPlist] atomically:YES])
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ContentDidChange" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:contentDidChange object:nil];
     }
     else
     {
@@ -77,9 +104,6 @@
     }
 }
 
-- (void)loadArrayWithPlist
-{
-    
-}
+
 
 @end
