@@ -10,6 +10,7 @@
 
 @implementation NSString (Path)
 
+#warning этот метод нигде не используется
 + (NSString *) documentsFolderPlistPath
 {
     NSArray *pathsArray = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
@@ -22,6 +23,7 @@
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = paths.firstObject;
+#warning имя файла необходимо объявить константой
     NSString *pathToPlist = [NSString stringWithFormat:@"%@/%@", basePath, @"TMSData.plist"];
     return pathToPlist;
 }

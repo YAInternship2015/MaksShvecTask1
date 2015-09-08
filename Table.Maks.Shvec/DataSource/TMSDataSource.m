@@ -74,6 +74,7 @@
     
     NSString *doumentDirectoryPath = [pathsArray objectAtIndex:0];
     
+#warning имя файла надо вынести в константы
     NSString *destinationPath= [doumentDirectoryPath stringByAppendingPathComponent:@"TMSData.plist"];
     
     NSLog(@"plist path %@",destinationPath);
@@ -88,6 +89,7 @@
 
 + (void)addObject:(TMSTextAndImage *)object
 {
+#warning преобразование модели в NSDictionary должно бьть реализовано в категории к модели в методе, скажеи, -dictionaryRepresentation
     NSDictionary *newModel = @{@"stringName" : object.stringText,
                                @"stringPic" : object.stringPic};
     

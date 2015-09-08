@@ -14,6 +14,7 @@
 
 @interface TMSDataSource : NSObject
 
+#warning это свойство должно быть в *.m. И из следующих методов в *.h должны остаться только те, которые вызываются извне. Остальные нужно удалить из *.h
 @property (nonatomic, weak) id<TMSDataSourceDelegate>delegate;
 
 - (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate;

@@ -23,10 +23,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+#warning высоту ячейки можно задать в сториборде у UITableView
     self.tableView.rowHeight = 80;
+#warning закомментированный код надо удалять
 //    self.dataSource = [[TMSDataSource alloc]initFromPlist];
+#warning после alloc] нужен пробел
     self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
 }
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -36,6 +40,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+#warning идентификатор ячейки можно объявить константой в самой ячейке
     TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
     
     [cell setupWithModel:[self.dataSource indexOfObject:indexPath.row]];

@@ -10,13 +10,16 @@
 
 @interface TMSViewControllerWithAddFunc () <UITextFieldDelegate>
 
+#warning по нашим гайдланам (nonatomic, weak)
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+#warning аутлет на кнопку Вы нигде не используете, можно было не проводить его
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
 
 @implementation TMSViewControllerWithAddFunc
 
+#warning такой метод надо удалять
 - (void)viewDidLoad
 {
     [super viewDidLoad];

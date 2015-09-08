@@ -13,6 +13,7 @@
 
 @interface TMSViewControllerWithSubview ()
 {
+#warning используйте @property
     TMSTableViewController *tableViewController;
     TMSCollectionViewController *collectionViewController;
     
@@ -46,6 +47,7 @@
     } else {
         opt = UIViewAnimationOptionTransitionFlipFromRight;
     }
+#warning длительность анимации вынесите в константы
     [self transitionFromViewController:isTableViewController ? collectionViewController : tableViewController toViewController:isTableViewController ? tableViewController : collectionViewController duration:0.5 options:opt animations:nil completion:nil];
     
     isTableViewController = !isTableViewController;
