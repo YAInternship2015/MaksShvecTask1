@@ -10,7 +10,7 @@
 
 @interface TMSViewControllerWithAddFunc () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (nonatomic ,weak) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
