@@ -10,15 +10,6 @@
 
 @implementation NSString (Path)
 
-#warning этот метод нигде не используется
-+ (NSString *) documentsFolderPlistPath
-{
-    NSArray *pathsArray = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [pathsArray objectAtIndex:0];
-    NSString *plistName = [[nameOfPlist stringByAppendingString:@"."]stringByAppendingString:typeOfPlist];
-    return [documentsDirectory stringByAppendingPathComponent:plistName];
-}
-
 + (NSString *)pathToPlist
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
