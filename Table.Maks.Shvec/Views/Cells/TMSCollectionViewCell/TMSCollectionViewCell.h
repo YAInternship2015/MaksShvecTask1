@@ -10,6 +10,7 @@
 
 @interface TMSCollectionViewCell : UICollectionViewCell
 
+#warning ячейка должна заполняться моделью, а не NSDictionary
 - (void)setupWithModel:(NSDictionary *)item;
 
 @end

@@ -17,6 +17,8 @@
 
 @implementation TMSCollectionViewController
 
+#warning здесь те же замечания, что и в табличном контроллере
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

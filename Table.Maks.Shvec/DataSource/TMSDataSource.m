@@ -88,6 +88,7 @@
     
     NSString *doumentDirectoryPath = [pathsArray objectAtIndex:0];
     
+#warning имя файла надо вынести в константы
     NSString *destinationPath= [doumentDirectoryPath stringByAppendingPathComponent:@"TMSData.plist"];
     
     NSLog(@"plist path %@",destinationPath);

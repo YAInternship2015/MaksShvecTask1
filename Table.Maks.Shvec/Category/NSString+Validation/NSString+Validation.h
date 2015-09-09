@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#warning эта логика должна быть не в категории к NSString, а в отдельном классе-валидаторе. Категория немного расширяет функциональные возможности класса, но не придаем ему еще новых ответственностей
+
 @interface NSString (Validation)
 
 + (BOOL)isValidModelTitle:(NSString *)title error:(NSError **)error;
