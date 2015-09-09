@@ -17,11 +17,6 @@
 
 @implementation TMSViewControllerWithAddFunc
 
-#warning такой метод надо удалять
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
 
 #pragma - UITextFieldDelegate methods
 
