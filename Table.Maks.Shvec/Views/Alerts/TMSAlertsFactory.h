@@ -11,12 +11,8 @@
 
 #warning вы можете вынести создание алерта в отдельный класс-фабрику, но его отображением в UI должен все равно заниматься вью контроллер
 
-@interface TMSAlerts : NSObject
+@interface TMSAlertsFactory : UIAlertController
 
-+ (void)showAlertWithMethodIsValidModelTitle;
-
-+ (void)showAlertErrorAddingObjectToPlist;
-
-+ (void)showAlertObjectAdded;
++ (UIAlertController *)showAlertWithTitle:(NSString *)title message:(NSString *)message;
 
 @end

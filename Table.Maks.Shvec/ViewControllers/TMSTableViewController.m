@@ -7,7 +7,7 @@
 //
 
 #import "TMSTableViewController.h"
-#import "TMSTextAndImage.h"
+#import "TMSTextAndImage+DictionaryRepresentation.h"
 #import "TMSDataSource.h"
 
 @interface TMSTableViewController ()<TMSDataSourceDelegate>
@@ -23,8 +23,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-#warning высоту ячейки можно задать в сториборде у UITableView
-    self.tableView.rowHeight = 80;
     self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
 }
 
@@ -40,7 +38,7 @@
 #warning идентификатор ячейки можно объявить константой в самой ячейке
     TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
     
-    [cell setupWithModel:[self.dataSource indexOfObject:indexPath.row]];
+    [cell setupWithModel:[TMSTextAndImage dictionaryRepresentation:[self.dataSource indexOfObject:indexPath.row]]];
     
     return cell;
 }

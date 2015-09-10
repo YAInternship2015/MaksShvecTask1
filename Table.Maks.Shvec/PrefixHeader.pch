@@ -10,6 +10,6 @@
 #define PrefixHeader_pch
 
 #import "NSStringConstants.h"
-#import "TMSAlerts.h"
+#import "TMSAlertsFactory.h"
 
 #endif /* PrefixHeader_pch */

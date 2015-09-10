@@ -40,6 +40,8 @@
     {
         [TMSDataSource addObject: [TMSTextAndImage modelWithName:self.textField.text]];
         
+        UIAlertController *alert = [TMSAlertsFactory showAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Error", nil)] message:[error localizedDescription]];
+        
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

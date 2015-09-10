@@ -24,5 +24,6 @@ static NSString *const contentDidChange = @"ContenDidChange";
 
 static NSString *const nameOfPlist = @"TMSData";
 static NSString *const typeOfPlist = @".plist";
+static NSString *const plistNameAndType = @"TMSData.plist";
 
 #endif

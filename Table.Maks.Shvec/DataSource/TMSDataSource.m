@@ -8,6 +8,7 @@
 
 #import "TMSDataSource.h"
 #import "NSString+Path.h"
+#import "TMSTextAndImage+DictionaryRepresentation.h"
 
 @interface TMSDataSource ()
 
@@ -72,11 +73,11 @@
     if ([tempModelsArray writeToFile:[NSString pathToPlist] atomically:YES])
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:contentDidChange object:nil];
-        [TMSAlerts showAlertObjectAdded];
+//        [TMSAlertsFactory showAlertObjectAdded];
     }
     else
     {
-        [TMSAlerts showAlertErrorAddingObjectToPlist];
+//        [TMSAlertsFactory showAlertErrorAddingObjectToPlist];
     }
 }
 
@@ -88,15 +89,14 @@
     
     NSString *doumentDirectoryPath = [pathsArray objectAtIndex:0];
     
-#warning имя файла надо вынести в константы
-    NSString *destinationPath= [doumentDirectoryPath stringByAppendingPathComponent:@"TMSData.plist"];
+    NSString *destinationPath= [doumentDirectoryPath stringByAppendingPathComponent:plistNameAndType];
     
     NSLog(@"plist path %@",destinationPath);
     if ([fileManger fileExistsAtPath:destinationPath])
     {
         return;
     }
-    NSString *sourcePath=[[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:@"TMSData.plist"];
+    NSString *sourcePath=[[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:plistNameAndType];
     
     [fileManger copyItemAtPath:sourcePath toPath:destinationPath error:&error];
 }

@@ -19,12 +19,10 @@
     if ([title length] < 3)
     {
 #warning незачем вначале объявлять переменные, и затем присваивать им значения. Инициализируйте сразу со значениями
-        NSString *errorMessage;
-        NSInteger errorCode = 0;
         
 #warning тексты, которые создаются в коде и которые увидит юзер в UI, должны быть объявлены в файле Localizable.strings. Что это за файл и зачем он нужен очень легко найти в гугле
-        errorMessage = @"Please type more than 3 symblos...";
-        errorCode = 77;
+        NSString *errorMessage = [NSString stringWithFormat: NSLocalizedString(@"Please type more than 2 symblos", nil)];
+        NSInteger errorCode = 77;
         
         NSDictionary *userInfo = @{NSLocalizedDescriptionKey : errorMessage};
         
@@ -33,8 +31,7 @@
             *error = [NSError errorWithDomain:@"TestTask2" code:errorCode userInfo:userInfo];
             
         }
-#warning здесь нарушение ответственностей. Отображать в UI ошибку должен контроллер
-        [TMSAlerts showAlertWithMethodIsValidModelTitle];
+        
         return NO;
     }
     return YES;

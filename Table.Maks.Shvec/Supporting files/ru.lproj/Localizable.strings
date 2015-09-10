@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Table.Maks.Shvec
+
+  Created by Maks on 9/10/15.
+  Copyright © 2015 Maks. All rights reserved.
+*/
+
+"Error" = "Ошибка";
+"Please type more than 2 symblos" = "Пожалуйста введите больше 2 символов";
