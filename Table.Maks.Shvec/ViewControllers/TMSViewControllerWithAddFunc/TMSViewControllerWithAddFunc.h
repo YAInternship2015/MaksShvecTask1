@@ -10,7 +10,6 @@
 #warning зачем здесь все эти импорты? в них нет необходимости в *.h файле
 #import "TMSDataSource.h"
 #import "TMSTextAndImage.h"
-#import "NSString+Validation.h"
 
 @interface TMSViewControllerWithAddFunc : UIViewController
 

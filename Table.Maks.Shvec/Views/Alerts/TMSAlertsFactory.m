@@ -14,12 +14,12 @@
 
 + (UIAlertController *)showAlertWithTitle:(NSString *)title message:(NSString *)message
 {
-    UIAlertController * alert=   [UIAlertController
+    UIAlertController *alert=   [UIAlertController
                                   alertControllerWithTitle:title
                                   message:message
                                   preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* ok = [UIAlertAction
+    UIAlertAction *ok = [UIAlertAction
                          actionWithTitle:@"OK"
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)

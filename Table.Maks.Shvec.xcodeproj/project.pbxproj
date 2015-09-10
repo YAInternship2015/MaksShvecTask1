@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D0406F71B9C266200A3BF09 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0406F61B9C266200A3BF09 /* NSString+Validation.m */; };
 		2D0406FB1B9C53BE00A3BF09 /* TMSAlertsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0406FA1B9C53BE00A3BF09 /* TMSAlertsFactory.m */; };
 		2D130F911B80AF1D004F0EB5 /* TMSDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */; };
 		2DAD921E1B6D4F0F009B5500 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAD92141B6D4F0F009B5500 /* 1.png */; };
@@ -23,6 +22,7 @@
 		2DB7D7DC1B8F672200A0DF07 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 2DB7D7DB1B8F672200A0DF07 /* Images */; };
 		2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD116901B863B8000DE921B /* TMSViewControllerWithSubview.m */; };
 		2DD116941B86551C00DE921B /* TMSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD116931B86551C00DE921B /* TMSCollectionViewController.m */; };
+		2DD518781BA221E100CEEE07 /* TMSValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD518771BA221E100CEEE07 /* TMSValidator.m */; };
 		2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70E9D1B6CE2CF00566D0A /* main.m */; };
 		2DD70EA11B6CE2CF00566D0A /* TMSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD70EA01B6CE2CF00566D0A /* TMSAppDelegate.m */; };
 		2DD70EA71B6CE2CF00566D0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD70EA51B6CE2CF00566D0A /* Main.storyboard */; };
@@ -51,8 +51,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D0406F51B9C266200A3BF09 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Validation.h"; path = "Category/NSString+Validation/NSString+Validation.h"; sourceTree = "<group>"; };
-		2D0406F61B9C266200A3BF09 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Validation.m"; path = "Category/NSString+Validation/NSString+Validation.m"; sourceTree = "<group>"; };
 		2D0406F91B9C53BE00A3BF09 /* TMSAlertsFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSAlertsFactory.h; path = Alerts/TMSAlertsFactory.h; sourceTree = "<group>"; };
 		2D0406FA1B9C53BE00A3BF09 /* TMSAlertsFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSAlertsFactory.m; path = Alerts/TMSAlertsFactory.m; sourceTree = "<group>"; };
 		2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSDataSource.h; path = ../DataSource/TMSDataSource.h; sourceTree = "<group>"; };
@@ -73,6 +71,8 @@
 		2DD116901B863B8000DE921B /* TMSViewControllerWithSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSViewControllerWithSubview.m; sourceTree = "<group>"; };
 		2DD116921B86551C00DE921B /* TMSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSCollectionViewController.h; sourceTree = "<group>"; };
 		2DD116931B86551C00DE921B /* TMSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSCollectionViewController.m; sourceTree = "<group>"; };
+		2DD518761BA221E100CEEE07 /* TMSValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSValidator.h; path = Validation/TSMValidator/TMSValidator.h; sourceTree = "<group>"; };
+		2DD518771BA221E100CEEE07 /* TMSValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSValidator.m; path = Validation/TSMValidator/TMSValidator.m; sourceTree = "<group>"; };
 		2DD70E981B6CE2CF00566D0A /* Table.Maks.Shvec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Table.Maks.Shvec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD70E9C1B6CE2CF00566D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DD70E9D1B6CE2CF00566D0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -127,8 +127,6 @@
 		2D0406F41B9C262300A3BF09 /* NSString+Validation */ = {
 			isa = PBXGroup;
 			children = (
-				2D0406F51B9C266200A3BF09 /* NSString+Validation.h */,
-				2D0406F61B9C266200A3BF09 /* NSString+Validation.m */,
 			);
 			name = "NSString+Validation";
 			sourceTree = "<group>";
@@ -225,6 +223,15 @@
 				2DEDE41B1B8B2C1D0060A3C4 /* Property list */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		2DD518751BA221A300CEEE07 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				2DD518761BA221E100CEEE07 /* TMSValidator.h */,
+				2DD518771BA221E100CEEE07 /* TMSValidator.m */,
+			);
+			name = Validation;
 			sourceTree = "<group>";
 		};
 		2DD70E8F1B6CE2CF00566D0A = {
@@ -327,6 +334,7 @@
 		FC9E2F531B98BBEF004239F2 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2DD518751BA221A300CEEE07 /* Validation */,
 				2D0406F41B9C262300A3BF09 /* NSString+Validation */,
 				FC9E2F541B98BC10004239F2 /* NSString+Path */,
 			);
@@ -497,12 +505,12 @@
 			files = (
 				2DD70EA11B6CE2CF00566D0A /* TMSAppDelegate.m in Sources */,
 				FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */,
+				2DD518781BA221E100CEEE07 /* TMSValidator.m in Sources */,
 				2DDBBB111B9047680005B285 /* TMSCollectionViewCell.m in Sources */,
 				FC9E2F571B98BCB2004239F2 /* NSString+Path.m in Sources */,
 				FCFF5C051BA1F4C4003C4C63 /* TMSTextAndImage+DictionaryRepresentation.m in Sources */,
 				2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */,
 				2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */,
-				2D0406F71B9C266200A3BF09 /* NSString+Validation.m in Sources */,
 				FCB2A4A41B90A8C800259263 /* TMSViewControllerWithAddFunc.m in Sources */,
 				2D130F911B80AF1D004F0EB5 /* TMSDataSource.m in Sources */,
 				FCF01EFB1B7F42740039984E /* TMSTableViewCell.m in Sources */,

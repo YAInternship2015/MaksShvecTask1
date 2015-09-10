@@ -7,6 +7,7 @@
 //
 
 #import "TMSViewControllerWithAddFunc.h"
+#import "TMSValidator.h"
 
 @interface TMSViewControllerWithAddFunc () <UITextFieldDelegate>
 
@@ -33,15 +34,18 @@
 
 #pragma - Actions
 
-- (IBAction)saveNewObject:(id)sender
-{
+- (IBAction)saveNewObject:(id)sender {
+    
     NSError *error = NULL;
-    if ([NSString isValidModelTitle:self.textField.text error:&error])
-    {
-        [TMSDataSource addObject: [TMSTextAndImage modelWithName:self.textField.text]];
+    if (![TMSValidator isValidModelTitle:self.textField.text error:&error]) {
+        
         
         UIAlertController *alert = [TMSAlertsFactory showAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Error", nil)] message:[error localizedDescription]];
         
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else {
+        [TMSDataSource addObject: [TMSTextAndImage modelWithName:self.textField.text]];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
