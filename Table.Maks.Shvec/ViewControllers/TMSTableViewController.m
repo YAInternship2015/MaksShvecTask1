@@ -9,6 +9,7 @@
 #import "TMSTableViewController.h"
 #import "TMSTextAndImage+DictionaryRepresentation.h"
 #import "TMSDataSource.h"
+#import "TMSTableViewCell.h"
 
 @interface TMSTableViewController ()<TMSDataSourceDelegate>
 {
@@ -38,7 +39,7 @@
 #warning идентификатор ячейки можно объявить константой в самой ячейке
     TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
     
-    [cell setupWithModel:[TMSTextAndImage dictionaryRepresentation:[self.dataSource indexOfObject:indexPath.row]]];
+    [cell setupWithModel:[self.dataSource indexOfObject:indexPath.row]];
     
     return cell;
 }

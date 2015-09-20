@@ -18,7 +18,7 @@
 
 - (void)setupWithModel:(NSDictionary *)item
 {
-    self.cellImage.image = [UIImage imageNamed:item[@"stringPic"]];
+    self.cellImage.image = [UIImage imageNamed:item[@"imageName"]];
     self.cellImage.contentMode = UIViewContentModeScaleAspectFit;
 }
 

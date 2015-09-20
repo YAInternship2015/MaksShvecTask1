@@ -21,11 +21,9 @@
 
 - (void)loadDataArrayWithPlist;
 
-- (void)reloadDataArrayWithPlist;
-
 - (NSUInteger)numberOfObjects;
 
-- (NSDictionary *)indexOfObject:(NSInteger)index;
+- (TMSTextAndImage *)indexOfObject:(NSInteger)index;
 
 
 + (void)copyDataPlistToDocumentFolder;

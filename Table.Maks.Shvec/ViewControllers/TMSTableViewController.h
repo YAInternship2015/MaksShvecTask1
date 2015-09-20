@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#warning зачем здесь импорт ячейки?
-#import "TMSTableViewCell.h"
 
 @interface TMSTableViewController : UITableViewController
  

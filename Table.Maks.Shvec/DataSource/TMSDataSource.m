@@ -55,17 +55,21 @@
     return [self.arrayOfData count];
 }
 
-- (NSDictionary *)indexOfObject:(NSInteger)index
+- (TMSTextAndImage *)indexOfObject:(NSInteger)index
 {
-    return self.arrayOfData[index];
+    TMSTextAndImage *model = [[TMSTextAndImage alloc]init];
+    NSMutableDictionary *dictModel = (NSMutableDictionary *)[self.arrayOfData objectAtIndex:index];
+    model.text = [dictModel objectForKey:@"text"];
+    model.imageName = [dictModel objectForKey:@"imageName"];
+    return model;
 }
 
 #pragma mark - Work with plist methods
 
 + (void)addObject:(TMSTextAndImage *)object
 {
-    NSDictionary *newModel = @{@"stringName" : object.stringText,
-                               @"stringPic" : object.stringPic};
+    NSDictionary *newModel = @{@"text" : object.text,
+                               @"imageName" : object.imageName};
     
     NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:[NSString pathToPlist]];
     [tempModelsArray addObject:newModel];
@@ -73,11 +77,6 @@
     if ([tempModelsArray writeToFile:[NSString pathToPlist] atomically:YES])
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:contentDidChange object:nil];
-//        [TMSAlertsFactory showAlertObjectAdded];
-    }
-    else
-    {
-//        [TMSAlertsFactory showAlertErrorAddingObjectToPlist];
     }
 }
 

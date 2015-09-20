@@ -14,8 +14,7 @@
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = paths.firstObject;
-#warning имя файла необходимо объявить константой
-    NSString *pathToPlist = [NSString stringWithFormat:@"%@/%@", basePath, @"TMSData.plist"];
+    NSString *pathToPlist = [NSString stringWithFormat:@"%@/%@", basePath, plistNameAndType];
     return pathToPlist;
 }
 

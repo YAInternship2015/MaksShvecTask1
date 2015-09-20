@@ -8,14 +8,26 @@
 
 #import "TMSTextAndImage.h"
 
+@interface TMSTextAndImage ()
+
+@property (nonatomic, readwrite) NSString *text;
+@property (nonatomic, readwrite) NSString *imageName;
+
+@end
+
 @implementation TMSTextAndImage
 
-+ (TMSTextAndImage *)modelWithName: (NSString *)name
+@synthesize text = _text;
+@synthesize imageName = _imageName;
+
+
+- (TMSTextAndImage *)initModelWithName: (NSString *)name
 {
-    TMSTextAndImage *model = [[TMSTextAndImage alloc]init];
-    model.stringText = name;
-    model.stringPic = @"noPic";
-    return model;
+    if (self = [super init]) {
+    _text = name;
+    _imageName = @"noPic";
+    }
+    return self;
 }
 
 

@@ -8,6 +8,8 @@
 
 #import "TMSViewControllerWithAddFunc.h"
 #import "TMSValidator.h"
+#import "TMSDataSource.h"
+#import "TMSTextAndImage.h"
 
 @interface TMSViewControllerWithAddFunc () <UITextFieldDelegate>
 
@@ -45,7 +47,8 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-        [TMSDataSource addObject: [TMSTextAndImage modelWithName:self.textField.text]];
+        TMSTextAndImage *modelToAdd = [[TMSTextAndImage alloc]init];
+        [TMSDataSource addObject: [modelToAdd modelWithName:self.textField.text]];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

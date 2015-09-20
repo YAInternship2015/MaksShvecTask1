@@ -20,8 +20,8 @@
 
 - (void)setupWithModel:(TMSTextAndImage *)model
 {
-    self.cellText.text = model.stringText;
-    self.cellPic.image = [UIImage imageNamed: model.stringPic];
+    self.cellText.text = model.text;
+    self.cellPic.image = [UIImage imageNamed: model.imageName];
     self.cellPic.contentMode = UIViewContentModeScaleAspectFit;
 }
 

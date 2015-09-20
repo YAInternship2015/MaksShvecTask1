@@ -10,6 +10,6 @@
 
 @interface TMSTextAndImage (DictionaryRepresentation)
 
-+ (TMSTextAndImage *)dictionaryRepresentation: (NSDictionary *)item;
++ (NSDictionary *)dictionaryRepresentation: (TMSTextAndImage *)model;
 
 @end

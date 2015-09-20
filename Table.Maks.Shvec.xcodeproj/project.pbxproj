@@ -124,13 +124,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D0406F41B9C262300A3BF09 /* NSString+Validation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "NSString+Validation";
-			sourceTree = "<group>";
-		};
 		2D0406F81B9C539A00A3BF09 /* AlertsFactory */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,7 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				2DD518751BA221A300CEEE07 /* Validation */,
-				2D0406F41B9C262300A3BF09 /* NSString+Validation */,
 				FC9E2F541B98BC10004239F2 /* NSString+Path */,
 			);
 			name = Category;

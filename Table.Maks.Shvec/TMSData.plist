@@ -3,63 +3,63 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>1</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>1</string>
 	</dict>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>2</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>2</string>
 	</dict>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>3</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>3</string>
 	</dict>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>4</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>4</string>
 	</dict>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>5</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>5</string>
 	</dict>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>6</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>6</string>
 	</dict>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>7</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>7</string>
 	</dict>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>8</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>8</string>
 	</dict>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>9</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>9</string>
 	</dict>
 	<dict>
-		<key>stringName</key>
+		<key>text</key>
 		<string>10</string>
-		<key>stringPic</key>
+		<key>imageName</key>
 		<string>10</string>
 	</dict>
 </array>

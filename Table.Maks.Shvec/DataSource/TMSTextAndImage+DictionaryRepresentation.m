@@ -10,13 +10,10 @@
 
 @implementation TMSTextAndImage (DictionaryRepresentation)
 
-+ (TMSTextAndImage *)dictionaryRepresentation: (NSDictionary *)item
++ (NSDictionary *)dictionaryRepresentation: (TMSTextAndImage *)model
 {
-    TMSTextAndImage *model = [[TMSTextAndImage alloc]init];
-    model.stringText = item[@"stringName"];
-    model.stringPic = item[@"stringPic"];
-    
-    return model;
+    NSDictionary *dictionary = @{@"text" : model.text,@"imageName" : model.imageName};
+    return dictionary;
 }
 
 @end

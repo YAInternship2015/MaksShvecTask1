@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#warning зачем здесь нужен следующий import?
 #import "TMSTextAndImage+DictionaryRepresentation.h"
 
 @interface TMSTableViewCell : UITableViewCell
