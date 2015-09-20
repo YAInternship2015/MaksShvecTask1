@@ -48,7 +48,7 @@
     }
     else {
         TMSTextAndImage *modelToAdd = [[TMSTextAndImage alloc]init];
-        [TMSDataSource addObject: [modelToAdd modelWithName:self.textField.text]];
+        [TMSDataSource addObject: [modelToAdd initModelWithName:self.textField.text]];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
