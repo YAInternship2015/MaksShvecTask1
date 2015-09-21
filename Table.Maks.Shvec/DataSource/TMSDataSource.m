@@ -93,10 +93,14 @@
     return model;
 }
 
-- (NSInteger)moviesCount {
-    self.fetchedResultsController;
-}
 
+- (NSInteger)modelsCount {
+    if ([[self.fetchedResultsController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
+        return [sectionInfo numberOfObjects];
+    } else
+        return 0;
+}
 #pragma mark - Old methods for plist
 /*
 - (void)loadDataArrayWithPlist {

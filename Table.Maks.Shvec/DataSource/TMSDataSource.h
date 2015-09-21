@@ -18,7 +18,6 @@
 - (NSUInteger)numberOfObjects;
 - (TMSTextAndImage *)indexOfObject:(NSInteger)index;
 + (void)addObject:(TMSTextAndImage *)object;
-+ (void)copyDataPlistToDocumentFolder;
 */
 - (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey;
 
@@ -26,8 +25,9 @@
 
 - (TMSModelItem*)modelWithIndexPath:(NSIndexPath *)indexPath;
 
-- (NSInteger)moviesCount;
+- (NSInteger)modelsCount;
 
 - (void)saveContext;
 
++ (void)copyDataPlistToDocumentFolder;
 @end

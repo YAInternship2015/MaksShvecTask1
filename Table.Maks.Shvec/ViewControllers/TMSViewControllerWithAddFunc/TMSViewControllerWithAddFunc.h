@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#warning зачем здесь все эти импорты? в них нет необходимости в *.h файле
-
 
 @interface TMSViewControllerWithAddFunc : UIViewController
 

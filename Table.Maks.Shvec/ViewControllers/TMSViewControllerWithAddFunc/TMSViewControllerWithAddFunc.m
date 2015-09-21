@@ -11,7 +11,7 @@
 #import "TMSDataSource.h"
 #import "TMSTextAndImage.h"
 
-@interface TMSViewControllerWithAddFunc () <UITextFieldDelegate>
+@interface TMSViewControllerWithAddFunc () <UITextFieldDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic ,weak) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
