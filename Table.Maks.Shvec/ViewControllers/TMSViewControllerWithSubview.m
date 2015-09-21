@@ -12,13 +12,10 @@
 #import "TMSViewControllerWithAddFunc.h"
 
 @interface TMSViewControllerWithSubview ()
-{
-#warning используйте @property
-    TMSTableViewController *tableViewController;
-    TMSCollectionViewController *collectionViewController;
-    
-    BOOL isTableViewController;
-}
+
+@property (nonatomic, strong)TMSTableViewController *tableViewController;
+@property (nonatomic, strong)TMSCollectionViewController *collectionViewController;
+@property (nonatomic, assign)BOOL isTableViewController;
 
 @end
 
@@ -27,30 +24,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TMSTableViewController class])];
-    collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TMSCollectionViewController class])];
+    self.tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TMSTableViewController class])];
+    self.collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TMSCollectionViewController class])];
     
-    [self addChildViewController:tableViewController];
-    [self addChildViewController:collectionViewController];
+    [self addChildViewController:self.tableViewController];
+    [self addChildViewController:self.collectionViewController];
     
-    [self.view addSubview:tableViewController.view];
+    [self.view addSubview:self.tableViewController.view];
     
 }
 
 #pragma mark - Actions
 
-- (IBAction)changeViewButton:(id)sender
-{
-    UIViewAnimationOptions opt = 0;
-    if (!isTableViewController) {
-        opt = UIViewAnimationOptionTransitionFlipFromLeft;
-    } else {
+- (IBAction)changeViewButton:(id)sender {
+        UIViewAnimationOptions opt = 0;
+    if (!self.isTableViewController) {
+        opt = UIViewAnimationOptionTransitionFlipFromLeft;}
+    else {
         opt = UIViewAnimationOptionTransitionFlipFromRight;
     }
-#warning длительность анимации вынесите в константы
-    [self transitionFromViewController:isTableViewController ? collectionViewController : tableViewController toViewController:isTableViewController ? tableViewController : collectionViewController duration:0.5 options:opt animations:nil completion:nil];
     
-    isTableViewController = !isTableViewController;
+    
+    [self transitionFromViewController:self.isTableViewController ? self.collectionViewController : self.tableViewController toViewController:self.isTableViewController ? self.tableViewController : self.collectionViewController duration:kDurationAnimation options:opt animations:nil completion:nil];
+    
+    self.isTableViewController = !self.isTableViewController;
 }
 
 

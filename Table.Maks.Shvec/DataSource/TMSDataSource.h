@@ -27,7 +27,6 @@
 
 - (NSInteger)modelsCount;
 
-- (void)saveContext;
-
 + (void)copyDataPlistToDocumentFolder;
+
 @end

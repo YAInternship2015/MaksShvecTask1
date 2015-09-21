@@ -11,10 +11,14 @@
 #ifndef Table_Maks_Shvec_Constants_h
 #define Table_Maks_Shvec_Constants_h
 
+#pragma mark - Controllers
+
+static double const kDurationAnimation = 0.5;
+
 #pragma mark - DataSource
 
 static NSString *const kName = @"text";
-static NSString *const kImageName = @"imageName";
+static NSString *const kImageName = @"nameImage";
 static NSString *const kNoImage = @"noPic";
 
 #pragma mark - TableView

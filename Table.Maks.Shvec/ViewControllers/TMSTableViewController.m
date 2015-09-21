@@ -12,9 +12,7 @@
 #import "TMSAlertsFactory.h"
 
 @interface TMSTableViewController ()<NSFetchedResultsControllerDelegate>
-{
 
-}
 @property (nonatomic, strong) TMSDataSource *dataSource;
 
 @end
@@ -24,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
+    self.dataSource = [[TMSDataSource alloc] initWithDelegate:self];
 }
 
 #pragma mark - Table view data source
@@ -39,6 +37,13 @@
     [cell setupWithModel:[self.dataSource modelWithIndexPath:indexPath]];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+                                            forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.dataSource deleteModelWithIndex:indexPath];
+    }
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate

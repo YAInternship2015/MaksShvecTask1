@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             scope = "0"
@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Table.Maks.Shvec/DataSource/TMSDataSource.m"
-            timestampString = "464525389.856984"
+            filePath = "Table.Maks.Shvec/ViewControllers/TMSViewControllerWithAddFunc/TMSViewControllerWithAddFunc.m"
+            timestampString = "464532158.180614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "-managedObjectModel"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-saveNewObject:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Table.Maks.Shvec/DataSource/TMSDataSource.m"
-            timestampString = "464525390.730399"
+            filePath = "Table.Maks.Shvec/ViewControllers/TMSViewControllerWithAddFunc/TMSViewControllerWithAddFunc.m"
+            timestampString = "464532160.151631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "-managedObjectModel"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-saveNewObject:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

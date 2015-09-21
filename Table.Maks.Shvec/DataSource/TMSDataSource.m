@@ -1,4 +1,4 @@
-//
+ //
 //  TMSDataSource.m
 //  Table.Maks.Shvec
 //
@@ -8,32 +8,31 @@
 
 #import "TMSDataSource.h"
 #import "NSString+Path.h"
-#import "TMSModelItem.h"
 
 @interface TMSDataSource ()
 
-@property (nonatomic, strong) NSArray *arrayOfData;
-
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
-@property (nonatomic, weak) id<NSFetchedResultsControllerDelegate>fetchedDelegate;
+@property (nonatomic, weak) id<NSFetchedResultsControllerDelegate>delegate;
 
 @end
 
 @implementation TMSDataSource
 
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
 #pragma mark - DataSource init methods
 
 - (instancetype)initWithDelegate: (id<NSFetchedResultsControllerDelegate>)delegate {
-    self = [self init];
-    if (self)
-    {
-        self.fetchedDelegate = delegate;
-    }
-    /*
+    self = [super init];
+    if (self) {
+        self.fetchedResultsController.delegate = delegate;
+    //loading from plist
     if ([self modelsCount] == 0) {
         NSMutableArray* arr = [[NSArray arrayWithContentsOfFile:[NSString pathToPlist]] mutableCopy];
         for (int i = 0; i < arr.count; i++) {
@@ -42,8 +41,37 @@
             NSString* image = [model valueForKey:kImageName];
             [self addModelWithImageKey:name nameKey:image];
         }
-     */
+        //ручная проверка кордаты
+        [self printAllObjects];
+    }
+    }
     return self;
+}
+//методы для ручной проверки кордаты
+- (NSArray*) allObjects {
+    NSFetchRequest* request = [[NSFetchRequest alloc]init];
+    NSEntityDescription* description = [NSEntityDescription entityForName:kNameOfEntity
+                                                   inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:description];
+    NSError* requestError = nil;
+    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
+//    if (requestError) {
+//        NSLog(@"%@", [requestError localizedDescription]);
+//    }
+    return resultArray;
+}
+
+- (NSInteger)allObjectsCount {
+    return [[self allObjects] count];
+}
+
+- (void)printAllObjects {
+    NSArray* allObjects = [self allObjects];
+    
+    for (TMSModelItem* object in allObjects) {
+        NSLog(@"---%@ %@ ", object.nameImage,object.text);
+        
+    }
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -51,12 +79,9 @@
         return _fetchedResultsController;
     }
     NSManagedObjectContext* context = self.managedObjectContext;
-    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kNameOfEntity];
     
-    NSEntityDescription* description =
-    [NSEntityDescription entityForName:@"TMSModelItem"
-                inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:description];
+    [fetchRequest setFetchBatchSize:20];
     
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:kName ascending:YES];
     NSArray* sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
@@ -66,8 +91,11 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc]
                                      initWithFetchRequest:fetchRequest
                                      managedObjectContext:context
-                                     sectionNameKeyPath:nil cacheName:nil];
-    self.fetchedResultsController.delegate = self.fetchedDelegate;
+                                     sectionNameKeyPath:nil cacheName:@"MyCache"];
+    NSError* error = nil;
+    [self.fetchedResultsController performFetch:&error];
+    
+//    self.fetchedResultsController.delegate = self.delegate;
     
     return _fetchedResultsController;
 }
@@ -77,11 +105,11 @@
 - (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey
 {
     NSManagedObjectContext* context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entityDescription = [[self.fetchedResultsController fetchRequest]entity];
-    NSManagedObject* newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entityDescription name] inManagedObjectContext:context];
+    NSString * entityClassName = NSStringFromClass([TMSModelItem class]);
+    TMSModelItem *newObject = [NSEntityDescription insertNewObjectForEntityForName:entityClassName inManagedObjectContext:context];
     
-    [newManagedObject setValue:imageKey forKey:kImageName];
-    [newManagedObject setValue:nameKey forKey:kName];
+    [newObject setValue:imageKey forKey:kImageName];
+    [newObject setValue:nameKey forKey:kName];
 
     NSError* error = nil;
     if (![context save:&error]) {
@@ -103,6 +131,7 @@
 
 - (TMSModelItem*)modelWithIndexPath:(NSIndexPath *)indexPath {
     TMSModelItem *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"------Model description------ %@", [model description]);
     return model;
 }
 
@@ -114,6 +143,7 @@
     } else
         return 0;
 }
+
 #pragma mark - Old methods for plist
 /*
 - (void)loadDataArrayWithPlist {
@@ -174,9 +204,6 @@
 
 #pragma mark - CoreData stack
 
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
