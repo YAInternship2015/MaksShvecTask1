@@ -10,13 +10,13 @@
 #import "TMSDataSource.h"
 #import "TMSCollectionViewCell.h"
 
-@interface TMSCollectionViewController ()<
+@interface TMSCollectionViewController ()<NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, strong) TMSDataSource *dataSource;
 
 @end
 
 @implementation TMSCollectionViewController
-
-#warning здесь те же замечания, что и в табличном контроллере
 
 - (void)viewDidLoad
 {
@@ -29,24 +29,19 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.dataSource numberOfObjects];
+    return [self.dataSource modelsCount];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    TMSCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"customCollectionCell" forIndexPath:indexPath];
+    TMSCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionViewCellIdentifier forIndexPath:indexPath];
     
-    [cell setupWithModel:[self.dataSource indexOfObject:indexPath.row]];
+    [cell setupWithModel:[self.dataSource modelWithIndexPath:indexPath]];
     
     return cell;
 }
 
-# pragma mark - TMSDataSourceDelegate methods
-
-- (void)dataWasChanged:(TMSDataSource *)dataSource
-{
-    [self.collectionView reloadData];
-}
+#pragma mark -
 
 
 @end

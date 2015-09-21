@@ -15,10 +15,15 @@
 
 static NSString *const kName = @"text";
 static NSString *const kImageName = @"imageName";
+static NSString *const kNoImage = @"noPic";
 
-#pragma mark - Notifications name
+#pragma mark - TableView
 
-static NSString *const contentDidChange = @"ContenDidChange";
+static NSString *const tableViewCellIdentifier = @"customCell";
+
+#pragma mark - CollectionView
+
+static NSString *const collectionViewCellIdentifier = @"customCollectionCell";
 
 #pragma mark - DataSource plist
 

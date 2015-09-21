@@ -9,12 +9,12 @@
 #import "TMSViewControllerWithAddFunc.h"
 #import "TMSValidator.h"
 #import "TMSDataSource.h"
-#import "TMSTextAndImage.h"
 
 @interface TMSViewControllerWithAddFunc () <UITextFieldDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic ,weak) IBOutlet UITextField *textField;
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (nonatomic, weak) IBOutlet UIButton *saveButton;
+@property (nonatomic, strong) TMSDataSource* dataSource;
 
 @end
 
@@ -40,14 +40,13 @@
     
     NSError *error = NULL;
     if (![TMSValidator isValidModelTitle:self.textField.text error:&error]) {
-        
-        
+
         UIAlertController *alert = [TMSAlertsFactory showAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Error", nil)] message:[error localizedDescription]];
         
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-        
+        [self.dataSource addModelWithImageKey:kNoImage nameKey:self.textField.text];
     }
 }
 

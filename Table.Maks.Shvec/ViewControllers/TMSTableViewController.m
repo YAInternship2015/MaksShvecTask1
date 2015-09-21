@@ -9,8 +9,9 @@
 #import "TMSTableViewController.h"
 #import "TMSDataSource.h"
 #import "TMSTableViewCell.h"
+#import "TMSAlertsFactory.h"
 
-@interface TMSTableViewController ()<TMSDataSourceDelegate>
+@interface TMSTableViewController ()<NSFetchedResultsControllerDelegate>
 {
 
 }
@@ -23,31 +24,53 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
+    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.dataSource numberOfObjects];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.dataSource modelsCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-#warning идентификатор ячейки можно объявить константой в самой ячейке
-    TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customCell"];
-    
-    [cell setupWithModel:[self.dataSource indexOfObject:indexPath.row]];
+    TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableViewCellIdentifier];
+    [cell setupWithModel:[self.dataSource modelWithIndexPath:indexPath]];
     
     return cell;
 }
 
-#pragma mark - TMSDataSourceDelegate methods
+#pragma mark - NSFetchedResultsControllerDelegate
 
-- (void)dataWasChanged:(TMSDataSource *)dataSource
-{
-    [self.tableView reloadData];
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        case NSFetchedResultsChangeUpdate:
+            break;
+        case NSFetchedResultsChangeMove:
+            break;
+        default:
+            UIAlertController *alert = [TMSAlertsFactory showAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Error", nil)] message:[error localizedDescription]];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            break;
+    }
+}
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
 }
 
 @end
