@@ -47,9 +47,7 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-        TMSTextAndImage *modelToAdd = [[TMSTextAndImage alloc]init];
-        [TMSDataSource addObject: [modelToAdd initModelWithName:self.textField.text]];
-        [self.navigationController popViewControllerAnimated:YES];
+        
     }
 }
 

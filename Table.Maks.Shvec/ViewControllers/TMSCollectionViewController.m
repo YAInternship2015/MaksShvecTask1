@@ -8,10 +8,9 @@
 
 #import "TMSCollectionViewController.h"
 #import "TMSDataSource.h"
+#import "TMSCollectionViewCell.h"
 
-@interface TMSCollectionViewController ()<TMSDataSourceDelegate>
-
-@property (nonatomic, strong) TMSDataSource *dataSource;
+@interface TMSCollectionViewController ()<
 
 @end
 

@@ -13,7 +13,7 @@
 
 #pragma mark - DataSource
 
-static NSString *const kName = @"name";
+static NSString *const kName = @"text";
 static NSString *const kImageName = @"imageName";
 
 #pragma mark - Notifications name
@@ -25,5 +25,10 @@ static NSString *const contentDidChange = @"ContenDidChange";
 static NSString *const nameOfPlist = @"TMSData";
 static NSString *const typeOfPlist = @".plist";
 static NSString *const plistNameAndType = @"TMSData.plist";
+
+#pragma mark - CoreData 
+
+static NSString *const kNameOfCoreDatamodel = @"TMSCoreDataModel";
+static NSString *const kNameOfEntity = @"TMSModelItem";
 
 #endif

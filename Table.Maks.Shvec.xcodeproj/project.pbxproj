@@ -31,15 +31,15 @@
 		2DDBBB111B9047680005B285 /* TMSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDBBB101B9047680005B285 /* TMSCollectionViewCell.m */; };
 		2DED78421BAF1B96004D2867 /* TMSCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DED78401BAF1B96004D2867 /* TMSCoreDataModel.xcdatamodeld */; };
 		2DED78451BAF1BF1004D2867 /* TMSModelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DED78441BAF1BF1004D2867 /* TMSModelItem.m */; };
+		2DED78481BAF1EB6004D2867 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DED78471BAF1EB6004D2867 /* CoreData.framework */; };
+		2DED784A1BAF1EC7004D2867 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DED78491BAF1EC6004D2867 /* UIKit.framework */; };
 		2DEDE41A1B8B2A580060A3C4 /* TMSData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DEDE4191B8B2A580060A3C4 /* TMSData.plist */; };
 		2DEEB1851B6D6F140061B092 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DEEB1841B6D6F140061B092 /* 9.png */; };
 		FC9E2F571B98BCB2004239F2 /* NSString+Path.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9E2F561B98BCB2004239F2 /* NSString+Path.m */; };
 		FCB2A4A41B90A8C800259263 /* TMSViewControllerWithAddFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB2A4A31B90A8C800259263 /* TMSViewControllerWithAddFunc.m */; };
-		FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF21B7F42660039984E /* TMSTextAndImage.m */; };
 		FCF01EF71B7F426D0039984E /* TMSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EF61B7F426D0039984E /* TMSTableViewController.m */; };
 		FCF01EFB1B7F42740039984E /* TMSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF01EFA1B7F42740039984E /* TMSTableViewCell.m */; };
 		FCFF5BFF1BA1EA65003C4C63 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCFF5C011BA1EA65003C4C63 /* Localizable.strings */; };
-		FCFF5C051BA1F4C4003C4C63 /* TMSTextAndImage+DictionaryRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFF5C041BA1F4C4003C4C63 /* TMSTextAndImage+DictionaryRepresentation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +90,8 @@
 		2DED78411BAF1B96004D2867 /* TMSCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TMSCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		2DED78431BAF1BF1004D2867 /* TMSModelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSModelItem.h; sourceTree = "<group>"; };
 		2DED78441BAF1BF1004D2867 /* TMSModelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSModelItem.m; sourceTree = "<group>"; };
+		2DED78471BAF1EB6004D2867 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2DED78491BAF1EC6004D2867 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2DEDE4191B8B2A580060A3C4 /* TMSData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMSData.plist; sourceTree = "<group>"; };
 		2DEEB1841B6D6F140061B092 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		FC9E2F551B98BCB2004239F2 /* NSString+Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Path.h"; path = "Category/NSString+Path/NSString+Path.h"; sourceTree = "<group>"; };
@@ -97,8 +99,6 @@
 		FC9E2F581B98BD59004239F2 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		FCB2A4A21B90A8C800259263 /* TMSViewControllerWithAddFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMSViewControllerWithAddFunc.h; path = TMSViewControllerWithAddFunc/TMSViewControllerWithAddFunc.h; sourceTree = "<group>"; };
 		FCB2A4A31B90A8C800259263 /* TMSViewControllerWithAddFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMSViewControllerWithAddFunc.m; path = TMSViewControllerWithAddFunc/TMSViewControllerWithAddFunc.m; sourceTree = "<group>"; };
-		FCF01EF11B7F42660039984E /* TMSTextAndImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTextAndImage.h; sourceTree = "<group>"; };
-		FCF01EF21B7F42660039984E /* TMSTextAndImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSTextAndImage.m; sourceTree = "<group>"; };
 		FCF01EF51B7F426D0039984E /* TMSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTableViewController.h; sourceTree = "<group>"; };
 		FCF01EF61B7F426D0039984E /* TMSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSTableViewController.m; sourceTree = "<group>"; };
 		FCF01EF91B7F42740039984E /* TMSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSTableViewCell.h; sourceTree = "<group>"; };
@@ -107,8 +107,6 @@
 		FCFF5BFE1BA1E9E0003C4C63 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FCFF5C001BA1EA65003C4C63 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FCFF5C021BA1EA96003C4C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		FCFF5C031BA1F4C4003C4C63 /* TMSTextAndImage+DictionaryRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TMSTextAndImage+DictionaryRepresentation.h"; path = "Table.Maks.Shvec/DataSource/TMSTextAndImage+DictionaryRepresentation.h"; sourceTree = SOURCE_ROOT; };
-		FCFF5C041BA1F4C4003C4C63 /* TMSTextAndImage+DictionaryRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TMSTextAndImage+DictionaryRepresentation.m"; path = "Table.Maks.Shvec/DataSource/TMSTextAndImage+DictionaryRepresentation.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DED784A1BAF1EC7004D2867 /* UIKit.framework in Frameworks */,
+				2DED78481BAF1EB6004D2867 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,19 +188,8 @@
 			children = (
 				2D130F8F1B80AF1D004F0EB5 /* TMSDataSource.h */,
 				2D130F901B80AF1D004F0EB5 /* TMSDataSource.m */,
-				FCFF5C031BA1F4C4003C4C63 /* TMSTextAndImage+DictionaryRepresentation.h */,
-				FCFF5C041BA1F4C4003C4C63 /* TMSTextAndImage+DictionaryRepresentation.m */,
 			);
 			name = TMSDataSource;
-			sourceTree = "<group>";
-		};
-		2DB7D7D61B8F58DC00A0DF07 /* TMSTextAndImage */ = {
-			isa = PBXGroup;
-			children = (
-				FCF01EF11B7F42660039984E /* TMSTextAndImage.h */,
-				FCF01EF21B7F42660039984E /* TMSTextAndImage.m */,
-			);
-			name = TMSTextAndImage;
 			sourceTree = "<group>";
 		};
 		2DBAAEB21B7F84CA0040DFB1 /* Cells */ = {
@@ -253,6 +242,7 @@
 		2DD70E9A1B6CE2CF00566D0A /* Table.Maks.Shvec */ = {
 			isa = PBXGroup;
 			children = (
+				2DED784B1BAF1ED6004D2867 /* Frameworks */,
 				FC9E2F531B98BBEF004239F2 /* Category */,
 				2DB7D7D01B8F530B00A0DF07 /* TMSAppDelegate */,
 				2DBAAEB31B7F84EF0040DFB1 /* Resources */,
@@ -302,6 +292,25 @@
 				2DDBBB101B9047680005B285 /* TMSCollectionViewCell.m */,
 			);
 			name = TMSCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		2DED78461BAF1CAB004D2867 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2DED78401BAF1B96004D2867 /* TMSCoreDataModel.xcdatamodeld */,
+				2DED78431BAF1BF1004D2867 /* TMSModelItem.h */,
+				2DED78441BAF1BF1004D2867 /* TMSModelItem.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		2DED784B1BAF1ED6004D2867 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DED78491BAF1EC6004D2867 /* UIKit.framework */,
+				2DED78471BAF1EB6004D2867 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2DEDE41B1B8B2C1D0060A3C4 /* Property list */ = {
@@ -359,10 +368,7 @@
 		FCF01EF01B7F42660039984E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2DED78401BAF1B96004D2867 /* TMSCoreDataModel.xcdatamodeld */,
-				2DED78431BAF1BF1004D2867 /* TMSModelItem.h */,
-				2DED78441BAF1BF1004D2867 /* TMSModelItem.m */,
-				2DB7D7D61B8F58DC00A0DF07 /* TMSTextAndImage */,
+				2DED78461BAF1CAB004D2867 /* CoreData */,
 				2DB7D7D51B8F58CC00A0DF07 /* TMSDataSource */,
 			);
 			name = Models;
@@ -504,11 +510,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD70EA11B6CE2CF00566D0A /* TMSAppDelegate.m in Sources */,
-				FCF01EF31B7F42660039984E /* TMSTextAndImage.m in Sources */,
 				2DD518781BA221E100CEEE07 /* TMSValidator.m in Sources */,
 				2DDBBB111B9047680005B285 /* TMSCollectionViewCell.m in Sources */,
 				FC9E2F571B98BCB2004239F2 /* NSString+Path.m in Sources */,
-				FCFF5C051BA1F4C4003C4C63 /* TMSTextAndImage+DictionaryRepresentation.m in Sources */,
 				2DD70E9E1B6CE2CF00566D0A /* main.m in Sources */,
 				2DD116911B863B8000DE921B /* TMSViewControllerWithSubview.m in Sources */,
 				FCB2A4A41B90A8C800259263 /* TMSViewControllerWithAddFunc.m in Sources */,

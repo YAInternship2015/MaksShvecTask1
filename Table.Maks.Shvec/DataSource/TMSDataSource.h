@@ -7,36 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TMSTextAndImage.h"
-
-@protocol TMSDataSourceDelegate;
-
+#import <CoreData/CoreData.h>
+#import "TMSModelItem.h"
 
 @interface TMSDataSource : NSObject
 
-#warning это свойство должно быть в *.m. И из следующих методов в *.h должны остаться только те, которые вызываются извне. Остальные нужно удалить из *.h
-@property (nonatomic, weak) id<TMSDataSourceDelegate>delegate;
-
-- (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate;
-
+- (instancetype)initWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
+/*
 - (void)loadDataArrayWithPlist;
-
 - (NSUInteger)numberOfObjects;
-
 - (TMSTextAndImage *)indexOfObject:(NSInteger)index;
-
-
-+ (void)copyDataPlistToDocumentFolder;
-
 + (void)addObject:(TMSTextAndImage *)object;
++ (void)copyDataPlistToDocumentFolder;
+*/
+- (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey;
 
-@end
+- (void)deleteModelWithIndex:(NSIndexPath *)index;
 
+- (TMSModelItem*)modelWithIndexPath:(NSIndexPath *)indexPath;
 
-@protocol TMSDataSourceDelegate <NSObject>
+- (NSInteger)moviesCount;
 
-@required
-
-- (void)dataWasChanged:(TMSDataSource *)dataSource;
+- (void)saveContext;
 
 @end

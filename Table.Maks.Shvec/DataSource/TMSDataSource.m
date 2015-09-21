@@ -8,8 +8,6 @@
 
 #import "TMSDataSource.h"
 #import "NSString+Path.h"
-#import "TMSTextAndImage+DictionaryRepresentation.h"
-#import <CoreData/CoreData.h>
 
 @interface TMSDataSource ()
 
@@ -17,7 +15,9 @@
 
 @property (nonatomic, strong) NSManagedObjectModel* managedModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator* persistentStoreCoordinator;
-@property (nonatomic, strong) NSManagedObjectContext* defaultContext;
+@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
+@property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
+@property (nonatomic, weak) id<NSFetchedResultsControllerDelegate>fetchedDelegate;
 
 @end
 
@@ -25,26 +25,83 @@
 
 #pragma mark - DataSource init methods
 
-- (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate {
+- (instancetype)initWithDelegate: (id<NSFetchedResultsControllerDelegate>)delegate {
     self = [self init];
     if (self)
     {
-        self.delegate = delegate;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataArrayWithPlist) name:contentDidChange object:nil];
-        [self loadDataArrayWithPlist];
+        self.fetchedDelegate = delegate;
     }
     return self;
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
+- (NSFetchedResultsController *)fetchedResultsController {
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    NSManagedObjectContext* context = self.managedObjectContext;
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription* description = [NSEntityDescription entityForName: kNameOfEntity
+                                                   inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:description];
+    
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:kName ascending:YES];
+    NSArray* sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc]
+                                     initWithFetchRequest:fetchRequest
+                                     managedObjectContext:context
+                                     sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController.delegate = self.fetchedDelegate;
+    
+    return _fetchedResultsController;
 }
 
 #pragma mark - DataSource methods
 
+- (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey
+{
+    NSManagedObjectContext* context = [self.fetchedResultsController managedObjectContext];
+    NSEntityDescription *entityDescription = [[self.fetchedResultsController fetchRequest]entity];
+    NSManagedObject* newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entityDescription name] inManagedObjectContext:context];
+    
+    [newManagedObject setValue:imageKey forKey:kImageName];
+    [newManagedObject setValue:nameKey forKey:kName];
+
+    NSError* error = nil;
+    if (![context save:&error]) {
+        NSLog(@"Error in saving %@, %@", error, [error userInfo]);
+        abort();
+    }
+}
+
+- (void)deleteModelWithIndex:(NSIndexPath *)index {
+    NSManagedObjectContext* context = [self.fetchedResultsController managedObjectContext];
+    [context deleteObject:[self.fetchedResultsController objectAtIndexPath:index]];
+    
+    NSError* error = nil;
+    if (![context save:&error]) {
+        NSLog(@"Error in saving %@, %@", error, [error userInfo]);
+        abort();
+    }
+}
+
+- (TMSModelItem*)modelWithIndexPath:(NSIndexPath *)indexPath {
+    TMSModelItem *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return model;
+}
+
+- (NSInteger)moviesCount {
+    self.fetchedResultsController;
+}
+
+#pragma mark - Old methods for plist
+/*
 - (void)loadDataArrayWithPlist {
     self.arrayOfData = [NSArray arrayWithContentsOfFile:[NSString pathToPlist]];
-    [self.delegate dataWasChanged:self];
+//    [self.delegate dataWasChanged:self];
 }
 
 - (void)reloadDataArrayWithPlist {
@@ -58,12 +115,10 @@
 - (TMSTextAndImage *)indexOfObject:(NSInteger)index {
     TMSTextAndImage *model = [[TMSTextAndImage alloc]init];
     NSMutableDictionary *dictModel = (NSMutableDictionary *)[self.arrayOfData objectAtIndex:index];
-    model.text = [dictModel objectForKey:@"text"];
-    model.imageName = [dictModel objectForKey:@"imageName"];
+//    model.text = [dictModel objectForKey:@"text"];
+//    model.imageName = [dictModel objectForKey:@"imageName"];
     return model;
 }
-
-#pragma mark - Work with plist methods
 
 + (void)addObject:(TMSTextAndImage *)object {
     NSDictionary *newModel = @{@"text" : object.text,
@@ -77,6 +132,8 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:contentDidChange object:nil];
     }
 }
+*/
+#pragma mark - Work with plist methods
 
 + (void)copyDataPlistToDocumentFolder {
     
@@ -101,11 +158,11 @@
 #pragma mark - CoreData getters
 
 - (NSManagedObjectContext *)defaultContext {
-    if (!_defaultContext) {
-        _defaultContext = [[NSManagedObjectContext alloc] init];
-        _defaultContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+    if (!_managedObjectContext) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
     }
-    return _defaultContext;
+    return _managedObjectContext;
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
@@ -113,7 +170,7 @@
         _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedModel];
         
         NSURL* pathToDocumentFolder =  [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        NSURL* pathToSqliteFile = [pathToDocumentFolder URLByAppendingPathComponent:@"myDataBase.sqlite"];
+        NSURL* pathToSqliteFile = [pathToDocumentFolder URLByAppendingPathComponent:@"TMSCoreDataModel.sqlite"];
         
         [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                   configuration:nil
@@ -126,13 +183,27 @@
 
 - (NSManagedObjectModel *)managedModel {
     if (!_managedModel) {
-        NSURL* pathToXCModel = [[NSBundle mainBundle] URLForResource:@"RSSNews" withExtension:@"momd"];
+        NSURL* pathToXCModel = [[NSBundle mainBundle] URLForResource:kNameOfCoreDatamodel withExtension:@"momd"];
         _managedModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:pathToXCModel];
     }
     
     return _managedModel;
 }
 
+#pragma mark - Core Data Saving support
+
+- (void)saveContext {
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil) {
+        NSError *error = nil;
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
 
 
 @end

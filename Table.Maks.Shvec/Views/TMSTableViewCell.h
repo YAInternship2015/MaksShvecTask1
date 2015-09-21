@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TMSTextAndImage+DictionaryRepresentation.h"
+#import "TMSModelItem.h"
 
 @interface TMSTableViewCell : UITableViewCell
 
-#warning ячейка должна заполняться моделью, а не NSDictionary
-- (void)setupWithModel:(TMSTextAndImage *)model;
+- (void)setupWithModel:(TMSModelItem *)model;
  
 @end

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TMSModelItem.h"
 
 @interface TMSCollectionViewCell : UICollectionViewCell
 
-#warning ячейка должна заполняться моделью, а не NSDictionary
-- (void)setupWithModel:(NSDictionary *)item;
+- (void)setupWithModel:(TMSModelItem *)model;
 
 @end

@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#warning зачем здесь импорт ячейки?
-#import "TMSCollectionViewCell.h"
 
 @interface TMSCollectionViewController : UICollectionViewController
 

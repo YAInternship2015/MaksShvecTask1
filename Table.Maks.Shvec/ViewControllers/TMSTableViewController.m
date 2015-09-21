@@ -7,7 +7,6 @@
 //
 
 #import "TMSTableViewController.h"
-#import "TMSTextAndImage+DictionaryRepresentation.h"
 #import "TMSDataSource.h"
 #import "TMSTableViewCell.h"
 
@@ -24,7 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
+//    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
 }
 
 #pragma mark - Table view data source
