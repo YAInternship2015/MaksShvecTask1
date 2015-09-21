@@ -10,9 +10,10 @@
 #import "TMSDataSource.h"
 #import "TMSCollectionViewCell.h"
 
-@interface TMSCollectionViewController ()<NSFetchedResultsControllerDelegate>
+@interface TMSCollectionViewController ()<NSFetchedResultsControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, strong) TMSDataSource *dataSource;
+@property (nonatomic, strong) TMSDataSource* dataSource;
+@property (nonatomic, strong) NSMutableArray* arrayOfChanges;
 
 @end
 
@@ -41,4 +42,67 @@
     return cell;
 }
 
+#pragma mark - Methods
+
+- (IBAction)handleLongPress:(UILongPressGestureRecognizer *)sender {
+    CGPoint locationPoint = [sender locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:locationPoint];
+    if (sender.state == UIGestureRecognizerStateBegan && indexPath) {
+        [self.dataSource deleteModelWithIndex:indexPath];
+    }
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    self.arrayOfChanges = [[NSMutableArray alloc] init];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    NSMutableDictionary *change = [[NSMutableDictionary alloc] init];
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            change[@(type)] = newIndexPath;
+            break;
+        case NSFetchedResultsChangeDelete:
+            change[@(type)] = indexPath;
+            break;
+        case NSFetchedResultsChangeUpdate:
+            break;
+        case NSFetchedResultsChangeMove:
+            break;
+    }
+    [self.arrayOfChanges addObject:change];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.collectionView performBatchUpdates:^{
+        
+        for (NSDictionary *change in self.arrayOfChanges) {
+            [change enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                NSFetchedResultsChangeType type = [key unsignedIntegerValue];
+                switch(type) {
+                    case NSFetchedResultsChangeInsert:
+                        [self.collectionView insertItemsAtIndexPaths:@[obj]];
+                        break;
+                    case NSFetchedResultsChangeDelete:
+                        [self.collectionView deleteItemsAtIndexPaths:@[obj]];
+                        break;
+                    case NSFetchedResultsChangeUpdate:
+                        break;
+                    case NSFetchedResultsChangeMove:
+                        break;
+                }
+            }];
+        }
+    } completion:^(BOOL finished) {
+        self.arrayOfChanges = nil;
+    }];
+}
+
 @end
+

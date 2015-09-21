@@ -162,12 +162,18 @@
                         <connections>
                             <outlet property="dataSource" destination="ys1-cx-9pc" id="wsy-GP-nRb"/>
                             <outlet property="delegate" destination="ys1-cx-9pc" id="Wuf-F6-JnX"/>
+                            <outletCollection property="gestureRecognizers" destination="o4D-cE-SMF" appends="YES" id="Vmd-t9-xlT"/>
                         </connections>
                     </collectionView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9g-DS-Fg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="o4D-cE-SMF">
+                    <connections>
+                        <action selector="handleLongPress:" destination="ys1-cx-9pc" id="nwH-wt-9Ju"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1038" y="229"/>
         </scene>
