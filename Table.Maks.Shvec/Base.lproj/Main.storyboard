@@ -48,7 +48,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="b89-9x-o0v">
                             <connections>
                                 <action selector="addButtonAction:" destination="j0Y-ZQ-Pqz" id="RXu-be-7bh"/>
-                                <segue destination="d4x-1Q-UAC" kind="show" id="d8F-Sx-9Kb"/>
+                                <segue destination="d4x-1Q-UAC" kind="show" identifier="pushViewControllerWithAddFunc" id="d8F-Sx-9Kb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -217,6 +217,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="0Zs-RS-Wk4"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="saveButton" destination="Iwx-zt-BKG" id="YfF-Cr-EDN"/>

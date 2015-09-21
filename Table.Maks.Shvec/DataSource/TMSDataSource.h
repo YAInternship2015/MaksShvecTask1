@@ -13,12 +13,7 @@
 @interface TMSDataSource : NSObject
 
 - (instancetype)initWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
-/*
-- (void)loadDataArrayWithPlist;
-- (NSUInteger)numberOfObjects;
-- (TMSTextAndImage *)indexOfObject:(NSInteger)index;
-+ (void)addObject:(TMSTextAndImage *)object;
-*/
+
 - (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey;
 
 - (void)deleteModelWithIndex:(NSIndexPath *)index;

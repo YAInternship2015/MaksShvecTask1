@@ -41,7 +41,4 @@
     return cell;
 }
 
-#pragma mark -
-
-
 @end

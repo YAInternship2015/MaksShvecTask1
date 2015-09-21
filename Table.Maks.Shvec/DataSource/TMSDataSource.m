@@ -8,6 +8,7 @@
 
 #import "TMSDataSource.h"
 #import "NSString+Path.h"
+#import "TMSViewControllerWithAddFunc.h"
 
 @interface TMSDataSource ()
 
@@ -41,38 +42,11 @@
             NSString* image = [model valueForKey:kImageName];
             [self addModelWithImageKey:name nameKey:image];
         }
-        //ручная проверка кордаты
-        [self printAllObjects];
     }
     }
     return self;
 }
-//методы для ручной проверки кордаты
-- (NSArray*) allObjects {
-    NSFetchRequest* request = [[NSFetchRequest alloc]init];
-    NSEntityDescription* description = [NSEntityDescription entityForName:kNameOfEntity
-                                                   inManagedObjectContext:self.managedObjectContext];
-    [request setEntity:description];
-    NSError* requestError = nil;
-    NSArray* resultArray = [self.managedObjectContext executeFetchRequest:request error:&requestError];
-//    if (requestError) {
-//        NSLog(@"%@", [requestError localizedDescription]);
-//    }
-    return resultArray;
-}
 
-- (NSInteger)allObjectsCount {
-    return [[self allObjects] count];
-}
-
-- (void)printAllObjects {
-    NSArray* allObjects = [self allObjects];
-    
-    for (TMSModelItem* object in allObjects) {
-        NSLog(@"---%@ %@ ", object.nameImage,object.text);
-        
-    }
-}
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
@@ -80,8 +54,6 @@
     }
     NSManagedObjectContext* context = self.managedObjectContext;
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kNameOfEntity];
-    
-    [fetchRequest setFetchBatchSize:20];
     
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:kName ascending:YES];
     NSArray* sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
@@ -92,10 +64,11 @@
                                      initWithFetchRequest:fetchRequest
                                      managedObjectContext:context
                                      sectionNameKeyPath:nil cacheName:@"MyCache"];
+    
+    self.fetchedResultsController.delegate = self.delegate;
+    
     NSError* error = nil;
     [self.fetchedResultsController performFetch:&error];
-    
-//    self.fetchedResultsController.delegate = self.delegate;
     
     return _fetchedResultsController;
 }

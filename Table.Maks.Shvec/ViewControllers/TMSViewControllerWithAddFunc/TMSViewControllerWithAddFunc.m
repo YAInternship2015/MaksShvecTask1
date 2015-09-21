@@ -10,11 +10,12 @@
 #import "TMSValidator.h"
 #import "TMSDataSource.h"
 
-@interface TMSViewControllerWithAddFunc () <UITextFieldDelegate, NSFetchedResultsControllerDelegate>
+@interface TMSViewControllerWithAddFunc () <UITextFieldDelegate>
 
 @property (nonatomic ,weak) IBOutlet UITextField *textField;
 @property (nonatomic, weak) IBOutlet UIButton *saveButton;
-@property (nonatomic, strong) TMSDataSource* dataSource;
+
+@property (nonatomic, strong) TMSDataSource *dataSource;
 
 @end
 
@@ -45,7 +46,7 @@
         
         [self presentViewController:alert animated:YES completion:nil];
     }
-    else { 
+    else {
         [self.dataSource addModelWithImageKey:kNoImage nameKey:self.textField.text];
         [self.navigationController popViewControllerAnimated:YES];
     }
