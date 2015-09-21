@@ -8,14 +8,16 @@
 
 #import "TMSDataSource.h"
 #import "NSString+Path.h"
+#import "TMSModelItem.h"
 
 @interface TMSDataSource ()
 
 @property (nonatomic, strong) NSArray *arrayOfData;
 
-@property (nonatomic, strong) NSManagedObjectModel* managedModel;
-@property (nonatomic, strong) NSPersistentStoreCoordinator* persistentStoreCoordinator;
-@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
 @property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
 @property (nonatomic, weak) id<NSFetchedResultsControllerDelegate>fetchedDelegate;
 
@@ -31,6 +33,16 @@
     {
         self.fetchedDelegate = delegate;
     }
+    /*
+    if ([self modelsCount] == 0) {
+        NSMutableArray* arr = [[NSArray arrayWithContentsOfFile:[NSString pathToPlist]] mutableCopy];
+        for (int i = 0; i < arr.count; i++) {
+            NSDictionary * model = arr[i];
+            NSString* name = [model valueForKey:kName];
+            NSString* image = [model valueForKey:kImageName];
+            [self addModelWithImageKey:name nameKey:image];
+        }
+     */
     return self;
 }
 
@@ -41,8 +53,9 @@
     NSManagedObjectContext* context = self.managedObjectContext;
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
     
-    NSEntityDescription* description = [NSEntityDescription entityForName: kNameOfEntity
-                                                   inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription* description =
+    [NSEntityDescription entityForName:@"TMSModelItem"
+                inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:description];
     
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:kName ascending:YES];
@@ -159,41 +172,61 @@
     [fileManger copyItemAtPath:sourcePath toPath:destinationPath error:&error];
 }
 
-#pragma mark - CoreData getters
+#pragma mark - CoreData stack
 
-- (NSManagedObjectContext *)defaultContext {
-    if (!_managedObjectContext) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        _managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+- (NSURL *)applicationDocumentsDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+- (NSManagedObjectModel *)managedObjectModel {
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
     }
-    return _managedObjectContext;
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:kNameOfCoreDatamodel withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return _managedObjectModel;
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    if (!_persistentStoreCoordinator) {
-        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedModel];
-        
-        NSURL* pathToDocumentFolder =  [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        NSURL* pathToSqliteFile = [pathToDocumentFolder URLByAppendingPathComponent:@"TMSCoreDataModel.sqlite"];
-        
-        [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-                                                  configuration:nil
-                                                            URL:pathToSqliteFile
-                                                        options:nil
-                                                          error:NULL];
+    if (_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
     }
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"TMSCoreDataModel.sqlite"];
+    NSError *error = nil;
+    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
+        dict[NSLocalizedFailureReasonErrorKey] = failureReason;
+        dict[NSUnderlyingErrorKey] = error;
+        error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
     return _persistentStoreCoordinator;
 }
 
-- (NSManagedObjectModel *)managedModel {
-    if (!_managedModel) {
-        NSURL* pathToXCModel = [[NSBundle mainBundle] URLForResource:kNameOfCoreDatamodel withExtension:@"momd"];
-        _managedModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:pathToXCModel];
-    }
-    
-    return _managedModel;
-}
+- (NSManagedObjectContext *)managedObjectContext {
 
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
+    }
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (!coordinator) {
+        return nil;
+    }
+    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    return _managedObjectContext;
+}
 #pragma mark - Core Data Saving support
 
 - (void)saveContext {
@@ -201,8 +234,6 @@
     if (managedObjectContext != nil) {
         NSError *error = nil;
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
