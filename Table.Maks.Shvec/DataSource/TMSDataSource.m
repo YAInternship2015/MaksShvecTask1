@@ -31,7 +31,6 @@
     self = [super init];
     if (self) {
         self.delegate = delegate;
-        [self fetchedResultsController];
     //loading from plist
     if ([self modelsCount] == 0) {
         NSMutableArray* arr = [[NSArray arrayWithContentsOfFile:[NSString pathToPlist]] mutableCopy];
@@ -64,10 +63,6 @@
 
 - (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.fetchedResultsController delegate];
 }
 
 
