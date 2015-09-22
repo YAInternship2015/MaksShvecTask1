@@ -8,7 +8,6 @@
 
 #import "TMSDataSource.h"
 #import "NSString+Path.h"
-#import "TMSViewControllerWithAddFunc.h"
 
 @interface TMSDataSource ()
 
@@ -89,6 +88,8 @@
         NSLog(@"Error in saving %@, %@", error, [error userInfo]);
         abort();
     }
+    
+    [self saveContext];
 }
 
 - (void)deleteModelWithIndex:(NSIndexPath *)index {
@@ -100,6 +101,7 @@
         NSLog(@"Error in saving %@, %@", error, [error userInfo]);
         abort();
     }
+    [self saveContext];
 }
 
 - (TMSModelItem*)modelWithIndexPath:(NSIndexPath *)indexPath {
@@ -117,42 +119,6 @@
         return 0;
 }
 
-#pragma mark - Old methods for plist
-/*
-- (void)loadDataArrayWithPlist {
-    self.arrayOfData = [NSArray arrayWithContentsOfFile:[NSString pathToPlist]];
-//    [self.delegate dataWasChanged:self];
-}
-
-- (void)reloadDataArrayWithPlist {
-    [self loadDataArrayWithPlist];
-}
-
-- (NSUInteger)numberOfObjects {
-    return [self.arrayOfData count];
-}
-
-- (TMSTextAndImage *)indexOfObject:(NSInteger)index {
-    TMSTextAndImage *model = [[TMSTextAndImage alloc]init];
-    NSMutableDictionary *dictModel = (NSMutableDictionary *)[self.arrayOfData objectAtIndex:index];
-//    model.text = [dictModel objectForKey:@"text"];
-//    model.imageName = [dictModel objectForKey:@"imageName"];
-    return model;
-}
-
-+ (void)addObject:(TMSTextAndImage *)object {
-    NSDictionary *newModel = @{@"text" : object.text,
-                               @"imageName" : object.imageName};
-    
-    NSMutableArray *tempModelsArray = [NSMutableArray arrayWithContentsOfFile:[NSString pathToPlist]];
-    [tempModelsArray addObject:newModel];
-    
-    if ([tempModelsArray writeToFile:[NSString pathToPlist] atomically:YES])
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:contentDidChange object:nil];
-    }
-}
-*/
 #pragma mark - Work with plist methods
 
 + (void)copyDataPlistToDocumentFolder {
