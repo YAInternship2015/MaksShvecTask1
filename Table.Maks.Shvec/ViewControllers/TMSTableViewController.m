@@ -11,7 +11,7 @@
 #import "TMSTableViewCell.h"
 #import "TMSAlertsFactory.h"
 
-@interface TMSTableViewController ()<NSFetchedResultsControllerDelegate>
+@interface TMSTableViewController ()<TMSDataSourceDelegate>
 
 @property (nonatomic, strong) TMSDataSource *dataSource;
 
@@ -42,42 +42,62 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
                                             forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.tableView beginUpdates];
         [self.dataSource deleteModelWithIndex:indexPath];
+        [self.tableView endUpdates];
     }
 }
 
-#pragma mark - NSFetchedResultsControllerDelegate
+//#pragma mark - NSFetchedResultsControllerDelegate
+//
+//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+//    [self.tableView beginUpdates];
+//}
+//
+//- (void)controller:(NSFetchedResultsController *)controller
+//   didChangeObject:(id)anObject
+//       atIndexPath:(NSIndexPath *)indexPath
+//     forChangeType:(NSFetchedResultsChangeType)type
+//      newIndexPath:(NSIndexPath *)newIndexPath {
+//    
+//    NSError* error = NULL;
+//    UIAlertController* alert = [TMSAlertsFactory showAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Error", nil)] message:[error localizedDescription]];
+//    
+//    switch (type) {
+//        case NSFetchedResultsChangeInsert:
+//            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//        case NSFetchedResultsChangeDelete:
+//            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+//        case NSFetchedResultsChangeUpdate:
+//            break;
+//        case NSFetchedResultsChangeMove:
+//            break;
+//        default:
+//            [self presentViewController:alert animated:YES completion:nil];
+//            break;
+//    }
+//}
+//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+//    [self.tableView endUpdates];
+//}
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+#pragma mark - TMSDataSourceDelegate
+
+- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
     [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
     
-    NSError* error = NULL;
-    UIAlertController* alert = [TMSAlertsFactory showAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Error", nil)] message:[error localizedDescription]];
-    
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-        case NSFetchedResultsChangeUpdate:
-            break;
-        case NSFetchedResultsChangeMove:
-            break;
-        default:
-            [self presentViewController:alert animated:YES completion:nil];
-            break;
+    if (type == NSFetchedResultsChangeInsert) {
+        [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else if (type == NSFetchedResultsChangeDelete) {
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [self.tableView reloadData];
     }
-}
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    
     [self.tableView endUpdates];
 }
+
 
 @end

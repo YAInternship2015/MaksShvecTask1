@@ -22,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
+//    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
     self.collectionView.alwaysBounceVertical = YES;
 }
 

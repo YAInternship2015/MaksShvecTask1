@@ -1,4 +1,4 @@
- //
+//
 //  TMSDataSource.m
 //  Table.Maks.Shvec
 //
@@ -9,14 +9,13 @@
 #import "TMSDataSource.h"
 #import "NSString+Path.h"
 
-@interface TMSDataSource ()
+@interface TMSDataSource ()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
-@property (nonatomic, weak) id<NSFetchedResultsControllerDelegate>delegate;
 
 @end
 
@@ -26,12 +25,13 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
-#pragma mark - DataSource init methods
+#pragma mark - DataSource Delegate methods
 
-- (instancetype)initWithDelegate: (id<NSFetchedResultsControllerDelegate>)delegate {
+- (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate {
     self = [super init];
     if (self) {
-        self.fetchedResultsController.delegate = delegate;
+        self.delegate = delegate;
+        [self fetchedResultsController];
     //loading from plist
     if ([self modelsCount] == 0) {
         NSMutableArray* arr = [[NSArray arrayWithContentsOfFile:[NSString pathToPlist]] mutableCopy];
@@ -44,6 +44,30 @@
     }
     }
     return self;
+}
+
+- (void)addModelWithDelegateImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey
+{
+    NSManagedObjectContext* context = [self.fetchedResultsController managedObjectContext];
+    NSString * entityClassName = NSStringFromClass([TMSModelItem class]);
+    TMSModelItem *newObject = [NSEntityDescription insertNewObjectForEntityForName:entityClassName inManagedObjectContext:context];
+    
+    [newObject setValue:imageKey forKey:kImageName];
+    [newObject setValue:nameKey forKey:kName];
+    
+    NSError* error = nil;
+    if (![context save:&error]) {
+        NSLog(@"Error in saving %@, %@", error, [error userInfo]);
+        abort();
+    }
+}
+
+- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.fetchedResultsController delegate];
 }
 
 
@@ -63,8 +87,6 @@
                                      initWithFetchRequest:fetchRequest
                                      managedObjectContext:context
                                      sectionNameKeyPath:nil cacheName:@"MyCache"];
-    
-    self.fetchedResultsController.delegate = self.delegate;
     
     NSError* error = nil;
     [self.fetchedResultsController performFetch:&error];
@@ -88,9 +110,8 @@
         NSLog(@"Error in saving %@, %@", error, [error userInfo]);
         abort();
     }
-    
-    [self saveContext];
 }
+
 
 - (void)deleteModelWithIndex:(NSIndexPath *)index {
     NSManagedObjectContext* context = [self.fetchedResultsController managedObjectContext];

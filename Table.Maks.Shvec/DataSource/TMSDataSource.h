@@ -10,19 +10,30 @@
 #import <CoreData/CoreData.h>
 #import "TMSModelItem.h"
 
+@protocol TMSDataSourceDelegate;
+
 @interface TMSDataSource : NSObject
 
-- (instancetype)initWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
+@property (nonatomic, weak) id<TMSDataSourceDelegate>delegate;
+
+- (instancetype)initWithDelegate:(id<TMSDataSourceDelegate>)delegate;
 
 - (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey;
-
 - (void)deleteModelWithIndex:(NSIndexPath *)index;
-
 - (TMSModelItem*)modelWithIndexPath:(NSIndexPath *)indexPath;
-
 - (NSInteger)modelsCount;
 
 + (void)copyDataPlistToDocumentFolder;
+
+@end
+
+@protocol TMSDataSourceDelegate <NSObject>
+
+@optional
+
+- (void)addModelWithDelegateImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey;
+
+- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
 
 @end
 

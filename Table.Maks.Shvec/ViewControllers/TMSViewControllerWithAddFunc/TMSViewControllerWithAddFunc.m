@@ -10,7 +10,7 @@
 #import "TMSValidator.h"
 #import "TMSDataSource.h"
 
-@interface TMSViewControllerWithAddFunc () <UITextFieldDelegate>
+@interface TMSViewControllerWithAddFunc () <UITextFieldDelegate, TMSDataSourceDelegate>
 
 @property (nonatomic ,weak) IBOutlet UITextField *textField;
 @property (nonatomic, weak) IBOutlet UIButton *saveButton;
@@ -47,8 +47,9 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-#warning TODO: Problem with Saving
-        [self.dataSource addModelWithImageKey:kNoImage nameKey:self.textField.text];
+//        self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
+//        [self.dataSource.delegate ];
+        
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

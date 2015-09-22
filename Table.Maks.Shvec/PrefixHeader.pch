@@ -11,5 +11,6 @@
 
 #import "NSStringConstants.h"
 #import "TMSAlertsFactory.h"
+#import "TMSModelItem.h"
 
 #endif /* PrefixHeader_pch */
