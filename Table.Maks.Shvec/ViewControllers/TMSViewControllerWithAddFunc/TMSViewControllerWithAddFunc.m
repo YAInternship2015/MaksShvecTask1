@@ -48,6 +48,7 @@
     }
     else {
 #warning TODO fix saving
+#warning ДЛЯ ЮРИЯ:  сохранение работает. Но осталось проблема в перезагрузке таблицы и коллекции. Такая же ситуация во время удаления
         self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
         [self.dataSource addModelWithImageKey:kNoImage nameKey:self.textField.text];
         
