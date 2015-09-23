@@ -37,7 +37,7 @@
 {
     TMSCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionViewCellIdentifier forIndexPath:indexPath];
     
-    [cell setupWithModel:[self.dataSource modelWithIndexPath:indexPath]];
+    [cell setupWithModel:[self.dataSource modelAtIndexPath:indexPath]];
     
     return cell;
 }
@@ -48,7 +48,7 @@
     CGPoint locationPoint = [sender locationInView:self.collectionView];
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:locationPoint];
     if (sender.state == UIGestureRecognizerStateBegan && indexPath) {
-        [self.dataSource deleteModelWithIndex:indexPath];
+        [self.dataSource deleteModelAtIndex:indexPath];
     }
 }
 

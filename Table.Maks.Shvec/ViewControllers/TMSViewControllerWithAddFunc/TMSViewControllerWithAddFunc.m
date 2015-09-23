@@ -47,8 +47,9 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-//        self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
-//        [self.dataSource.delegate ];
+#warning TODO fix saving
+        self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
+        [self.dataSource addModelWithImageKey:kNoImage nameKey:self.textField.text];
         
         [self.navigationController popViewControllerAnimated:YES];
     }

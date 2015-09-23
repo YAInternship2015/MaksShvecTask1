@@ -34,7 +34,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TMSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableViewCellIdentifier];
-    [cell setupWithModel:[self.dataSource modelWithIndexPath:indexPath]];
+    [cell setupWithModel:[self.dataSource modelAtIndexPath:indexPath]];
     
     return cell;
 }
@@ -43,7 +43,7 @@
                                             forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.tableView beginUpdates];
-        [self.dataSource deleteModelWithIndex:indexPath];
+        [self.dataSource deleteModelAtIndex:indexPath];
         [self.tableView endUpdates];
     }
 }

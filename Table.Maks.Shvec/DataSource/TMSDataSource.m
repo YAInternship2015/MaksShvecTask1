@@ -108,7 +108,7 @@
 }
 
 
-- (void)deleteModelWithIndex:(NSIndexPath *)index {
+- (void)deleteModelAtIndex:(NSIndexPath *)index {
     NSManagedObjectContext* context = [self.fetchedResultsController managedObjectContext];
     [context deleteObject:[self.fetchedResultsController objectAtIndexPath:index]];
     
@@ -120,7 +120,7 @@
     [self saveContext];
 }
 
-- (TMSModelItem*)modelWithIndexPath:(NSIndexPath *)indexPath {
+- (TMSModelItem*)modelAtIndexPath:(NSIndexPath *)indexPath {
     TMSModelItem *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSLog(@"------Model description------ %@", [model description]);
     return model;

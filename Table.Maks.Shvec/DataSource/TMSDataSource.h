@@ -19,8 +19,8 @@
 - (instancetype)initWithDelegate:(id<TMSDataSourceDelegate>)delegate;
 
 - (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey;
-- (void)deleteModelWithIndex:(NSIndexPath *)index;
-- (TMSModelItem*)modelWithIndexPath:(NSIndexPath *)indexPath;
+- (void)deleteModelAtIndex:(NSIndexPath *)index;
+- (TMSModelItem*)modelAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)modelsCount;
 
 + (void)copyDataPlistToDocumentFolder;
