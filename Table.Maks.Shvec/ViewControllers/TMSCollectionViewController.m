@@ -12,6 +12,7 @@
 
 @interface TMSCollectionViewController ()<NSFetchedResultsControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
+#warning TMSDataSource *dataSource;
 @property (nonatomic, strong) TMSDataSource* dataSource;
 @property (nonatomic, strong) NSMutableArray* arrayOfChanges;
 
@@ -22,6 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+#warning [[TMSDataSource alloc] initWithDelegate:self];
     self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
     self.collectionView.alwaysBounceVertical = YES;
 }

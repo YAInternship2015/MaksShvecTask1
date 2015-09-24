@@ -48,6 +48,7 @@
     }
     else {
 #warning TODO: Problem with Saving
+#warning Сохранение не работает, потому что self.dataSource равен nil
         [self.dataSource addModelWithImageKey:kNoImage nameKey:self.textField.text];
         [self.navigationController popViewControllerAnimated:YES];
     }

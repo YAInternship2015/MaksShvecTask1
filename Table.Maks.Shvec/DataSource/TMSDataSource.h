@@ -14,6 +14,7 @@
 
 - (instancetype)initWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
 
+#warning форматирование кода у Вас страдает. - (void)addModelWithImageKey:(NSString *)imageKey nameKey:(NSString *)nameKey;
 - (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey;
 
 - (void)deleteModelWithIndex:(NSIndexPath *)index;

@@ -19,6 +19,7 @@
 - (void)setupWithModel:(TMSModelItem *)model
 {
     self.cellImage.image = [UIImage imageNamed:model.nameImage];
+#warning contentMode лучше задать в сториборде
     self.cellImage.contentMode = UIViewContentModeScaleAspectFit;
 }
 

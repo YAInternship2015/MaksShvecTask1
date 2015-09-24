@@ -59,6 +59,8 @@
       newIndexPath:(NSIndexPath *)newIndexPath {
     
     NSError* error = NULL;
+#warning непонял смысла этого алерта. В нем показывается информация из NSError, который nil. И зачем его создавать здесь, если он может и не понадобиться?
+#warning UIAlertController *alert
     UIAlertController* alert = [TMSAlertsFactory showAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Error", nil)] message:[error localizedDescription]];
     
     switch (type) {

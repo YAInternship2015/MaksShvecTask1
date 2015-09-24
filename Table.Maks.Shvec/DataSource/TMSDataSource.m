@@ -22,6 +22,7 @@
 
 @implementation TMSDataSource
 
+#warning @synthesize можно не писать
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
@@ -32,6 +33,7 @@
     self = [super init];
     if (self) {
         self.fetchedResultsController.delegate = delegate;
+#warning следующий кусок логики надо вынести в отдельный метод
     //loading from plist
     if ([self modelsCount] == 0) {
         NSMutableArray* arr = [[NSArray arrayWithContentsOfFile:[NSString pathToPlist]] mutableCopy];
@@ -51,6 +53,8 @@
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
+    
+#warning NSManagedObjectContext *context и так далее
     NSManagedObjectContext* context = self.managedObjectContext;
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kNameOfEntity];
     
@@ -59,11 +63,13 @@
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
+#warning не стоит здесь давать имя кешу, от него одни проблемы. Просто передавайте nil
     self.fetchedResultsController = [[NSFetchedResultsController alloc]
                                      initWithFetchRequest:fetchRequest
                                      managedObjectContext:context
-                                     sectionNameKeyPath:nil cacheName:@"MyCache"];
+                                     sectionNameKeyPath:nil cacheName:nil];
     
+#warning в этом месте self.delegate = nil
     self.fetchedResultsController.delegate = self.delegate;
     
     NSError* error = nil;
@@ -83,6 +89,7 @@
     [newObject setValue:imageKey forKey:kImageName];
     [newObject setValue:nameKey forKey:kName];
 
+#warning какой смысл в следующих строках, если вы потом вызываете [self saveContext]? Получается два сохранения подряд, если контекст одинаков. В следующем методе то же сомое
     NSError* error = nil;
     if (![context save:&error]) {
         NSLog(@"Error in saving %@, %@", error, [error userInfo]);
@@ -143,7 +150,7 @@
 
 #pragma mark - CoreData stack
 
-
+#warning Этот код не должен повторяться в каждом датасорсе, стек кор даты инициализируется один раз, и затем все датасорсы работают с одним и тем же контекстом. Можете, например, сделать некий менеджер, который будет инициализировать стек, создавать главный контекст. Этот менеджер может быть синглтоном, чтобы упростить Вам жизнь
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
@@ -189,6 +196,7 @@
     if (!coordinator) {
         return nil;
     }
+#warning здесь стоит создавать контекст методом initWithConcurrencyType: с аргументом NSMainQueueConcurrencyType, чтобы это был контекст главного потока
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;

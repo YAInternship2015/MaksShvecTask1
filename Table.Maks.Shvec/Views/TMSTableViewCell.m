@@ -22,6 +22,7 @@
 {
     self.cellText.text = model.text;
     self.cellPic.image = [UIImage imageNamed: model.nameImage];
+#warning contentMode лучше задать в сториборде
     self.cellPic.contentMode = UIViewContentModeScaleAspectFit;
 }
 

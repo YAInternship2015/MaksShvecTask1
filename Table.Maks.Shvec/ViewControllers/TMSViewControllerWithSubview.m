@@ -13,6 +13,7 @@
 
 @interface TMSViewControllerWithSubview ()
 
+#warning после ) должен быть пробел
 @property (nonatomic, strong)TMSTableViewController *tableViewController;
 @property (nonatomic, strong)TMSCollectionViewController *collectionViewController;
 @property (nonatomic, assign)BOOL isTableViewController;

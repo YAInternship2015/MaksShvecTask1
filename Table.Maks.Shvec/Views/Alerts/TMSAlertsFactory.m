@@ -12,13 +12,15 @@
 
 #pragma mark -  NSString validation alert
 
+#warning { должны быть на той же строке, что и имя метода
 + (UIAlertController *)showAlertWithTitle:(NSString *)title message:(NSString *)message
 {
+#warning     UIAlertController *alert =
     UIAlertController *alert=   [UIAlertController
                                   alertControllerWithTitle:title
                                   message:message
                                   preferredStyle:UIAlertControllerStyleAlert];
-    
+#warning @"OK" должна быть в Localizable.strings
     UIAlertAction *ok = [UIAlertAction
                          actionWithTitle:@"OK"
                          style:UIAlertActionStyleDefault
