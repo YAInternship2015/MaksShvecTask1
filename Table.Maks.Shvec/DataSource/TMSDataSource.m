@@ -25,7 +25,7 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
-#pragma mark - DataSource Delegate methods
+#pragma mark - DataSource methods
 
 - (instancetype)initWithDelegate: (id<TMSDataSourceDelegate>)delegate {
     self = [super init];
@@ -61,8 +61,24 @@
     }
 }
 
-- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+//- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+//    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+//}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    [self.delegate controller:controller didChangeObject:anObject atIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.delegate controllerWillChangeContent:controller];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.delegate controllerDidChangeContent: controller];
 }
 
 
@@ -124,6 +140,11 @@
     TMSModelItem *model = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSLog(@"------Model description------ %@", [model description]);
     return model;
+}
+
+- (NSInteger)numberObjectsInSection: (NSInteger)section {
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 

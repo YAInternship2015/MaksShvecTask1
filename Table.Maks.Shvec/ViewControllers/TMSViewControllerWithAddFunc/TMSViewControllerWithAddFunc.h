@@ -10,6 +10,4 @@
 
 @interface TMSViewControllerWithAddFunc : UIViewController
 
-@property (nonatomic, strong) TMSModelItem* model;
-
 @end
