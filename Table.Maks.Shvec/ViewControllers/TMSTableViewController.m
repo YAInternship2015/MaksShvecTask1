@@ -42,9 +42,10 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
                                             forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.tableView beginUpdates];
+//        [self.tableView beginUpdates];
         [self.dataSource deleteModelAtIndex:indexPath];
-        [self.tableView endUpdates];
+        [self.dataSource saveContext];
+//        [self.tableView endUpdates];
     }
 }
 

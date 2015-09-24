@@ -22,6 +22,7 @@
 - (void)deleteModelAtIndex:(NSIndexPath *)index;
 - (TMSModelItem*)modelAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)modelsCount;
+- (void)saveContext;
 
 + (void)copyDataPlistToDocumentFolder;
 
