@@ -21,7 +21,7 @@
 - (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey;
 - (void)deleteModelAtIndex:(NSIndexPath *)index;
 - (TMSModelItem*)modelAtIndexPath:(NSIndexPath *)indexPath;
-//- (NSInteger)modelsCount;
+- (NSInteger)modelsCount;
 - (NSInteger)numberObjectsInSection: (NSInteger)section;
 - (void)saveContext;
 
@@ -46,6 +46,11 @@
        atIndexPath:( NSIndexPath *)indexPath
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath;
+
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type;
 
 @end
 
