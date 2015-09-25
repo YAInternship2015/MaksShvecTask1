@@ -47,8 +47,6 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-#warning TODO fix saving
-#warning ДЛЯ ЮРИЯ:  сохранение и удаление работают(видно только после перезапуска приложения). Но почемуто не происходит перезагрузка таблицы и коллекции.
         self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
         [self.dataSource addModelWithImageKey:kNoImage nameKey:self.textField.text];
         

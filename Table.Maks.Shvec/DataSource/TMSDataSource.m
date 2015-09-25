@@ -45,7 +45,7 @@
     return self;
 }
 
-- (void)addModelWithDelegateImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey
+- (void)addModelWithImageKey:(NSString *)imageKey nameKey:(NSString *)nameKey
 {
     NSManagedObjectContext* context = [self.fetchedResultsController managedObjectContext];
     NSString * entityClassName = NSStringFromClass([TMSModelItem class]);
@@ -61,10 +61,10 @@
     }
 }
 
-//- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-//    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
-//}
-
+- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+}
+/*
 - (void)controller:(NSFetchedResultsController *)controller
   didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex
@@ -79,7 +79,7 @@
       newIndexPath:(NSIndexPath *)newIndexPath {
     [self.delegate controller:controller didChangeObject:anObject atIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
 }
-
+*/
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     [self.delegate controllerWillChangeContent:controller];
 }
@@ -93,7 +93,7 @@
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-    NSManagedObjectContext* context = self.managedObjectContext;
+//    NSManagedObjectContext* context = self.managedObjectContext;
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kNameOfEntity];
     
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:kName ascending:YES];
@@ -101,11 +101,19 @@
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc]
-                                     initWithFetchRequest:fetchRequest
-                                     managedObjectContext:context
-                                     sectionNameKeyPath:nil cacheName:@"MyCache"];
     
+    
+//    self.fetchedResultsController = [[NSFetchedResultsController alloc]
+//                                     initWithFetchRequest:fetchRequest
+//                                     managedObjectContext:self.managedObjectContext
+//                                     sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.managedObjectContext
+                                          sectionNameKeyPath:nil cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+//    self.fetchedResultsController.delegate = self;
     NSError* error = nil;
     [self.fetchedResultsController performFetch:&error];
     
@@ -113,22 +121,6 @@
 }
 
 #pragma mark - DataSource methods
-
-- (void)addModelWithImageKey: (NSString*)imageKey nameKey:(NSString*)nameKey
-{
-    NSManagedObjectContext* context = [self.fetchedResultsController managedObjectContext];
-    NSString * entityClassName = NSStringFromClass([TMSModelItem class]);
-    TMSModelItem *newObject = [NSEntityDescription insertNewObjectForEntityForName:entityClassName inManagedObjectContext:context];
-    
-    [newObject setValue:imageKey forKey:kImageName];
-    [newObject setValue:nameKey forKey:kName];
-
-    NSError* error = nil;
-    if (![context save:&error]) {
-        NSLog(@"Error in saving %@, %@", error, [error userInfo]);
-        abort();
-    }
-}
 
 
 - (void)deleteModelAtIndex:(NSIndexPath *)index {
