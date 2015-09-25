@@ -35,11 +35,11 @@
 
 - (void)addModelWithImageKey:(NSString *)imageKey nameKey:(NSString *)nameKey;
 
-- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
+//- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
 - (void)controllerWillChangeContent:(NSFetchedResultsController*)controller;
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller;
-/*
+
 
 - (void)controller:(NSFetchedResultsController *)controller
    didChangeObject:(id)anObject
@@ -47,10 +47,10 @@
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath;
 
-- (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type;
-*/
+//- (void)controller:(NSFetchedResultsController *)controller
+//  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+//           atIndex:(NSUInteger)sectionIndex
+//     forChangeType:(NSFetchedResultsChangeType)type;
+
 @end
 

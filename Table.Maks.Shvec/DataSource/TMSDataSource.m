@@ -61,16 +61,16 @@
     }
 }
 
-- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
-}
-/*
-- (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
-    [self.delegate controller:controller didChangeSection:sectionInfo atIndex:sectionIndex forChangeType:type];
-}
+//- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+//    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+//}
+
+//- (void)controller:(NSFetchedResultsController *)controller
+//  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+//           atIndex:(NSUInteger)sectionIndex
+//     forChangeType:(NSFetchedResultsChangeType)type {
+//    [self.delegate controller:controller didChangeSection:sectionInfo atIndex:sectionIndex forChangeType:type];
+//}
 
 - (void)controller:(NSFetchedResultsController *)controller
    didChangeObject:(id)anObject
@@ -79,7 +79,7 @@
       newIndexPath:(NSIndexPath *)newIndexPath {
     [self.delegate controller:controller didChangeObject:anObject atIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
 }
-*/
+
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     [self.delegate controllerWillChangeContent:controller];
 }
