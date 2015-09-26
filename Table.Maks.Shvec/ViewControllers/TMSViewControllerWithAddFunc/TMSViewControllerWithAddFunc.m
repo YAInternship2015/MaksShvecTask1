@@ -45,8 +45,7 @@
         UIAlertController *alert = [TMSAlertsFactory showAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Error", nil)] message:[error localizedDescription]];
         
         [self presentViewController:alert animated:YES completion:nil];
-    }
-    else {
+    } else {
         self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
         [self.dataSource addModelWithImageKey:kNoImage nameKey:self.textField.text];
         
