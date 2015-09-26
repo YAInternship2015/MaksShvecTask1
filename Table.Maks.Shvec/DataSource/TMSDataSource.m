@@ -81,7 +81,10 @@
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.delegate controllerWillChangeContent:controller];
+    if ([self.delegate respondsToSelector:@selector(controllerWillChangeContent:)]) {
+        [self.delegate controllerWillChangeContent:controller];
+    }
+   //этого метода нет в сейве
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
@@ -93,7 +96,6 @@
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-//    NSManagedObjectContext* context = self.managedObjectContext;
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kNameOfEntity];
     
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:kName ascending:YES];
@@ -113,7 +115,7 @@
                                           sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
-//    self.fetchedResultsController.delegate = self;
+    self.fetchedResultsController.delegate = self;
     NSError* error = nil;
     [self.fetchedResultsController performFetch:&error];
     

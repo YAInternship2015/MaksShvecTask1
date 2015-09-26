@@ -33,7 +33,7 @@
 
 @optional
 
-- (void)addModelWithImageKey:(NSString *)imageKey nameKey:(NSString *)nameKey;
+//- (void)addModelWithImageKey:(NSString *)imageKey nameKey:(NSString *)nameKey;
 
 //- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
 - (void)controllerWillChangeContent:(NSFetchedResultsController*)controller;

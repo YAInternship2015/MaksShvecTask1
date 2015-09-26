@@ -242,6 +242,7 @@
 		2DD70E9A1B6CE2CF00566D0A /* Table.Maks.Shvec */ = {
 			isa = PBXGroup;
 			children = (
+				FC9EFDE11BB68B2D0014100B /* Third Party */,
 				2DED784B1BAF1ED6004D2867 /* Frameworks */,
 				FC9E2F531B98BBEF004239F2 /* Category */,
 				2DB7D7D01B8F530B00A0DF07 /* TMSAppDelegate */,
@@ -354,6 +355,13 @@
 				FC9E2F561B98BCB2004239F2 /* NSString+Path.m */,
 			);
 			name = "NSString+Path";
+			sourceTree = "<group>";
+		};
+		FC9EFDE11BB68B2D0014100B /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Third Party";
 			sourceTree = "<group>";
 		};
 		FCB2A4A11B90A86500259263 /* TMSViewControllerWithAddFunc */ = {
