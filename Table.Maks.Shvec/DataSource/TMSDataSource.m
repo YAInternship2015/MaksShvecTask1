@@ -76,7 +76,7 @@
     }
 }
 
-#pragma mark - NSFetchedResultsCOntroller Methods
+#pragma mark - NSFetchedResultsController dDelegate Methods
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     if ([self.delegate respondsToSelector:@selector(controllerWillChangeContent:)]) {
@@ -89,6 +89,17 @@
     [self.delegate controllerDidChangeContent: controller];
     }
 }
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    if ([self.delegate respondsToSelector:@selector(controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:)]) {
+        [self.delegate controller:controller didChangeObject:anObject atIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+    }
+}
+
+#pragma mark FetchedResultsController setter
+
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
@@ -113,10 +124,12 @@
     return _fetchedResultsController;
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
-    [self.delegate controller:controller didChangeObject:anObject atIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+#pragma mark TMSDataSource delegate method
+
+- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    if ([self.delegate respondsToSelector:@selector(contentWasChangedAtIndexPath:forChangeType:newIndexPath:)]) {
+        [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:indexPath];
+    }
 }
 
 #pragma mark - DataSource methods
@@ -178,6 +191,7 @@
 #pragma mark - CoreData stack
 
 #warning TODO: Поместить в синглтон
+
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }

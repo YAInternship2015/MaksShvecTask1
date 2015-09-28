@@ -48,7 +48,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat mainScreen = CGRectGetWidth([UIScreen mainScreen].bounds);
-#warning TODO вынести 1 и 5 в константы
+#warning TODO: вынести 1 и 5 в константы
     CGFloat cellSize = (mainScreen / kPreferesCellSize < kQuantityOfCellsInRow) ? (mainScreen - kCellSpacing) / (kQuantityOfCellsInRow -1) : (mainScreen - kCellSpacing-5) / kQuantityOfCellsInRow;
     return CGSizeMake(cellSize, cellSize);
 }
