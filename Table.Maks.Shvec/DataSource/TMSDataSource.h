@@ -23,7 +23,7 @@
 - (TMSModelItem*)modelAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)modelsCount;
 - (NSInteger)numberObjectsInSection: (NSInteger)section;
-- (void)reloadDataInDataSource;
+- (void)reloadByDataSource;
 
 + (void)copyDataPlistToDocumentFolder;
 

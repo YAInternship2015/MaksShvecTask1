@@ -63,15 +63,10 @@
     }
 }
 
-- (void)reloadDataInDataSource {
-    self.fetchedResultsController = nil;
+- (void)reloadByDataSource {
     
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
-    NSLog(@"FRC NEW %d",[sectionInfo numberOfObjects]);
-    
-    NSError *error;
+    NSError *error = NULL;
     if (![[self fetchedResultsController] performFetch:&error]) {
-        // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
 }
@@ -190,7 +185,7 @@
 
 #pragma mark - CoreData stack
 
-#warning TODO: Поместить в синглтон
+#warning TODO: Make singletone
 
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];

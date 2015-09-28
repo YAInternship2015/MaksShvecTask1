@@ -26,7 +26,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.dataSource reloadDataInDataSource];
+    [self.dataSource reloadByDataSource];
     [self.tableView reloadData];
 }
 

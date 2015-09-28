@@ -26,7 +26,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.dataSource reloadDataInDataSource];
+    [self.dataSource reloadByDataSource];
     [self.collectionView reloadData];
 }
 
@@ -48,7 +48,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat mainScreen = CGRectGetWidth([UIScreen mainScreen].bounds);
-#warning TODO: вынести 1 и 5 в константы
+#warning TODO: constants 1 & 5
     CGFloat cellSize = (mainScreen / kPreferesCellSize < kQuantityOfCellsInRow) ? (mainScreen - kCellSpacing) / (kQuantityOfCellsInRow -1) : (mainScreen - kCellSpacing-5) / kQuantityOfCellsInRow;
     return CGSizeMake(cellSize, cellSize);
 }
@@ -66,7 +66,7 @@
             cell.layer.transform = CATransform3DMakeRotation(M_PI,1.0,0.0,0.0);;
         } completion:^(BOOL finished) {
             [weakSelf.collectionView performBatchUpdates:^{
-#warning TODO починить удаление
+#warning TODO fix deleting
                 [weakSelf.dataSource deleteModelAtIndex:indexPath];
             } completion:nil];
         }];
