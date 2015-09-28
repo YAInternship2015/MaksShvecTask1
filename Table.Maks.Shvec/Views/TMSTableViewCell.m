@@ -18,11 +18,9 @@
 
 @implementation TMSTableViewCell
 
-- (void)setupWithModel:(TMSModelItem *)model
-{
+- (void)setupWithModel:(TMSModelItem *)model {
     self.cellText.text = model.text;
     self.cellPic.image = [UIImage imageNamed: model.nameImage];
-    self.cellPic.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 

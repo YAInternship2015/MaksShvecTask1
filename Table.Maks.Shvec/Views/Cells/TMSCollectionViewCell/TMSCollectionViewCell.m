@@ -16,10 +16,8 @@
 
 @implementation TMSCollectionViewCell
 
-- (void)setupWithModel:(TMSModelItem *)model
-{
+- (void)setupWithModel:(TMSModelItem *)model {
     self.cellImage.image = [UIImage imageNamed:model.nameImage];
-    self.cellImage.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 

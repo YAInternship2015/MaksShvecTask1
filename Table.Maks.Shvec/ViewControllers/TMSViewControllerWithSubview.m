@@ -13,9 +13,9 @@
 
 @interface TMSViewControllerWithSubview ()
 
-@property (nonatomic, strong)TMSTableViewController *tableViewController;
-@property (nonatomic, strong)TMSCollectionViewController *collectionViewController;
-@property (nonatomic, assign)BOOL isTableViewController;
+@property (nonatomic, strong) TMSTableViewController *tableViewController;
+@property (nonatomic, strong) TMSCollectionViewController *collectionViewController;
+@property (nonatomic, assign) BOOL isTableViewController;
 
 @end
 
@@ -26,6 +26,7 @@
     [super viewDidLoad];
     self.tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TMSTableViewController class])];
     self.collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TMSCollectionViewController class])];
+    
     
     [self addChildViewController:self.tableViewController];
     [self addChildViewController:self.collectionViewController];

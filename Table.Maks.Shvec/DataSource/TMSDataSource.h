@@ -23,7 +23,7 @@
 - (TMSModelItem*)modelAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)modelsCount;
 - (NSInteger)numberObjectsInSection: (NSInteger)section;
-- (void)saveContext;
+- (void)reloadDataInDataSource;
 
 + (void)copyDataPlistToDocumentFolder;
 
@@ -33,24 +33,16 @@
 
 @optional
 
-//- (void)addModelWithImageKey:(NSString *)imageKey nameKey:(NSString *)nameKey;
+- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
 
-//- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
 - (void)controllerWillChangeContent:(NSFetchedResultsController*)controller;
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller;
 
-
-- (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:( NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath;
 
-//- (void)controller:(NSFetchedResultsController *)controller
-//  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-//           atIndex:(NSUInteger)sectionIndex
-//     forChangeType:(NSFetchedResultsChangeType)type;
 
 @end
 

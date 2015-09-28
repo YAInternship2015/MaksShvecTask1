@@ -12,8 +12,7 @@
 
 @interface TMSCollectionViewController ()<TMSDataSourceDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, strong) TMSDataSource* dataSource;
-@property (nonatomic, strong) NSMutableArray* arrayOfChanges;
+@property (nonatomic, strong) TMSDataSource *dataSource;
 
 @end
 
@@ -22,19 +21,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.dataSource = [[TMSDataSource alloc]initWithDelegate:self];
+    self.dataSource = [[TMSDataSource alloc] initWithDelegate:self];
     self.collectionView.alwaysBounceVertical = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.dataSource reloadDataInDataSource];
+    [self.collectionView reloadData];
 }
 
 #pragma mark <UICollectionViewDataSource>
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.dataSource modelsCount];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TMSCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionViewCellIdentifier forIndexPath:indexPath];
     
     [cell setupWithModel:[self.dataSource modelAtIndexPath:indexPath]];
@@ -42,66 +44,45 @@
     return cell;
 }
 
+#pragma mark UICollectionViewDelegate
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat mainScreen = CGRectGetWidth([UIScreen mainScreen].bounds);
+#warning TODO вынести 1 и 5 в константы
+    CGFloat cellSize = (mainScreen / kPreferesCellSize < kQuantityOfCellsInRow) ? (mainScreen - kCellSpacing) / (kQuantityOfCellsInRow -1) : (mainScreen - kCellSpacing-5) / kQuantityOfCellsInRow;
+    return CGSizeMake(cellSize, cellSize);
+}
+
 #pragma mark - Methods
 
 - (IBAction)handleLongPress:(UILongPressGestureRecognizer *)sender {
-    CGPoint locationPoint = [sender locationInView:self.collectionView];
-    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:locationPoint];
-    if (sender.state == UIGestureRecognizerStateBegan && indexPath) {
-        [self.dataSource deleteModelAtIndex:indexPath];
+    
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        CGPoint point = [sender locationInView:self.collectionView];
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:kDurationAnimationForDeletingElement animations:^{
+            UICollectionViewCell *cell = [weakSelf.collectionView cellForItemAtIndexPath:indexPath];
+            cell.layer.transform = CATransform3DMakeRotation(M_PI,1.0,0.0,0.0);;
+        } completion:^(BOOL finished) {
+            [weakSelf.collectionView performBatchUpdates:^{
+#warning TODO починить удаление
+                [weakSelf.dataSource deleteModelAtIndex:indexPath];
+            } completion:nil];
+        }];
     }
 }
 
-#pragma mark - NSFetchedResultsControllerDelegate
+#pragma mark - TMSDataSource methods
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    self.arrayOfChanges = [[NSMutableArray alloc] init];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
-    NSMutableDictionary *change = [[NSMutableDictionary alloc] init];
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            change[@(type)] = newIndexPath;
-            break;
-        case NSFetchedResultsChangeDelete:
-            change[@(type)] = indexPath;
-            break;
-        case NSFetchedResultsChangeUpdate:
-            break;
-        case NSFetchedResultsChangeMove:
-            break;
+- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    if (type == NSFetchedResultsChangeInsert) {
+        [self.collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+    } else if (type == NSFetchedResultsChangeDelete) {
+        [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+    } else {
+        [self.collectionView reloadData];
     }
-    [self.arrayOfChanges addObject:change];
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.collectionView performBatchUpdates:^{
-        
-        for (NSDictionary *change in self.arrayOfChanges) {
-            [change enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-                NSFetchedResultsChangeType type = [key unsignedIntegerValue];
-                switch(type) {
-                    case NSFetchedResultsChangeInsert:
-                        [self.collectionView insertItemsAtIndexPaths:@[obj]];
-                        break;
-                    case NSFetchedResultsChangeDelete:
-                        [self.collectionView deleteItemsAtIndexPaths:@[obj]];
-                        break;
-                    case NSFetchedResultsChangeUpdate:
-                        break;
-                    case NSFetchedResultsChangeMove:
-                        break;
-                }
-            }];
-        }
-    } completion:^(BOOL finished) {
-        self.arrayOfChanges = nil;
-    }];
 }
 
 @end

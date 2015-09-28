@@ -10,5 +10,6 @@
 
 @interface TMSTableViewController : UITableViewController
 
+@property (nonatomic, strong) TMSTableViewController *tableViewFromViewController;
 
 @end

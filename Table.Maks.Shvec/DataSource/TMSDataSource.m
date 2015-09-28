@@ -31,7 +31,11 @@
     self = [super init];
     if (self) {
         self.delegate = delegate;
-    //loading from plist
+        [self loadWithPlist];
+            }
+    return self;
+}
+- (void)loadWithPlist {
     if ([self modelsCount] == 0) {
         NSMutableArray* arr = [[NSArray arrayWithContentsOfFile:[NSString pathToPlist]] mutableCopy];
         for (int i = 0; i < arr.count; i++) {
@@ -41,8 +45,6 @@
             [self addModelWithImageKey:name nameKey:image];
         }
     }
-    }
-    return self;
 }
 
 - (void)addModelWithImageKey:(NSString *)imageKey nameKey:(NSString *)nameKey
@@ -61,54 +63,43 @@
     }
 }
 
-//- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-//    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
-//}
-
-//- (void)controller:(NSFetchedResultsController *)controller
-//  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-//           atIndex:(NSUInteger)sectionIndex
-//     forChangeType:(NSFetchedResultsChangeType)type {
-//    [self.delegate controller:controller didChangeSection:sectionInfo atIndex:sectionIndex forChangeType:type];
-//}
-
-- (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
-    [self.delegate controller:controller didChangeObject:anObject atIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+- (void)reloadDataInDataSource {
+    self.fetchedResultsController = nil;
+    
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
+    NSLog(@"FRC NEW %d",[sectionInfo numberOfObjects]);
+    
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
 }
+
+#pragma mark - NSFetchedResultsCOntroller Methods
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     if ([self.delegate respondsToSelector:@selector(controllerWillChangeContent:)]) {
         [self.delegate controllerWillChangeContent:controller];
     }
-   //этого метода нет в сейве
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    if ([self.delegate respondsToSelector:@selector(controllerDidChangeContent:)]) {
     [self.delegate controllerDidChangeContent: controller];
+    }
 }
-
-
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kNameOfEntity];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kNameOfEntity];
     
-    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:kName ascending:YES];
-    NSArray* sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:kName ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    
-    
-//    self.fetchedResultsController = [[NSFetchedResultsController alloc]
-//                                     initWithFetchRequest:fetchRequest
-//                                     managedObjectContext:self.managedObjectContext
-//                                     sectionNameKeyPath:nil cacheName:nil];
     NSFetchedResultsController *aFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:self.managedObjectContext
@@ -116,25 +107,30 @@
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     self.fetchedResultsController.delegate = self;
-    NSError* error = nil;
+    NSError *error = nil;
     [self.fetchedResultsController performFetch:&error];
     
     return _fetchedResultsController;
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    [self.delegate controller:controller didChangeObject:anObject atIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
 }
 
 #pragma mark - DataSource methods
 
 
 - (void)deleteModelAtIndex:(NSIndexPath *)index {
-    NSManagedObjectContext* context = [self.fetchedResultsController managedObjectContext];
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     [context deleteObject:[self.fetchedResultsController objectAtIndexPath:index]];
     
-    NSError* error = nil;
+    NSError *error = nil;
     if (![context save:&error]) {
         NSLog(@"Error in saving %@, %@", error, [error userInfo]);
         abort();
     }
-    [self saveContext];
 }
 
 - (TMSModelItem*)modelAtIndexPath:(NSIndexPath *)indexPath {
@@ -181,7 +177,7 @@
 
 #pragma mark - CoreData stack
 
-
+#warning TODO: Поместить в синглтон
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
@@ -227,22 +223,9 @@
     if (!coordinator) {
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
 }
-#pragma mark - Core Data Saving support
-
-- (void)saveContext {
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        NSError *error = nil;
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
-}
-
 
 @end

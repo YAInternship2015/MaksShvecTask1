@@ -12,18 +12,16 @@
 
 #pragma mark -  NSString validation alert
 
-+ (UIAlertController *)showAlertWithTitle:(NSString *)title message:(NSString *)message
-{
-    UIAlertController *alert=   [UIAlertController
-                                  alertControllerWithTitle:title
-                                  message:message
-                                  preferredStyle:UIAlertControllerStyleAlert];
++ (UIAlertController *)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+    UIAlertController *alert =
+    [UIAlertController alertControllerWithTitle:title
+                                        message:message
+                                 preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
+    UIAlertAction *ok =
+    [UIAlertAction actionWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Ok", nil)]
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * action) {
                              [alert dismissViewControllerAnimated:YES completion:nil];
                          }];
     
